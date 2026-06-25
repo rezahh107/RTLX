@@ -1,0 +1,46 @@
+{
+  "schemaVersion": "1.0.0",
+  "product": "RTLX",
+  "displayName": "Raastchin / راست‌چین",
+  "version": "15.9.11",
+  "packageKind": "complete-handoff-with-sanitized-install-artifacts",
+  "createdAt": "2026-06-25T00:00:00Z",
+  "fontBinariesIncluded": false,
+  "releaseStatus": "NO_GO",
+  "personalLocalStatus": "CONDITIONAL_GO",
+  "artifacts": [
+    {
+      "name": "rtlx-chromium-15.9.11-no-font-binaries.zip",
+      "sha256": "ded7fe9851c22f9f6f734e4c6ed84b501874e4702240e96a77373f8196f7c9ef",
+      "bytes": 326152,
+      "fontBinariesIncluded": false,
+      "installMode": "load-unpacked preferred; zip included for transfer/extract"
+    },
+    {
+      "name": "rtlx-edge-15.9.11-no-font-binaries.zip",
+      "sha256": "c62c87b3e378fbde4e692e4f082dd3b390d701c9ce5cf2d19d92c28061f35499",
+      "bytes": 326147,
+      "fontBinariesIncluded": false,
+      "installMode": "load-unpacked preferred; zip included for transfer/extract"
+    },
+    {
+      "name": "rtlx-firefox-15.9.11-no-font-binaries.zip",
+      "sha256": "ebd70b6c06b9e9b0ea5633c9f3826dcf1124f689222d89c27e148cd018a3ed7c",
+      "bytes": 325824,
+      "fontBinariesIncluded": false,
+      "installMode": "load-unpacked preferred; zip included for transfer/extract"
+    },
+    {
+      "name": "rtlx-firefox-android-15.9.11-no-font-binaries.zip",
+      "sha256": "8b22e05ef3b664326d2d383d85a73b0a1c82a7627b41758e8b365585502fd634",
+      "bytes": 325770,
+      "fontBinariesIncluded": false,
+      "installMode": "load-unpacked preferred; zip included for transfer/extract"
+    }
+  ],
+  "notes": [
+    "Font binaries are intentionally omitted and must not be redistributed from this runtime.",
+    "The install artifacts are sanitized no-font builds; local/system font fallback is expected.",
+    "Store release remains blocked until exact-artifact browser evidence passes for declared targets."
+  ]
+}
