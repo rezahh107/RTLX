@@ -1,6 +1,6 @@
 {
   "name": "rtlx-mixed-text-extension",
-  "version": "15.9.11",
+  "version": "15.9.12",
   "private": true,
   "description": "Focused personal RTL rescue with deterministic cross-browser messaging, release governance, artifact evidence, streaming resilience, capture readiness, and runtime provenance.",
   "type": "module",
@@ -59,7 +59,7 @@
     "test:personal": "npm run format-check && npm run typecheck && npm run lint && npm run lint:warnings && npm run validate:schemas && npm run validate:profiles && npm run validate:message-serialization && npm run test:structured-clone && npm run test:coverage && npm run personal:verify && npm run build && npm run test:browser-smoke && npm run manifest:validate && npm run security:scan && npm run audit:production",
     "package:personal": "npm run personal:verify && npm run build:release",
     "install:personal": "node scripts/install-personal.mjs",
-    "release:integrity": "node scripts/release-integrity.mjs --manifest dist/artifacts/RTLX-v15.9.11-ARTIFACT-SHA256-MANIFEST.json --root dist/artifacts --ignore RTLX-v15.9.11-ARTIFACT-SHA256-MANIFEST.json --ignore rtlx-v15.9.11-font-sanitized-source.zip",
+    "release:integrity": "node scripts/release-integrity.mjs --manifest dist/artifacts/RTLX-v15.9.12-ARTIFACT-SHA256-MANIFEST.json --root dist/artifacts --ignore RTLX-v15.9.12-ARTIFACT-SHA256-MANIFEST.json --ignore rtlx-v15.9.12-font-sanitized-source.zip",
     "generate:build-fingerprint": "node scripts/generate-build-fingerprint.mjs",
     "validate:message-serialization": "node scripts/structured-clone-manifest-guard.mjs",
     "test:structured-clone": "vitest run tests/unit/structured-clone-messaging-v1598.test.ts",
