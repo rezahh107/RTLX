@@ -1,11 +1,11 @@
 import { PERFORMANCE_LIMITS_REGISTRY } from './registry-data';
 
-export const PRODUCT_VERSION = '15.9.11' as const;
+export const PRODUCT_VERSION = '15.9.12' as const;
 export const BUILD_FLAVOR = 'no-font-binaries' as const;
 export const SETTINGS_SCHEMA_VERSION = '2.1.0' as const;
 export const DIAGNOSTIC_SCHEMA_VERSION = '1.0.0' as const;
 export const PROFILE_SCHEMA_VERSION = '3.0.0' as const;
-export const PROCESSOR_VERSION = '15.9.11' as const;
+export const PROCESSOR_VERSION = '15.9.12' as const;
 export const FIREFOX_MIN_VERSION = '140.0' as const;
 export const FIREFOX_EXTENSION_ID = '{c70856f4-3b2c-4c21-a94f-b5a9172c46ac}' as const;
 export const LIMITS = Object.freeze({
@@ -47,6 +47,9 @@ export const LIMITS = Object.freeze({
   streamingQuietWindowMs: 80,
   streamingMaxWaitMs: 400,
   streamingMaxQueuedRoots: 100,
+  captureDrainMaxCandidateBursts: 8,
+  captureDrainMaxCandidatesPerBurst: 50,
+  captureDrainMaxOrphanRecoveries: 8,
   ...PERFORMANCE_LIMITS_REGISTRY,
 });
 export const OWNED_CLASS = 'rtlx-owned-candidate';
