@@ -19,13 +19,14 @@
     "1.1.0 Browser Harmony Hardening runtime limits for RTLX 15.1.0",
     "1.2.0 Browser Survival Hardening soak and crash-evidence targets for RTLX 15.2.0",
     "2.0.0 adds condition-based stable recovery timing for RTLX 15.9.0",
-    "3.0.0 adds bounded capture stabilization and startup takeover limits for RTLX 15.9.1"
+    "3.0.0 adds bounded capture stabilization and startup takeover limits for RTLX 15.9.1",
+    "4.0.0 raises capture stabilization and pressure threshold for dense LLM conversation reports in RTLX 15.9.12"
   ],
   "forwardCompatibility": "Budget changes require a new registry version and benchmark report.",
   "registryId": "performance-budgets",
-  "registryVersion": 3,
+  "registryVersion": 4,
   "runtimeLimits": {
-    "captureStabilizationMaxWaitMs": 5500,
+    "captureStabilizationMaxWaitMs": 12000,
     "captureStabilizationPollMs": 50,
     "degradationQuietPeriodMs": 30000,
     "degradationStableRecoveryMs": 1000,
@@ -44,13 +45,13 @@
     "ownedMutationSignaturesMax": 512,
     "performanceRawSamplesPerPhaseMax": 256,
     "pressureMutationBurstThreshold": 250,
-    "pressureNodesPerSlice": 20,
-    "pressureQueueThreshold": 200,
-    "pressureSliceMs": 4,
+    "pressureNodesPerSlice": 35,
+    "pressureQueueThreshold": 400,
+    "pressureSliceMs": 6,
     "sharedDelayBucketWidthMs": 100,
     "sharedDelayBucketsMax": 8,
     "sharedDelayedCandidatesMax": 250
   },
   "schemaVersion": "1.0.0",
-  "verificationState": "verified_by_unit_test_except_real_browser_gates"
+  "verificationState": "requires_browser_retest_for_chatgpt_claude_dense_conversation_reports"
 }
