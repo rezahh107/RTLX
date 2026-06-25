@@ -49,14 +49,16 @@ describe('v15.9.12 bundled profile routing contracts', () => {
   });
 
   it('keeps ChatGPT and Claude code preservation selectors scoped to block code', () => {
-    const protectedProfiles = new Map(loadBundledProfiles().map((profile) => [profile.profileId, profile]));
+    const protectedProfiles = new Map(
+      loadBundledProfiles().map((profile) => [profile.profileId, profile])
+    );
     for (const profileId of ['official:chatgpt', 'official:claude']) {
       const profile = protectedProfiles.get(profileId);
       expect(profile, `${profileId} must exist`).toBeDefined();
       expect(profile?.selectors.code).not.toContain('code');
-      expect(profile?.rules.some((rule) => rule.category === 'code' && rule.selector === 'code')).toBe(
-        false
-      );
+      expect(
+        profile?.rules.some((rule) => rule.category === 'code' && rule.selector === 'code')
+      ).toBe(false);
       expect(profile?.selectors.code).toContain('pre code');
     }
   });
