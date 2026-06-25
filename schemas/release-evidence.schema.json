@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rtlx.local/schemas/release-evidence.schema.json",
+  "title": "RTLX Release Evidence",
+  "type": "object",
+  "additionalProperties": true,
+  "required": ["schemaVersion", "status"],
+  "properties": {
+    "schemaVersion": { "const": "1.0.0" },
+    "status": {
+      "enum": ["pass", "passed", "failed", "blocked", "not_run", "insufficient_evidence"]
+    },
+    "artifactSha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+    "sourceTreeSha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+    "startedAt": { "type": "string" },
+    "finishedAt": { "type": "string" },
+    "exitCode": { "type": "integer" }
+  }
+}

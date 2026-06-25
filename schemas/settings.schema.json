@@ -1,0 +1,91 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rtlx.invalid/schemas/settings.schema.json",
+  "title": "RTLX Settings v2.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "enabled",
+    "siteMode",
+    "directionCorrection",
+    "bidiIsolation",
+    "typography",
+    "interactiveTextMutation",
+    "formFieldDirection",
+    "inputDirectionAssistant",
+    "listRepair",
+    "latinFont",
+    "persianFont",
+    "settingsScope",
+    "aggressiveNaturalLanguageWrapping",
+    "closedShadowDom",
+    "remoteProfiles",
+    "telemetry",
+    "diagnosticsPersistence"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": "2.1.0"
+    },
+    "enabled": {
+      "type": "boolean"
+    },
+    "siteMode": {
+      "enum": ["disabled", "ask", "auto-safe", "force-candidate-rtl"]
+    },
+    "directionCorrection": {
+      "type": "boolean"
+    },
+    "bidiIsolation": {
+      "type": "boolean"
+    },
+    "typography": {
+      "type": "boolean"
+    },
+    "interactiveTextMutation": {
+      "type": "boolean"
+    },
+    "formFieldDirection": {
+      "type": "boolean"
+    },
+    "inputDirectionAssistant": {
+      "type": "boolean"
+    },
+    "listRepair": {
+      "type": "boolean"
+    },
+    "latinFont": {
+      "enum": ["inter", "amazon-ember-local", "preserve"]
+    },
+    "settingsScope": {
+      "enum": ["site", "conversation"]
+    },
+    "aggressiveNaturalLanguageWrapping": {
+      "type": "boolean"
+    },
+    "closedShadowDom": {
+      "type": "boolean"
+    },
+    "remoteProfiles": {
+      "type": "boolean"
+    },
+    "telemetry": {
+      "const": false
+    },
+    "diagnosticsPersistence": {
+      "type": "boolean"
+    },
+    "persianFont": {
+      "enum": ["vazirmatn-bundled", "local-first"]
+    }
+  },
+  "x-registry": {
+    "version": 3,
+    "changelog": [
+      "2.0.0 adds Persian/English input assistance, list repair, Latin font policy and privacy-safe scope",
+      "2.1.0 adds explicit Persian font policy for the focused personal UI"
+    ],
+    "forwardCompatibility": "Reject unknown required fields; migrate v1 deterministically."
+  }
+}

@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>RTLX</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="panel">
+      <header class="hero">
+        <div>
+          <p class="eyebrow" data-i18n="focusedEdition"></p>
+          <h1>RTLX</h1>
+          <p id="site-host" class="host"></p>
+        </div>
+        <span id="state-badge" class="badge badge-neutral" role="status"></span>
+      </header>
+
+      <section class="card status-card" aria-labelledby="status-heading">
+        <div class="status-icon" id="status-icon" aria-hidden="true">●</div>
+        <div>
+          <h2 id="status-heading" data-i18n="pageStatus"></h2>
+          <p id="status-message" class="muted"></p>
+        </div>
+      </section>
+
+      <section class="card main-control" aria-labelledby="activation-heading">
+        <label class="activation-toggle" for="active-toggle">
+          <span>
+            <strong id="activation-heading" data-i18n="activateForSite"></strong>
+            <small data-i18n="activateForSiteHint"></small>
+          </span>
+          <input id="active-toggle" type="checkbox" role="switch" />
+          <span class="toggle-visual" aria-hidden="true"></span>
+        </label>
+        <button id="apply-current" class="primary" type="button" data-i18n="smartFixPage"></button>
+      </section>
+
+      <section class="card" aria-labelledby="appearance-heading">
+        <div class="section-heading">
+          <h2 id="appearance-heading" data-i18n="appearanceHeading"></h2>
+          <p class="muted" data-i18n="appearanceHelp"></p>
+        </div>
+        <label class="field">
+          <span data-i18n="persianFontLabel"></span>
+          <select id="persian-font">
+            <option value="local-first" data-i18n="persianFontLocalFirst"></option>
+            <option value="vazirmatn-bundled" data-i18n="persianFontBundled"></option>
+          </select>
+        </label>
+        <label class="field">
+          <span data-i18n="englishFontLabel"></span>
+          <select id="latin-font">
+            <option value="amazon-ember-local" data-i18n="englishFontAmazon"></option>
+            <option value="inter" data-i18n="englishFontInter"></option>
+          </select>
+        </label>
+        <p class="direction-note" data-i18n="directionPolicyNote"></p>
+        <p class="license-note" data-i18n="amazonLocalOnlyNote"></p>
+      </section>
+
+      <section class="card actions" aria-labelledby="help-heading">
+        <h2 id="help-heading" data-i18n="supportHeading"></h2>
+        <button id="select-problem-area" type="button" data-i18n="selectProblemArea"></button>
+        <button
+          id="download-page-debug-report"
+          type="button"
+          data-i18n="downloadPageDebugReport"
+        ></button>
+        <button id="reset-site" class="danger-outline" type="button" data-i18n="resetSite"></button>
+      </section>
+
+      <p class="privacy-note" data-i18n="focusedPrivacyNote"></p>
+      <p id="status" class="toast" role="status" aria-live="polite"></p>
+    </main>
+    <script src="index.js"></script>
+  </body>
+</html>

@@ -1,0 +1,13 @@
+{
+  "fixtureVersion": "1.0.0",
+  "fixtureId": "38-structured-chat-response",
+  "verification": "verified_by_synthetic_fixture",
+  "source": "RTLX repository deterministic Qwen-like fixture",
+  "assertions": [
+    "heading paragraph list items and blockquote are enumerated in DOM order",
+    "each Persian text block receives an independent RTL decision",
+    "inline code remains protected",
+    "action row layout direction remains unchanged",
+    "action icon remains connected and visible"
+  ]
+}

@@ -1,0 +1,7 @@
+{
+  "schemaVersion": "1.0.0",
+  "chromiumPublicKey": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAipnIdF6pxTmv7Eqk6BXDeQD00sZ0ymmAGYPP8P9i+Rz9vEADl0lwSpzr4ZY0lYpYbALyhyMiTUW0VrqjjW9x9s0GFEHLiaWPfgwRVTqj6iZtVlwoJwhl+aTIDuS81+4NoyHdP5e2+51nYvGLXTYlwVhytIgdhdWXaadauzynflpL00TW05qtMmwdXZVAKOPODZOPZTTEDzzt86HfQk1GJ6lUrqdXWd3CsM1r0/0wF4cbZJ1unml/9Lu2ejlOZGfpsuEDR5xDlYHl7kNIs35VFfHTTyTdPkeMKlNVoBlAiP+s03BOrHkepacl+m1OLBkBUwvzFiCnBEuGT4fcF42FuwIDAQAB",
+  "chromiumExtensionId": "hilpenggipeilpdadnfdaokfocfpapjd",
+  "edgeExtensionId": "hilpenggipeilpdadnfdaokfocfpapjd",
+  "fixedInstallDirectoryName": "RTLX-current"
+}

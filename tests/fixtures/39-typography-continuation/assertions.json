@@ -1,0 +1,12 @@
+{
+  "fixtureVersion": "1.0.0",
+  "fixtureId": "39-typography-continuation",
+  "verification": "verified_by_synthetic_fixture",
+  "source": "RTLX repository deterministic continuation fixture",
+  "assertions": [
+    "first typography slice remains bounded",
+    "unfinished text block is requeued",
+    "all 75 eligible text spans are eventually processed",
+    "typography continuation pending count reaches zero"
+  ]
+}

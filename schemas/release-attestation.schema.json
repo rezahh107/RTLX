@@ -1,0 +1,68 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rtlx.local/schemas/release-attestation.schema.json",
+  "title": "RTLX Release Attestation",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "release",
+    "attestationGenerationStatus",
+    "releaseEvidenceStatus",
+    "generatedAt",
+    "canonicalization",
+    "hashAlgorithm",
+    "sourceTree",
+    "artifacts",
+    "evidence",
+    "attestationSha256"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": "1.1.0"
+    },
+    "release": {
+      "type": "string"
+    },
+    "attestationGenerationStatus": {
+      "const": "passed"
+    },
+    "releaseEvidenceStatus": {
+      "enum": ["passed", "failed", "blocked", "not_run", "insufficient_evidence", "unknown"]
+    },
+    "generatedAt": {
+      "type": "string"
+    },
+    "canonicalization": {
+      "const": "sorted-json-v1"
+    },
+    "hashAlgorithm": {
+      "const": "sha256"
+    },
+    "sourceTree": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["sha256", "files"],
+      "properties": {
+        "sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "files": {
+          "type": "integer",
+          "minimum": 1
+        }
+      }
+    },
+    "artifacts": {
+      "type": "array"
+    },
+    "evidence": {
+      "type": "array"
+    },
+    "attestationSha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    }
+  }
+}

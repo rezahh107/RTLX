@@ -1,0 +1,9 @@
+{
+  "fixtureVersion": "1.0.0",
+  "assertions": [
+    "Persian composer input receives dir=rtl only when the opt-in input assistant is enabled",
+    "Latin composer input receives dir=ltr",
+    "Arabic or Urdu text does not receive Persian typography",
+    "text content and selection remain unchanged"
+  ]
+}

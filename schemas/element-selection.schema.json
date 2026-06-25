@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rtlx.invalid/schemas/element-selection.schema.json",
+  "title": "RTLX Smart Picker Selection v2",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "hostname",
+    "kind",
+    "selector",
+    "directionMode",
+    "alignmentMode",
+    "typographyMode",
+    "initialDelayMs"
+  ],
+  "properties": {
+    "schemaVersion": { "const": "2.0.0" },
+    "hostname": {
+      "type": "string",
+      "pattern": "^(?=.{1,253}$)(?:[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?\\.)*[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?$"
+    },
+    "kind": { "enum": ["content", "code", "math", "editor", "terminal", "ignore"] },
+    "selector": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 256,
+      "pattern": "^(?!.*::)(?!.*:has\\s*\\().+$"
+    },
+    "directionMode": { "enum": ["auto-safe", "force-rtl", "force-ltr", "preserve"] },
+    "alignmentMode": { "enum": ["start", "preserve"] },
+    "typographyMode": { "enum": ["persian-only", "preserve"] },
+    "initialDelayMs": { "type": "integer", "minimum": 0, "maximum": 5000 }
+  },
+  "x-registry": {
+    "version": 2,
+    "changelog": ["2.0.0 adds deterministic rule controls"],
+    "forwardCompatibility": "Reject unknown fields."
+  }
+}

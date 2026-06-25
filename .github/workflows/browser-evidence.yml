@@ -1,0 +1,127 @@
+name: Browser certification evidence
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '17 3 * * 1'
+permissions:
+  contents: read
+jobs:
+  chromium:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    env:
+      TZ: UTC
+      LC_ALL: C
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with:
+          node-version: '22.16.0'
+          cache: npm
+      - run: sudo apt-get update && sudo apt-get install -y chromium xvfb
+      - run: npm ci --ignore-scripts
+      - run: npm run build:release
+      - name: Execute exact-artifact Chromium E2E
+        id: chromium-e2e
+        continue-on-error: true
+        run: npm run test:artifact-e2e:chromium > chromium-exact-artifact-e2e.log 2>&1
+      - name: Execute termination campaign
+        continue-on-error: true
+        run: npm run test:crash-campaign > chromium-crash.log 2>&1
+      - run: npm run evidence:attest
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: chromium-certification-evidence
+          path: |
+            chromium-exact-artifact-e2e.log
+            chromium-crash.log
+            dist/evidence
+            dist/artifacts
+          if-no-files-found: error
+
+  edge:
+    runs-on: windows-latest
+    timeout-minutes: 45
+    env:
+      TZ: UTC
+      LC_ALL: C
+      RTLX_USE_CURRENT_DISPLAY: '1'
+      EDGE_BIN: C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with:
+          node-version: '22.16.0'
+          cache: npm
+      - run: npm ci --ignore-scripts
+      - run: npm run build:release
+      - name: Execute exact-artifact Edge E2E
+        continue-on-error: true
+        shell: pwsh
+        run: npm run test:artifact-e2e:edge *> edge-exact-artifact-e2e.log
+      - run: npm run evidence:attest
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: edge-certification-evidence
+          path: |
+            edge-exact-artifact-e2e.log
+            dist/evidence
+            dist/artifacts
+          if-no-files-found: error
+
+  firefox-desktop:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      TZ: UTC
+      LC_ALL: C
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with:
+          node-version: '22.16.0'
+          cache: npm
+      - run: sudo apt-get update && sudo apt-get install -y firefox xvfb
+      - run: npm ci --ignore-scripts
+      - run: npm run build:release
+      - run: npm run webext:lint > firefox-lint.log 2>&1
+      - name: Record manifest-loaded Firefox evidence
+        continue-on-error: true
+        run: npm run test:manifest-e2e:firefox > firefox-e2e.log 2>&1
+      - run: npm run evidence:attest
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: firefox-desktop-certification-evidence
+          path: |
+            firefox-e2e.log
+            firefox-lint.log
+            dist/evidence
+            dist/artifacts
+          if-no-files-found: error
+
+  firefox-android:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      TZ: UTC
+      LC_ALL: C
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with:
+          node-version: '22.16.0'
+          cache: npm
+      - run: npm ci --ignore-scripts
+      - run: npm run build:release
+      - name: Record Android device gate
+        continue-on-error: true
+        run: npm run test:firefox-android-device > firefox-android-device.log 2>&1
+      - run: npm run evidence:attest
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: firefox-android-certification-evidence
+          path: |
+            firefox-android-device.log
+            dist/evidence
+            dist/artifacts/rtlx-firefox-android-*.zip
+          if-no-files-found: error

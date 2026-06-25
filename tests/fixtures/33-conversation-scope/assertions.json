@@ -1,0 +1,9 @@
+{
+  "fixtureVersion": "1.0.0",
+  "assertions": [
+    "conversation key is a local SHA-256 digest of approved pathname segments",
+    "query and fragment are excluded",
+    "full URL is never persisted",
+    "site scope remains the deterministic fallback"
+  ]
+}

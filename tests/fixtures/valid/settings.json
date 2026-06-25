@@ -1,0 +1,20 @@
+{
+  "schemaVersion": "2.1.0",
+  "enabled": true,
+  "siteMode": "ask",
+  "directionCorrection": true,
+  "bidiIsolation": true,
+  "typography": true,
+  "interactiveTextMutation": false,
+  "formFieldDirection": false,
+  "inputDirectionAssistant": false,
+  "listRepair": false,
+  "latinFont": "inter",
+  "settingsScope": "site",
+  "aggressiveNaturalLanguageWrapping": false,
+  "closedShadowDom": false,
+  "remoteProfiles": false,
+  "telemetry": false,
+  "diagnosticsPersistence": false,
+  "persianFont": "vazirmatn-bundled"
+}

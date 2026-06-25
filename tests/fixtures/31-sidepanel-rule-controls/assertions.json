@@ -1,0 +1,9 @@
+{
+  "fixtureVersion": "1.0.0",
+  "assertions": [
+    "side panel lists active profile rules in stable ruleId order",
+    "disabling a rule causes bounded reprocessing and rollback of owned mutations",
+    "rule delay is bounded by schema",
+    "user never types a CSS selector"
+  ]
+}

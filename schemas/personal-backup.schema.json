@@ -1,0 +1,145 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rtlx.invalid/schemas/personal-backup.schema.json",
+  "title": "RTLX Personal Backup v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "extensionVersion",
+    "createdAt",
+    "sourceExtensionId",
+    "schemas",
+    "data",
+    "permissionHints",
+    "operationalState",
+    "integrity"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": "1.0.0"
+    },
+    "extensionVersion": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$"
+    },
+    "createdAt": {
+      "type": "string",
+      "minLength": 20,
+      "maxLength": 40
+    },
+    "sourceExtensionId": {
+      "type": "string",
+      "pattern": "^(?:[a-p]{32}|\\{[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-5][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}\\})$"
+    },
+    "schemas": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["settings", "profile", "diagnostic"],
+      "properties": {
+        "settings": {
+          "const": "2.1.0"
+        },
+        "profile": {
+          "const": "3.0.0"
+        },
+        "diagnostic": {
+          "const": "1.0.0"
+        }
+      }
+    },
+    "data": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["sync", "local"],
+      "properties": {
+        "sync": {
+          "type": "object"
+        },
+        "local": {
+          "type": "object"
+        }
+      }
+    },
+    "permissionHints": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["permissions", "origins"],
+      "properties": {
+        "permissions": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true
+        },
+        "origins": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true
+        }
+      }
+    },
+    "operationalState": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "safeModeActive",
+        "pendingTransactions",
+        "updatePending",
+        "packageIntegrityStatus",
+        "storageBytes"
+      ],
+      "properties": {
+        "safeModeActive": {
+          "type": "boolean"
+        },
+        "pendingTransactions": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "updatePending": {
+          "type": "boolean"
+        },
+        "packageIntegrityStatus": {
+          "type": "string"
+        },
+        "storageBytes": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["local", "sync"],
+          "properties": {
+            "local": {
+              "type": ["integer", "null"],
+              "minimum": 0
+            },
+            "sync": {
+              "type": ["integer", "null"],
+              "minimum": 0
+            }
+          }
+        }
+      }
+    },
+    "diagnostics": {
+      "type": "array",
+      "maxItems": 500
+    },
+    "integrity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["algorithm", "canonicalHash"],
+      "properties": {
+        "algorithm": {
+          "const": "sha256"
+        },
+        "canonicalHash": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        }
+      }
+    }
+  }
+}

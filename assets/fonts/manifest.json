@@ -1,0 +1,62 @@
+{
+  "schemaVersion": "1.0.0",
+  "manifestVersion": 1,
+  "generated": true,
+  "files": [
+    {
+      "file": "inter-latin-400-normal.woff2",
+      "family": "Inter",
+      "weight": 400,
+      "subset": "latin",
+      "format": "woff2",
+      "sha256": "8909904ab6c872eb994093482a88a28eca2cd95912d7b6fecd72103b0dc07edc",
+      "bytes": 23664,
+      "unicodeRange": "U+0,U+20-7E,U+A0-AC,U+AE-FF,U+131,U+152-153,U+2BB-2BC,U+2C6,U+2DA,U+2DC,U+300-301,U+303-304,U+308-309,U+323,U+2002,U+2009,U+200B,U+2013-2014,U+2018-201A,U+201C-201E,U+2022,U+2026,U+2032-2033,U+2039-203A,U+2044,U+20AC,U+2122,U+2191,U+2193,U+2212,U+FEFF,U+FFFF",
+      "license": "SIL-OFL-1.1",
+      "sourcePackage": "@fontsource/inter",
+      "sourcePackageVersion": "5.2.8"
+    },
+    {
+      "file": "inter-latin-600-normal.woff2",
+      "family": "Inter",
+      "weight": 600,
+      "subset": "latin",
+      "format": "woff2",
+      "sha256": "f9a06e79cd3a2a20951c0f0e28f66dd0e6d3fda73911d640a2125c8fcb78f21a",
+      "bytes": 24452,
+      "unicodeRange": "U+0,U+20-7E,U+A0-AC,U+AE-FF,U+131,U+152-153,U+2BB-2BC,U+2C6,U+2DA,U+2DC,U+300-301,U+303-304,U+308-309,U+323,U+2002,U+2009,U+200B,U+2013-2014,U+2018-201A,U+201C-201E,U+2022,U+2026,U+2032-2033,U+2039-203A,U+2044,U+20AC,U+2122,U+2191,U+2193,U+2212,U+FEFF,U+FFFF",
+      "license": "SIL-OFL-1.1",
+      "sourcePackage": "@fontsource/inter",
+      "sourcePackageVersion": "5.2.8"
+    },
+    {
+      "file": "vazirmatn-arabic-400-normal.woff2",
+      "family": "Vazirmatn",
+      "weight": 400,
+      "subset": "arabic",
+      "format": "woff2",
+      "sha256": "e31830d3a52e0259b176326385d82bc469581a9898046300de46e5c00f6b7064",
+      "bytes": 21088,
+      "unicodeRange": "U+60C-60D,U+610-612,U+615,U+61B,U+61F,U+621-63A,U+63D,U+640-658,U+65A-65B,U+660-671,U+674,U+679,U+67C,U+67E,U+681,U+685-686,U+688-689,U+691,U+693,U+695-696,U+698,U+69A,U+6A0-6A1,U+6A4,U+6A9-6AD,U+6AF,U+6B5,U+6BA,U+6BC-6BE,U+6C0-6C3,U+6C6-6D0,U+6D2-6D5,U+6DC-6DE,U+6E9,U+6F0-6F9,U+762-763,U+200C-200D,U+FB50-FB51,U+FB56-FB59,U+FB66-FB6D,U+FB7A-FB7D,U+FB88-FB95,U+FB9E-FB9F,U+FBA5,U+FBA7-FBB1,U+FBBF-FBC0,U+FBD3-FBDC,U+FBDE-FBDF,U+FBE2-FBE3,U+FBE8-FBE9,U+FBFC-FBFF,U+FD3E-FD3F,U+FDF2,U+FDFC,U+FE70-FE74,U+FE76-FEFC",
+      "license": "SIL-OFL-1.1",
+      "sourcePackage": "@fontsource/vazirmatn",
+      "sourcePackageVersion": "5.2.8"
+    },
+    {
+      "file": "vazirmatn-arabic-600-normal.woff2",
+      "family": "Vazirmatn",
+      "weight": 600,
+      "subset": "arabic",
+      "format": "woff2",
+      "sha256": "98a9ca6ced63728b3b407877eda9896ccc9d88e3fc19a469e4e590cc40499605",
+      "bytes": 21792,
+      "unicodeRange": "U+60C-60D,U+610-612,U+615,U+61B,U+61F,U+621-63A,U+63D,U+640-658,U+65A-65B,U+660-671,U+674,U+679,U+67C,U+67E,U+681,U+685-686,U+688-689,U+691,U+693,U+695-696,U+698,U+69A,U+6A0-6A1,U+6A4,U+6A9-6AD,U+6AF,U+6B5,U+6BA,U+6BC-6BE,U+6C0-6C3,U+6C6-6D0,U+6D2-6D5,U+6DC-6DE,U+6E9,U+6F0-6F9,U+762-763,U+200C-200D,U+FB50-FB51,U+FB56-FB59,U+FB66-FB6D,U+FB7A-FB7D,U+FB88-FB95,U+FB9E-FB9F,U+FBA5,U+FBA7-FBB1,U+FBBF-FBC0,U+FBD3-FBDC,U+FBDE-FBDF,U+FBE2-FBE3,U+FBE8-FBE9,U+FBFC-FBFF,U+FD3E-FD3F,U+FDF2,U+FDFC,U+FE70-FE74,U+FE76-FEFC",
+      "license": "SIL-OFL-1.1",
+      "sourcePackage": "@fontsource/vazirmatn",
+      "sourcePackageVersion": "5.2.8"
+    }
+  ],
+  "status": "generated_from_pinned_packages",
+  "changelog": ["1.0.0 deterministic manifest contract"],
+  "forwardCompatibility": "Hash or font-version changes require manifest regeneration and fixture review."
+}

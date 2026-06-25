@@ -1,0 +1,313 @@
+@font-face {
+  font-family: 'RTLX UI Persian';
+  src:
+    local('Vazirmatn'),
+    url('../fonts/vazirmatn-arabic-400-normal.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'RTLX UI Persian';
+  src:
+    local('Vazirmatn'),
+    url('../fonts/vazirmatn-arabic-600-normal.woff2') format('woff2');
+  font-weight: 600 800;
+  font-style: normal;
+  font-display: swap;
+}
+:root {
+  font-family: 'RTLX UI Persian', Tahoma, system-ui, sans-serif;
+  color-scheme: light dark;
+  --bg: #f4f7fb;
+  --surface: #ffffff;
+  --surface-soft: #eef3f8;
+  --text: #172033;
+  --muted: #667085;
+  --border: #d9e1ea;
+  --primary: #315ee7;
+  --primary-hover: #234bc2;
+  --success: #16794b;
+  --success-bg: #e9f8f0;
+  --warning: #9a6500;
+  --warning-bg: #fff6db;
+  --danger: #b42318;
+  --danger-bg: #fff0ee;
+  --neutral: #667085;
+  --neutral-bg: #eef2f6;
+  --focus: #0b74de;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #111827;
+    --surface: #182233;
+    --surface-soft: #202d40;
+    --text: #f3f6fb;
+    --muted: #aeb8c8;
+    --border: #344258;
+    --primary: #7c9cff;
+    --primary-hover: #98afff;
+    --success: #63d49b;
+    --success-bg: #173b2c;
+    --warning: #f3c86a;
+    --warning-bg: #493918;
+    --danger: #ff9c92;
+    --danger-bg: #4a211f;
+    --neutral: #c2cad7;
+    --neutral-bg: #2b3648;
+    --focus: #8bc4ff;
+  }
+}
+* {
+  box-sizing: border-box;
+}
+html,
+body {
+  margin: 0;
+  min-width: 360px;
+  max-width: 390px;
+  background: var(--bg);
+  color: var(--text);
+}
+body {
+  direction: inherit;
+  text-align: start;
+}
+.panel {
+  display: grid;
+  gap: 10px;
+  padding: 12px;
+}
+.hero,
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+}
+.hero {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 15px;
+}
+h1,
+h2,
+p {
+  margin: 0;
+}
+h1 {
+  font-size: 1.22rem;
+  line-height: 1.4;
+}
+h2 {
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+.eyebrow,
+.host,
+.muted,
+small,
+.privacy-note {
+  color: var(--muted);
+}
+.eyebrow {
+  font-size: 0.72rem;
+  margin-bottom: 2px;
+}
+.host {
+  direction: ltr;
+  font-size: 0.78rem;
+  overflow-wrap: anywhere;
+  margin-top: 3px;
+}
+:root[dir='rtl'] .host {
+  text-align: right;
+}
+:root[dir='ltr'] .host {
+  text-align: left;
+}
+.card {
+  padding: 13px;
+  display: grid;
+  gap: 11px;
+}
+.badge {
+  padding: 5px 10px;
+  border-radius: 999px;
+  font-size: 0.74rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+.badge-success {
+  color: var(--success);
+  background: var(--success-bg);
+}
+.badge-warning {
+  color: var(--warning);
+  background: var(--warning-bg);
+}
+.badge-danger {
+  color: var(--danger);
+  background: var(--danger-bg);
+}
+.badge-neutral {
+  color: var(--neutral);
+  background: var(--neutral-bg);
+}
+.status-card {
+  grid-template-columns: auto 1fr;
+  align-items: center;
+}
+.status-icon {
+  font-size: 1.35rem;
+  line-height: 1;
+  color: var(--neutral);
+}
+.status-card.success .status-icon {
+  color: var(--success);
+}
+.status-card.warning .status-icon {
+  color: var(--warning);
+}
+.status-card.danger .status-icon {
+  color: var(--danger);
+}
+.muted {
+  font-size: 0.79rem;
+  line-height: 1.7;
+}
+.activation-toggle {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  gap: 10px;
+  align-items: center;
+  cursor: pointer;
+}
+.activation-toggle > span:first-child {
+  display: grid;
+  gap: 2px;
+}
+.activation-toggle strong {
+  font-size: 0.92rem;
+}
+.activation-toggle small {
+  font-size: 0.75rem;
+  line-height: 1.5;
+}
+.activation-toggle input {
+  position: absolute;
+  inline-size: 1px;
+  block-size: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+}
+.toggle-visual {
+  position: relative;
+  inline-size: 48px;
+  block-size: 28px;
+  border-radius: 999px;
+  background: var(--neutral-bg);
+  border: 1px solid var(--border);
+  transition: 140ms ease;
+}
+.toggle-visual::after {
+  content: '';
+  position: absolute;
+  inset-block-start: 3px;
+  inset-inline-start: 3px;
+  inline-size: 20px;
+  block-size: 20px;
+  border-radius: 50%;
+  background: var(--surface);
+  box-shadow: 0 2px 7px rgb(0 0 0 / 0.22);
+  transition: transform 140ms ease;
+}
+.activation-toggle input:checked + .toggle-visual {
+  background: var(--success);
+  border-color: var(--success);
+}
+:root[dir='rtl'] .activation-toggle input:checked + .toggle-visual::after {
+  transform: translateX(-20px);
+}
+:root[dir='ltr'] .activation-toggle input:checked + .toggle-visual::after {
+  transform: translateX(20px);
+}
+button,
+select {
+  font: inherit;
+  min-height: 42px;
+  border-radius: 11px;
+  border: 1px solid var(--border);
+  background: var(--surface-soft);
+  color: var(--text);
+}
+button {
+  padding: 9px 12px;
+  cursor: pointer;
+  font-weight: 600;
+}
+select {
+  width: 100%;
+  padding: 8px 10px;
+}
+button.primary {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: #fff;
+}
+button.primary:hover {
+  background: var(--primary-hover);
+}
+button.danger-outline {
+  color: var(--danger);
+  border-color: color-mix(in srgb, var(--danger) 45%, var(--border));
+  background: var(--danger-bg);
+}
+button:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+button:focus-visible,
+select:focus-visible,
+input:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 2px;
+}
+.section-heading {
+  display: grid;
+  gap: 3px;
+}
+.field {
+  display: grid;
+  gap: 6px;
+  font-size: 0.86rem;
+}
+.direction-note {
+  font-size: 0.79rem;
+  line-height: 1.75;
+  padding: 9px 10px;
+  border-radius: 10px;
+  background: var(--success-bg);
+  color: var(--success);
+}
+.license-note {
+  font-size: 0.73rem;
+  line-height: 1.65;
+  color: var(--muted);
+}
+.actions button {
+  width: 100%;
+}
+.privacy-note {
+  text-align: center;
+  font-size: 0.72rem;
+  line-height: 1.65;
+  padding-inline: 8px;
+}
+.toast {
+  min-height: 1.4em;
+  text-align: center;
+  color: var(--muted);
+  font-size: 0.76rem;
+}

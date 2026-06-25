@@ -1,0 +1,31 @@
+{
+  "registryId": "operational-budgets",
+  "registryVersion": 1,
+  "schemaVersion": "1.0.0",
+  "updateQuiescenceTimeoutMs": 5000,
+  "safeModeFailureThreshold": 3,
+  "safeModeVerifiedRecoveryThreshold": 3,
+  "runtimeContextMax": 512,
+  "syncMinuteWriteLimit": 100,
+  "syncHourWriteLimit": 1500,
+  "syncConflictRecordsMax": 20,
+  "evidenceGates": [
+    "deterministic-development",
+    "clean-source-reproduction",
+    "manifest-chromium",
+    "manifest-edge",
+    "manifest-firefox-desktop",
+    "manifest-firefox-android",
+    "crash-campaign",
+    "eight-hour-soak",
+    "manual-accessibility",
+    "store-validation"
+  ],
+  "provenance": "RTLX 15.3 approved Operational Proof and Update Safety delta",
+  "verificationState": "verified_by_unit_test_except_real_browser_gates",
+  "forwardCompatibility": "Budget changes require a new registry version and deterministic assertions.",
+  "updatePendingTtlMs": 600000,
+  "syncObservedChangesMax": 128,
+  "permissionDenialCooldownMs": 86400000,
+  "permissionDenialsMax": 32
+}

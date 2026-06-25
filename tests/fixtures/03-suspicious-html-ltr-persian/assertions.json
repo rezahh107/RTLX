@@ -1,0 +1,11 @@
+{
+  "fixtureId": "03-suspicious-html-ltr-persian",
+  "verification": "verified_by_synthetic_fixture",
+  "source": "RTLX repository deterministic fixture",
+  "assertions": [
+    "no html/body dir mutation",
+    "text sequence preserved",
+    "hard exclusions preserved"
+  ],
+  "manualEvidenceRequired": false
+}

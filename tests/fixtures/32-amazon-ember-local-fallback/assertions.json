@@ -1,0 +1,9 @@
+{
+  "fixtureVersion": "1.0.0",
+  "assertions": [
+    "Persian glyphs use bundled Vazirmatn",
+    "Latin glyphs use local Amazon Ember only when installed and selected",
+    "no Amazon font file or network request is introduced",
+    "Inter remains the bundled fallback"
+  ]
+}

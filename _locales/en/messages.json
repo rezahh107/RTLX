@@ -1,0 +1,695 @@
+{
+  "accessibility": {
+    "message": "Accessibility"
+  },
+  "accessibilityText": {
+    "message": "Controls, live regions, editors, and interactive zones are protected from wrapper mutations by default."
+  },
+  "actions": {
+    "message": "Actions"
+  },
+  "activateForSite": {
+    "message": "Enable for this site"
+  },
+  "activateForSiteHint": {
+    "message": "Preferences are stored only for this site."
+  },
+  "active": {
+    "message": "Active"
+  },
+  "activeProfile": {
+    "message": "Active profile"
+  },
+  "advancedTools": {
+    "message": "Advanced tools"
+  },
+  "amazonLocalOnlyNote": {
+    "message": "Amazon Ember Display is not redistributed by the extension and is used only when installed locally."
+  },
+  "appearanceHeading": {
+    "message": "Text appearance"
+  },
+  "appearanceHelp": {
+    "message": "Persian becomes RTL and English becomes LTR while code, math, and editor zones stay protected."
+  },
+  "applied": {
+    "message": "Tab processing requested."
+  },
+  "applyBackup": {
+    "message": "Apply validated backup"
+  },
+  "applyCurrent": {
+    "message": "Fix current tab"
+  },
+  "attemptRecovery": {
+    "message": "Attempt deterministic recovery"
+  },
+  "backupApplied": {
+    "message": "Backup applied. Permissions may need to be granted again."
+  },
+  "backupExported": {
+    "message": "Complete personal backup exported."
+  },
+  "backupSelected": {
+    "message": "Backup selected. Run validation before applying it."
+  },
+  "backupValidated": {
+    "message": "Backup validated. Review the preview before applying."
+  },
+  "bidiIsolation": {
+    "message": "LTR phrase isolation"
+  },
+  "builtInDefault": {
+    "message": "Built-in default"
+  },
+  "cancel": {
+    "message": "Cancel"
+  },
+  "chooseBackup": {
+    "message": "Choose backup file"
+  },
+  "clearDiagnostics": {
+    "message": "Clear diagnostics"
+  },
+  "close": {
+    "message": "Close"
+  },
+  "confirmSuspicious": {
+    "message": "Confirm correction for this site"
+  },
+  "currentShortcut": {
+    "message": "Current shortcut:"
+  },
+  "defaultSiteMode": {
+    "message": "Default site mode"
+  },
+  "deleteProfile": {
+    "message": "Delete"
+  },
+  "detectedSite": {
+    "message": "Detected site"
+  },
+  "diagnosticCount": {
+    "message": "Diagnostics"
+  },
+  "diagnostics": {
+    "message": "Diagnostics"
+  },
+  "diagnosticsCleared": {
+    "message": "Diagnostics cleared."
+  },
+  "diagnosticsPersistence": {
+    "message": "Persist text-free diagnostics locally"
+  },
+  "diagnosticsText": {
+    "message": "Diagnostic export contains codes, counts, and duration buckets, never page text."
+  },
+  "directionCorrection": {
+    "message": "Direction correction"
+  },
+  "directionPolicyNote": {
+    "message": "Persian: right aligned · English: left aligned"
+  },
+  "disableSite": {
+    "message": "Disable this site"
+  },
+  "downloadPageDebugReport": {
+    "message": "Download this page debug report"
+  },
+  "elementCode": {
+    "message": "Code"
+  },
+  "elementContent": {
+    "message": "Content"
+  },
+  "elementEditor": {
+    "message": "Editor"
+  },
+  "elementIgnore": {
+    "message": "Ignore"
+  },
+  "elementMath": {
+    "message": "Math"
+  },
+  "elementTerminal": {
+    "message": "Terminal"
+  },
+  "elementType": {
+    "message": "Element type"
+  },
+  "enableContextMenu": {
+    "message": "Enable right-click shortcuts"
+  },
+  "enableSite": {
+    "message": "Enable this site"
+  },
+  "englishFontAmazon": {
+    "message": "Local Amazon Ember Display; Inter fallback"
+  },
+  "englishFontInter": {
+    "message": "Bundled Inter"
+  },
+  "englishFontLabel": {
+    "message": "English font"
+  },
+  "exportCompleteBackup": {
+    "message": "Export complete backup"
+  },
+  "exportDiagnostics": {
+    "message": "Export diagnostics"
+  },
+  "exportProfiles": {
+    "message": "Export profiles"
+  },
+  "exportSupportBundle": {
+    "message": "Export support bundle"
+  },
+  "exported": {
+    "message": "Diagnostic file created."
+  },
+  "extensionDescription": {
+    "message": "Conservative direction and typography correction for mixed Persian and English text."
+  },
+  "extensionEnabled": {
+    "message": "Extension enabled"
+  },
+  "extensionId": {
+    "message": "Extension ID"
+  },
+  "extensionName": {
+    "message": "RTLX — Mixed Text Fixer"
+  },
+  "failureActual": {
+    "message": "What happened instead?"
+  },
+  "failureCaptureHeading": {
+    "message": "Report a problem on this page"
+  },
+  "failureCaptureHelp": {
+    "message": "Create a text-free JSON evidence report for troubleshooting RTLX."
+  },
+  "failureDownload": {
+    "message": "Download JSON"
+  },
+  "failureDownloaded": {
+    "message": "Failure evidence JSON downloaded."
+  },
+  "failureExpected": {
+    "message": "What did you expect?"
+  },
+  "failurePickerStarted": {
+    "message": "Select the element on the page, then reopen RTLX."
+  },
+  "failurePreview": {
+    "message": "Build preview"
+  },
+  "failurePreviewReady": {
+    "message": "Failure evidence preview is ready."
+  },
+  "failurePreviewSummary": {
+    "message": "Evidence preview"
+  },
+  "failurePrivacyNoText": {
+    "message": "No page text, form values, cookies, or local storage."
+  },
+  "failurePrivacyNoUpload": {
+    "message": "No screenshot or automatic upload."
+  },
+  "failurePrivacyNoUrl": {
+    "message": "No full URL, query string, or fragment."
+  },
+  "failureRestrictedHint": {
+    "message": "This is a browser-restricted page. RTLX can export eligibility evidence, but cannot inspect the page DOM."
+  },
+  "failureSelectElement": {
+    "message": "Select broken element"
+  },
+  "fixBalanced": {
+    "message": "Smart and balanced"
+  },
+  "fixStrength": {
+    "message": "Fix strength"
+  },
+  "fixStrong": {
+    "message": "Strong for resistant sites"
+  },
+  "focusedEdition": {
+    "message": "Focused personal edition"
+  },
+  "focusedPrivacyNote": {
+    "message": "Problem reports do not include page text, full URLs, form values, cookies, or screenshots."
+  },
+  "general": {
+    "message": "General"
+  },
+  "genericDefaults": {
+    "message": "Generic defaults"
+  },
+  "grantAll": {
+    "message": "All sites access"
+  },
+  "grantSite": {
+    "message": "Always this site"
+  },
+  "healthCheckDone": {
+    "message": "Health check completed."
+  },
+  "healthCheckRunning": {
+    "message": "Health check is running…"
+  },
+  "healthStatus": {
+    "message": "Health status"
+  },
+  "help": {
+    "message": "Help"
+  },
+  "helpHeading": {
+    "message": "Quick start guide"
+  },
+  "helpStepApply": {
+    "message": "Then choose “Fix current tab” or refresh the page so Persian text is aligned and rendered with the configured font."
+  },
+  "helpStepGrant": {
+    "message": "On the target page, open RTLX and choose “Always this site” to grant optional access only for that site."
+  },
+  "helpStepMode": {
+    "message": "The default mode is Auto-safe. For complex pages, choose “Force only on containers” for that site from the popup."
+  },
+  "helpStepRollback": {
+    "message": "If the result is not right, use “Disable and rollback changes”; rollback remains ownership-checked and idempotent."
+  },
+  "importProfiles": {
+    "message": "Import profiles"
+  },
+  "importSignedProfile": {
+    "message": "Import signed community profile"
+  },
+  "inactive": {
+    "message": "Inactive"
+  },
+  "issuePickerAria": {
+    "message": "RTLX problem-area selector"
+  },
+  "issuePickerFailed": {
+    "message": "Evidence capture failed"
+  },
+  "issuePickerHint": {
+    "message": "Only structural and computed-style evidence is stored. Page text and form values are not recorded."
+  },
+  "issuePickerSaved": {
+    "message": "Area evidence saved. Reopen RTLX and download the problem report."
+  },
+  "issuePickerTitle": {
+    "message": "Select the unfixed area"
+  },
+  "keyboardShortcut": {
+    "message": "Keyboard shortcut"
+  },
+  "latinFontAmazonLocal": {
+    "message": "Amazon Ember only if installed locally"
+  },
+  "latinFontInter": {
+    "message": "Bundled Inter"
+  },
+  "latinFontPolicy": {
+    "message": "Latin font"
+  },
+  "latinFontPreserve": {
+    "message": "Preserve site font"
+  },
+  "licenses": {
+    "message": "Licenses"
+  },
+  "licensesText": {
+    "message": "Bundled fonts are accepted only with OFL notices and recorded hashes."
+  },
+  "loadFailed": {
+    "message": "Could not load settings."
+  },
+  "localFontNoPermission": {
+    "message": "This version uses Windows fonts through local() and does not request a new permission to enumerate or read font files."
+  },
+  "modeAsk": {
+    "message": "Ask on suspicious direction"
+  },
+  "modeAutoSafe": {
+    "message": "Recommended auto-safe"
+  },
+  "modeDisabled": {
+    "message": "Disabled"
+  },
+  "modeForce": {
+    "message": "Force candidate containers"
+  },
+  "modeHeading": {
+    "message": "Site behavior"
+  },
+  "modeHelp": {
+    "message": "Auto-safe applies dir=\"rtl\" only to high-confidence Persian candidates; html and body are never changed."
+  },
+  "noGrants": {
+    "message": "No persistent grants."
+  },
+  "noProfiles": {
+    "message": "No user profiles."
+  },
+  "notAssigned": {
+    "message": "Not assigned"
+  },
+  "notAvailable": {
+    "message": "N/A"
+  },
+  "notDetected": {
+    "message": "Not detected"
+  },
+  "openControlPanel": {
+    "message": "Open control panel"
+  },
+  "options": {
+    "message": "Options"
+  },
+  "optionsEyebrow": {
+    "message": "RTLX Persian control panel"
+  },
+  "optionsTitle": {
+    "message": "RTLX Settings"
+  },
+  "packageIntegrity": {
+    "message": "Package integrity"
+  },
+  "pageActivationActive": {
+    "message": "Active. If the page is not fixed yet, choose “Fix current tab” or refresh."
+  },
+  "pageActivationHint": {
+    "message": "When enabled, the browser asks for this site only, then RTLX applies the page fix."
+  },
+  "pageActivationInactive": {
+    "message": "Inactive. RTLX will not change this page."
+  },
+  "pageActivationNeedsPermission": {
+    "message": "Enabled, but this site has no persistent permission. Toggle again and grant access."
+  },
+  "pageActivationToggle": {
+    "message": "Enable RTLX for this page"
+  },
+  "pageDebugActual": {
+    "message": "Automatic page debug report created from the popup; page text, full URL, form values, cookies, localStorage, network data, and screenshots are not included."
+  },
+  "pageDebugExpected": {
+    "message": "Expected: Persian and mixed Persian/English content should become RTL and use the bundled RTLX Mixed Text / Vazirmatn font for Persian glyphs."
+  },
+  "pageStatus": {
+    "message": "Page status"
+  },
+  "pendingTransactions": {
+    "message": "Pending transactions"
+  },
+  "permissionDenied": {
+    "message": "Permission denied."
+  },
+  "permissionGranted": {
+    "message": "Permission granted."
+  },
+  "permissionHeading": {
+    "message": "Site access"
+  },
+  "permissionNotGranted": {
+    "message": "No persistent permission for this site."
+  },
+  "permissions": {
+    "message": "Permissions"
+  },
+  "persianFontBundled": {
+    "message": "Bundled Vazirmatn"
+  },
+  "persianFontLabel": {
+    "message": "Persian font"
+  },
+  "persianFontLocalFirst": {
+    "message": "Use installed Windows fonts first, then Vazirmatn"
+  },
+  "personalInstall": {
+    "message": "Personal installation"
+  },
+  "personalInstallHelp": {
+    "message": "Local-only health, backup, and recovery tools for a permanently sideloaded RTLX installation."
+  },
+  "popupEyebrow": {
+    "message": "RTLX personal build"
+  },
+  "popupTitle": {
+    "message": "Fix Persian page text"
+  },
+  "privacy": {
+    "message": "Privacy"
+  },
+  "privacyText": {
+    "message": "Text processing is local. Page text, full URLs, form data, and clipboard content are neither transmitted nor persisted."
+  },
+  "problemAreaPickerStarted": {
+    "message": "Click the problem area on the page. No rule will be saved."
+  },
+  "profileBuilder": {
+    "message": "Profile builder"
+  },
+  "profileBuilderHelp": {
+    "message": "Profiles are created by the Smart Element Picker. Manual CSS selectors are not required."
+  },
+  "profileCount": {
+    "message": "User profiles"
+  },
+  "profileDeleted": {
+    "message": "Profile deleted."
+  },
+  "profileHost": {
+    "message": "Host"
+  },
+  "profileInspector": {
+    "message": "Profile inspector"
+  },
+  "profileName": {
+    "message": "Name"
+  },
+  "profileSource": {
+    "message": "Source"
+  },
+  "profileVersion": {
+    "message": "Version"
+  },
+  "profiles": {
+    "message": "Profiles"
+  },
+  "profilesExported": {
+    "message": "Profiles exported."
+  },
+  "profilesImported": {
+    "message": "Profiles imported."
+  },
+  "quickFixHeading": {
+    "message": "Quick action"
+  },
+  "quickFixHelp": {
+    "message": "For most sites, grant this site and run the current-tab fix."
+  },
+  "recoveryDone": {
+    "message": "Recovery completed."
+  },
+  "recoveryRunning": {
+    "message": "Deterministic recovery is running…"
+  },
+  "remoteProfiles": {
+    "message": "Remote profiles"
+  },
+  "remoteProfilesUnavailable": {
+    "message": "Unavailable until an authoritative production endpoint and signing key are provided (insufficient_evidence)."
+  },
+  "reset": {
+    "message": "Reset"
+  },
+  "resetDone": {
+    "message": "Settings reset."
+  },
+  "resetSite": {
+    "message": "Clear old settings for this site"
+  },
+  "resetSiteConfirm": {
+    "message": "Clear old settings and rules for this site?"
+  },
+  "resetSiteDone": {
+    "message": "Site settings were cleared."
+  },
+  "resetTemporaryDisable": {
+    "message": "Resume now"
+  },
+  "restoreBackup": {
+    "message": "Restore backup"
+  },
+  "restoreBackupWarning": {
+    "message": "Import first runs as a dry-run. Permissions, diagnostics, Safe Mode, and operational journals are never restored automatically."
+  },
+  "revoke": {
+    "message": "Revoke"
+  },
+  "revokeAll": {
+    "message": "Revoke all site grants"
+  },
+  "revoked": {
+    "message": "Permissions revoked."
+  },
+  "rollbackDisable": {
+    "message": "Disable and roll back"
+  },
+  "rolledBack": {
+    "message": "Extension changes were rolled back."
+  },
+  "runHealthCheck": {
+    "message": "Run self-check"
+  },
+  "safetyHeading": {
+    "message": "Safety and rollback"
+  },
+  "save": {
+    "message": "Save"
+  },
+  "saved": {
+    "message": "Saved."
+  },
+  "selectProblemArea": {
+    "message": "Mark an unfixed area"
+  },
+  "shortcutHelp": {
+    "message": "The browser extension shortcut settings can be used to change this command."
+  },
+  "signedProfileImported": {
+    "message": "Signed community profile imported."
+  },
+  "siteDisabled": {
+    "message": "RTLX disabled for this site."
+  },
+  "siteEnabled": {
+    "message": "RTLX enabled for this site."
+  },
+  "siteMode": {
+    "message": "Site mode"
+  },
+  "smartFixPage": {
+    "message": "Smart-fix this page"
+  },
+  "smartPicker": {
+    "message": "Smart element picker"
+  },
+  "smartPickerHelp": {
+    "message": "Choose a type, then select an element on the page. RTLX creates the selector automatically."
+  },
+  "startPicker": {
+    "message": "Select on page"
+  },
+  "statusBadgeError": {
+    "message": "Needs review"
+  },
+  "statusBadgeHealthy": {
+    "message": "Healthy"
+  },
+  "statusBadgeOff": {
+    "message": "Off"
+  },
+  "statusBadgeWarning": {
+    "message": "Working"
+  },
+  "statusChecking": {
+    "message": "Checking this page…"
+  },
+  "statusHealthy": {
+    "message": "RTLX is active and the main page processing is complete."
+  },
+  "statusInactive": {
+    "message": "RTLX is off for this site."
+  },
+  "captureRequiresVisibleTab": {
+    "message": "The target tab is hidden or inactive. Return to it, then download the report again."
+  },
+  "statusCaptureRequiresVisibleTab": {
+    "message": "Return to the target tab before creating the report."
+  },
+  "statusNeedsAttention": {
+    "message": "Processing stopped or hit a serious error; download a problem report."
+  },
+  "statusPermissionRequired": {
+    "message": "This site needs access permission."
+  },
+  "statusProcessing": {
+    "message": "RTLX is active and is still processing part of the page."
+  },
+  "statusStarting": {
+    "message": "RTLX is active and starting page processing."
+  },
+  "storageUsage": {
+    "message": "Storage (local / sync)"
+  },
+  "supportExported": {
+    "message": "Support bundle exported."
+  },
+  "supportHeading": {
+    "message": "Support"
+  },
+  "suspiciousDirection": {
+    "message": "Inherited LTR direction conflicts with high-confidence Persian content."
+  },
+  "temporarilyDisabled": {
+    "message": "Temporarily paused"
+  },
+  "temporaryDisable": {
+    "message": "Pause for 10 minutes"
+  },
+  "temporaryDisableReset": {
+    "message": "Temporary pause cleared."
+  },
+  "temporaryDisableSet": {
+    "message": "Paused for this site for 10 minutes."
+  },
+  "toggleShortcutDescription": {
+    "message": "Toggle RTLX for the current site"
+  },
+  "toggleSite": {
+    "message": "Toggle this site"
+  },
+  "typography": {
+    "message": "Font and typography"
+  },
+  "typographyHelp": {
+    "message": "Persian text uses a local Windows font or the bundled Vazirmatn fallback. For Latin text, choose bundled Inter, local Amazon Ember, or preserve the site font."
+  },
+  "unsupportedPage": {
+    "message": "This page cannot be processed."
+  },
+  "validateBackup": {
+    "message": "Validate / dry-run"
+  },
+  "versionLabel": {
+    "message": "Version:"
+  },
+  "windowsFontsHelp": {
+    "message": "Without adding a new permission, RTLX first tries installed Windows fonts such as Vazirmatn, Vazir, IRANSans, Segoe UI and Tahoma via CSS local(), then falls back to the bundled font."
+  },
+  "statusBackgroundUnavailable": {
+    "message": "Extension background is unavailable."
+  },
+  "statusBackgroundInitializationFailed": {
+    "message": "Extension initialization failed."
+  },
+  "statusContextTimedOut": {
+    "message": "Loading settings timed out."
+  },
+  "statusInvalidContextResponse": {
+    "message": "The extension returned an invalid settings response."
+  },
+  "statusSettingsUnavailable": {
+    "message": "Settings are unavailable."
+  },
+  "statusResponseContractViolation": {
+    "message": "The background produced an invalid response. Download the debug report."
+  },
+  "statusRequestContractViolation": {
+    "message": "The popup request violated the messaging contract before it was sent. Download the debug report."
+  }
+}

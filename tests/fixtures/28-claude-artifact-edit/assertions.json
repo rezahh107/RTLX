@@ -1,0 +1,9 @@
+{
+  "fixtureVersion": "1.0.0",
+  "assertions": [
+    "conversation prose may become RTL when Persian evidence is sufficient",
+    "edit textarea is mutated only by explicit input-assistant opt-in",
+    "artifact code remains LTR and preserves monospace typography",
+    "buttons are mutation-sensitive"
+  ]
+}

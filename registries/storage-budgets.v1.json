@@ -1,0 +1,19 @@
+{
+  "registryId": "storage-budgets",
+  "registryVersion": 1,
+  "schemaVersion": "1.0.0",
+  "softLimitBytes": 6291456,
+  "hardLimitBytes": 8388608,
+  "transactionMarkerMax": 64,
+  "transactionMarkerTtlMs": 604800000,
+  "namespaceBudgets": {
+    "diagnostics": 1048576,
+    "profileHistory": 2097152,
+    "profiles": 3145728,
+    "settings": 1048576,
+    "transactions": 262144,
+    "other": 1048576
+  },
+  "evictionOrder": ["diagnostics", "profileHistory"],
+  "forwardCompatibility": "Budget changes require a new registry version and deterministic quota tests."
+}

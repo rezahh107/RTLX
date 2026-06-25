@@ -1,0 +1,9 @@
+{
+  "fixtureVersion": "1.0.0",
+  "assertions": [
+    "Canvas prose is an eligible candidate",
+    "contenteditable remains protected unless explicitly picked as editor",
+    "code remains LTR",
+    "no html or body dir mutation occurs"
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "schemaVersion": "1.0.0",
+  "registryId": "rtlx-profile-health",
+  "registryVersion": 1,
+  "maxMatchesPerRule": 250,
+  "streamingQuietWindowMs": 80,
+  "streamingMaxWaitMs": 400,
+  "streamingMaxQueuedRoots": 100,
+  "provenance": "RTLX v15 approved hardening delta",
+  "verification": "verified_by_unit_test",
+  "changelog": ["1.0.0 defines bounded profile health and streaming stabilization thresholds."],
+  "forwardCompatibility": "Reject unsupported major versions and unknown fields."
+}

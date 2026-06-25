@@ -1,0 +1,165 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rtlx.invalid/schemas/site-profile.schema.json",
+  "title": "RTLX Site Profile v3",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "profileId",
+    "profileVersion",
+    "profileKind",
+    "displayName",
+    "match",
+    "selectors",
+    "rules",
+    "scopePolicy",
+    "features",
+    "thresholds",
+    "metadata"
+  ],
+  "properties": {
+    "schemaVersion": { "const": "3.0.0" },
+    "profileId": { "type": "string", "pattern": "^(official|user|host):[A-Za-z0-9.-]+$" },
+    "profileVersion": { "type": "integer", "minimum": 1 },
+    "profileKind": { "enum": ["bundled", "user"] },
+    "displayName": { "type": "string", "minLength": 1, "maxLength": 100 },
+    "match": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["hosts", "pathPrefixes"],
+      "properties": {
+        "hosts": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 32,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "pattern": "^(?=.{1,253}$)(?:[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?\\.)*[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?$"
+          }
+        },
+        "pathPrefixes": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 64,
+          "uniqueItems": true,
+          "items": { "type": "string", "pattern": "^/" }
+        }
+      }
+    },
+    "selectors": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["content", "exclude", "code", "math", "editor", "terminal", "mutationSensitive"],
+      "properties": {
+        "content": { "$ref": "#/$defs/selectors" },
+        "exclude": { "$ref": "#/$defs/selectors" },
+        "code": { "$ref": "#/$defs/selectors" },
+        "math": { "$ref": "#/$defs/selectors" },
+        "editor": { "$ref": "#/$defs/selectors" },
+        "terminal": { "$ref": "#/$defs/selectors" },
+        "mutationSensitive": { "$ref": "#/$defs/selectors" }
+      }
+    },
+    "rules": { "type": "array", "maxItems": 128, "items": { "$ref": "#/$defs/rule" } },
+    "scopePolicy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["mode", "pathDepth"],
+      "properties": {
+        "mode": { "enum": ["site", "conversation"] },
+        "pathDepth": { "enum": [1, 2, 3] }
+      }
+    },
+    "features": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["direction", "bidi", "typography", "shadowOpen"],
+      "properties": {
+        "direction": { "type": "boolean" },
+        "bidi": { "type": "boolean" },
+        "typography": { "type": "boolean" },
+        "shadowOpen": { "type": "boolean" }
+      }
+    },
+    "thresholds": { "type": "object", "additionalProperties": { "type": "number" } },
+    "metadata": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["source", "verification", "product"],
+      "properties": {
+        "source": { "enum": ["official", "user-picker", "imported", "community"] },
+        "verification": {
+          "enum": [
+            "verified-fixture",
+            "synthetic-fixture",
+            "user-authored",
+            "signature-verified",
+            "unverified"
+          ]
+        },
+        "product": { "type": ["string", "null"], "maxLength": 80 }
+      }
+    }
+  },
+  "$defs": {
+    "selectors": {
+      "type": "array",
+      "maxItems": 128,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 256,
+        "pattern": "^(?!.*::)(?!.*:has\\s*\\().+$"
+      }
+    },
+    "rule": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "ruleId",
+        "selector",
+        "category",
+        "enabled",
+        "directionMode",
+        "alignmentMode",
+        "typographyMode",
+        "initialDelayMs"
+      ],
+      "properties": {
+        "ruleId": { "type": "string", "pattern": "^rule-[0-9a-f]{8}$" },
+        "selector": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256,
+          "pattern": "^(?!.*::)(?!.*:has\\s*\\().+$"
+        },
+        "category": {
+          "enum": ["content", "code", "math", "editor", "terminal", "ignore", "mutationSensitive"]
+        },
+        "enabled": { "type": "boolean" },
+        "directionMode": { "enum": ["auto-safe", "force-rtl", "force-ltr", "preserve"] },
+        "alignmentMode": { "enum": ["start", "preserve"] },
+        "typographyMode": { "enum": ["persian-only", "preserve"] },
+        "initialDelayMs": { "type": "integer", "minimum": 0, "maximum": 5000 },
+        "healthExpectation": { "enum": ["required", "optional"] },
+        "alternativeGroup": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 64,
+          "pattern": "^[A-Za-z0-9._-]+$"
+        }
+      }
+    }
+  },
+  "x-registry": {
+    "version": 4,
+    "changelog": [
+      "3.0.0 adds deterministic per-selector rules and privacy-safe scope policy",
+      "15.9.2 adds optional health expectations and alternative semantic rule groups"
+    ],
+    "forwardCompatibility": "Reject unknown fields and unsupported major versions; migrate v1/v2 only through the versioned normalizer."
+  }
+}

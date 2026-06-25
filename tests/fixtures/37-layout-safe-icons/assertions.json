@@ -1,0 +1,12 @@
+{
+  "fixtureVersion": "1.0.0",
+  "fixtureId": "37-layout-safe-icons",
+  "verification": "verified_by_synthetic_fixture",
+  "source": "RTLX repository deterministic fixture",
+  "assertions": [
+    "message row layout direction remains unchanged",
+    "message text receives RTL direction",
+    "icon and SVG remain connected and visible",
+    "icon rectangle is not displaced by RTLX direction mutation"
+  ]
+}

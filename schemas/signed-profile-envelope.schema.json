@@ -1,0 +1,61 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rtlx.invalid/schemas/signed-profile-envelope.schema.json",
+  "title": "RTLX Signed Profile Envelope v3",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "profileId",
+    "profileVersion",
+    "issuedAt",
+    "expiresAt",
+    "keyId",
+    "algorithm",
+    "canonicalization",
+    "payload",
+    "signature"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": "3.0.0"
+    },
+    "profileId": {
+      "type": "string"
+    },
+    "profileVersion": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "issuedAt": {
+      "type": "string",
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(?:\\.\\d{3})?Z$"
+    },
+    "expiresAt": {
+      "type": "string",
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(?:\\.\\d{3})?Z$"
+    },
+    "keyId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "algorithm": {
+      "const": "ECDSA-P256-SHA256"
+    },
+    "canonicalization": {
+      "const": "RFC8785"
+    },
+    "payload": {
+      "$ref": "site-profile.schema.json"
+    },
+    "signature": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9_-]+$"
+    }
+  },
+  "x-registry": {
+    "version": 3,
+    "changelog": ["3.0.0 binds signed payloads to Site Profile v3"],
+    "forwardCompatibility": "Reject unknown algorithms and canonicalization modes."
+  }
+}

@@ -1,0 +1,113 @@
+{
+  "schemaVersion": "1.0.0",
+  "records": [
+    {
+      "profileId": "official:chatgpt",
+      "fixtureStatus": "synthetic",
+      "liveStatus": "not-run",
+      "chrome": "not-run",
+      "edge": "not-run",
+      "firefox": "not-run",
+      "lastCheckedAt": null
+    },
+    {
+      "profileId": "official:claude",
+      "fixtureStatus": "synthetic",
+      "liveStatus": "not-run",
+      "chrome": "not-run",
+      "edge": "not-run",
+      "firefox": "not-run",
+      "lastCheckedAt": null
+    },
+    {
+      "profileId": "official:copilot",
+      "fixtureStatus": "synthetic",
+      "liveStatus": "not-run",
+      "chrome": "not-run",
+      "edge": "not-run",
+      "firefox": "not-run",
+      "lastCheckedAt": null
+    },
+    {
+      "profileId": "official:deepseek",
+      "fixtureStatus": "synthetic",
+      "liveStatus": "not-run",
+      "chrome": "not-run",
+      "edge": "not-run",
+      "firefox": "not-run",
+      "lastCheckedAt": null
+    },
+    {
+      "profileId": "official:discord",
+      "fixtureStatus": "synthetic",
+      "liveStatus": "not-run",
+      "chrome": "not-run",
+      "edge": "not-run",
+      "firefox": "not-run",
+      "lastCheckedAt": null
+    },
+    {
+      "profileId": "official:gemini",
+      "fixtureStatus": "synthetic",
+      "liveStatus": "not-run",
+      "chrome": "not-run",
+      "edge": "not-run",
+      "firefox": "not-run",
+      "lastCheckedAt": null
+    },
+    {
+      "profileId": "official:github",
+      "fixtureStatus": "synthetic",
+      "liveStatus": "not-run",
+      "chrome": "not-run",
+      "edge": "not-run",
+      "firefox": "not-run",
+      "lastCheckedAt": null
+    },
+    {
+      "profileId": "official:notebooklm",
+      "fixtureStatus": "synthetic",
+      "liveStatus": "not-run",
+      "chrome": "not-run",
+      "edge": "not-run",
+      "firefox": "not-run",
+      "lastCheckedAt": null
+    },
+    {
+      "profileId": "official:notion",
+      "fixtureStatus": "synthetic",
+      "liveStatus": "not-run",
+      "chrome": "not-run",
+      "edge": "not-run",
+      "firefox": "not-run",
+      "lastCheckedAt": null
+    },
+    {
+      "profileId": "official:perplexity",
+      "fixtureStatus": "synthetic",
+      "liveStatus": "not-run",
+      "chrome": "not-run",
+      "edge": "not-run",
+      "firefox": "not-run",
+      "lastCheckedAt": null
+    },
+    {
+      "profileId": "official:qwen",
+      "fixtureStatus": "synthetic",
+      "liveStatus": "not-run",
+      "chrome": "not-run",
+      "edge": "not-run",
+      "firefox": "not-run",
+      "lastCheckedAt": null
+    },
+    {
+      "profileId": "official:slack",
+      "fixtureStatus": "synthetic",
+      "liveStatus": "not-run",
+      "chrome": "not-run",
+      "edge": "not-run",
+      "firefox": "not-run",
+      "lastCheckedAt": null
+    }
+  ]
+}

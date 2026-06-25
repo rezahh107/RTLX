@@ -1,0 +1,411 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rtlx.local/schemas/failure-evidence.schema.json",
+  "title": "RTLX Failure Evidence Report",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "productVersion",
+    "capturedAt",
+    "captureId",
+    "captureMode",
+    "canonicalizationVersion",
+    "hashAlgorithm",
+    "reportHash",
+    "privacy",
+    "location",
+    "pageEligibility",
+    "environment",
+    "operationalState",
+    "runtimeSnapshot",
+    "fixtureSummary",
+    "profileEvidence",
+    "selectedElement",
+    "diagnostics",
+    "analysis",
+    "userObservation",
+    "conclusion"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": "1.2.0"
+    },
+    "productVersion": {
+      "type": "string",
+      "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"
+    },
+    "capturedAt": {
+      "$ref": "#/$defs/timestamp"
+    },
+    "captureId": {
+      "$ref": "#/$defs/uuid"
+    },
+    "captureMode": {
+      "const": "user_initiated"
+    },
+    "canonicalizationVersion": {
+      "const": "1.0.0"
+    },
+    "hashAlgorithm": {
+      "const": "sha256"
+    },
+    "reportHash": {
+      "type": ["string", "null"],
+      "pattern": "^sha256:[a-f0-9]{64}$"
+    },
+    "privacy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "pageTextIncluded",
+        "fullUrlIncluded",
+        "queryIncluded",
+        "fragmentIncluded",
+        "formValuesIncluded",
+        "cookiesIncluded",
+        "localStorageIncluded",
+        "networkCaptureIncluded",
+        "screenshotIncluded",
+        "automaticUpload"
+      ],
+      "properties": {
+        "pageTextIncluded": {
+          "const": false
+        },
+        "fullUrlIncluded": {
+          "const": false
+        },
+        "queryIncluded": {
+          "const": false
+        },
+        "fragmentIncluded": {
+          "const": false
+        },
+        "formValuesIncluded": {
+          "const": false
+        },
+        "cookiesIncluded": {
+          "const": false
+        },
+        "localStorageIncluded": {
+          "const": false
+        },
+        "networkCaptureIncluded": {
+          "const": false
+        },
+        "screenshotIncluded": {
+          "const": false
+        },
+        "automaticUpload": {
+          "const": false
+        }
+      }
+    },
+    "location": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["scheme", "hostname", "pathnameDepth", "pathnameHash"],
+      "properties": {
+        "scheme": {
+          "type": "string",
+          "maxLength": 32
+        },
+        "hostname": {
+          "type": ["string", "null"],
+          "maxLength": 253
+        },
+        "pathnameDepth": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 256
+        },
+        "pathnameHash": {
+          "type": ["string", "null"],
+          "pattern": "^sha256:[a-f0-9]{64}$"
+        }
+      }
+    },
+    "pageEligibility": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status",
+        "reasonCode",
+        "hostPermission",
+        "contentScriptRegistered",
+        "contentScriptReachable",
+        "contentDeliveryStatus"
+      ],
+      "properties": {
+        "status": {
+          "enum": ["eligible", "browser_restricted", "unsupported_scheme", "permission_missing"]
+        },
+        "reasonCode": {
+          "type": "string",
+          "maxLength": 128
+        },
+        "hostPermission": {
+          "enum": ["granted", "not_granted", "not_applicable", "unknown"]
+        },
+        "contentScriptRegistered": {
+          "type": ["boolean", "null"]
+        },
+        "contentScriptReachable": {
+          "type": "boolean"
+        },
+        "contentDeliveryStatus": {
+          "enum": [
+            "delivered",
+            "discarded",
+            "loading",
+            "frozen",
+            "unreachable",
+            "timeout",
+            "invalid_response",
+            "missing_tab",
+            "not_applicable"
+          ]
+        }
+      }
+    },
+    "environment": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "extensionId",
+        "extensionVersion",
+        "browserFamily",
+        "browserVersion",
+        "platform",
+        "architecture"
+      ],
+      "properties": {
+        "extensionId": {
+          "type": "string",
+          "maxLength": 128
+        },
+        "extensionVersion": {
+          "type": "string",
+          "maxLength": 32
+        },
+        "browserFamily": {
+          "type": "string",
+          "maxLength": 32
+        },
+        "browserVersion": {
+          "type": ["string", "null"],
+          "maxLength": 64
+        },
+        "platform": {
+          "type": "string",
+          "maxLength": 32
+        },
+        "architecture": {
+          "type": "string",
+          "maxLength": 32
+        }
+      }
+    },
+    "operationalState": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["safeModeActive", "updatePending"],
+      "properties": {
+        "safeModeActive": {
+          "type": "boolean"
+        },
+        "updatePending": {
+          "type": "boolean"
+        }
+      }
+    },
+    "runtimeSnapshot": {
+      "$ref": "#/$defs/section"
+    },
+    "fixtureSummary": {
+      "$ref": "#/$defs/section"
+    },
+    "profileEvidence": {
+      "$ref": "#/$defs/section"
+    },
+    "selectedElement": {
+      "$ref": "#/$defs/section"
+    },
+    "diagnostics": {
+      "type": "array",
+      "maxItems": 50
+    },
+    "userObservation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["expected", "actual"],
+      "properties": {
+        "expected": {
+          "type": "string",
+          "maxLength": 2000
+        },
+        "actual": {
+          "type": "string",
+          "maxLength": 2000
+        }
+      }
+    },
+    "conclusion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "reasonCode"],
+      "properties": {
+        "status": {
+          "enum": [
+            "browser_restricted_page",
+            "permission_missing",
+            "content_script_not_registered",
+            "content_script_unreachable",
+            "tab_discarded",
+            "tab_loading",
+            "tab_frozen",
+            "content_message_timeout",
+            "frame_not_covered",
+            "profile_not_selected",
+            "profile_rule_no_match",
+            "element_hard_excluded",
+            "element_classified_as_code",
+            "element_classified_as_editor",
+            "no_rtl_candidate_detected",
+            "safe_mode_active",
+            "runtime_degraded",
+            "runtime_exception",
+            "page_structure_unsupported",
+            "captured",
+            "insufficient_evidence"
+          ]
+        },
+        "reasonCode": {
+          "type": "string",
+          "maxLength": 128
+        }
+      }
+    },
+    "analysis": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "reasonCodes"],
+      "properties": {
+        "status": {
+          "enum": ["complete", "partial", "insufficient_evidence"]
+        },
+        "reasonCodes": {
+          "type": "array",
+          "maxItems": 32,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "maxLength": 128
+          }
+        }
+      }
+    }
+  },
+  "$defs": {
+    "timestamp": {
+      "type": "string",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}\\.[0-9]{3}Z$"
+    },
+    "uuid": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+    },
+    "documentProvenance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "tabId",
+        "frameId",
+        "browserDocumentId",
+        "contentDocumentInstanceId",
+        "documentGeneration",
+        "lifecycle",
+        "provenanceStatus"
+      ],
+      "properties": {
+        "tabId": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "frameId": {
+          "type": ["integer", "null"],
+          "minimum": 0
+        },
+        "browserDocumentId": {
+          "type": ["string", "null"],
+          "maxLength": 128
+        },
+        "contentDocumentInstanceId": {
+          "type": ["string", "null"],
+          "maxLength": 128
+        },
+        "documentGeneration": {
+          "type": ["integer", "null"],
+          "minimum": 1
+        },
+        "lifecycle": {
+          "type": ["string", "null"],
+          "maxLength": 64
+        },
+        "provenanceStatus": {
+          "enum": ["matched", "unavailable", "mismatch", "not_applicable"]
+        }
+      }
+    },
+    "section": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schemaVersion",
+        "status",
+        "reasonCode",
+        "capturedAt",
+        "document",
+        "byteLength",
+        "data"
+      ],
+      "properties": {
+        "schemaVersion": {
+          "const": "1.0.0"
+        },
+        "status": {
+          "enum": [
+            "available",
+            "no_data",
+            "unavailable",
+            "invalid_response",
+            "timeout",
+            "oversized",
+            "mixed_document",
+            "stale_document",
+            "unsupported"
+          ]
+        },
+        "reasonCode": {
+          "type": "string",
+          "maxLength": 128
+        },
+        "capturedAt": {
+          "$ref": "#/$defs/timestamp"
+        },
+        "document": {
+          "$ref": "#/$defs/documentProvenance"
+        },
+        "byteLength": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 524288
+        },
+        "data": {
+          "type": ["object", "null"]
+        }
+      }
+    }
+  }
+}

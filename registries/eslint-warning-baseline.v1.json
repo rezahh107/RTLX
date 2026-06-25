@@ -1,0 +1,520 @@
+{
+  "entries": [
+    {
+      "classification": "reviewed_bounded_dynamic_key",
+      "column": 5,
+      "file": "src/background/package-integrity.ts",
+      "justification": "Dynamic property access is limited to a validated integrity manifest entry whose path is normalized, traversal-checked, and matched against repository-generated critical package files.",
+      "line": 177,
+      "ruleId": "security/detect-object-injection"
+    },
+    {
+      "classification": "reviewed_bounded_dynamic_key",
+      "column": 9,
+      "file": "src/background/personal-backup.ts",
+      "justification": "Dynamic storage-key deletion is limited to enumerated own keys under explicit managed RTLX prefixes after strict backup validation.",
+      "line": 329,
+      "ruleId": "security/detect-object-injection"
+    },
+    {
+      "classification": "reviewed_bounded_dynamic_key",
+      "column": 24,
+      "file": "src/background/personal-backup.ts",
+      "justification": "Dynamic storage-key deletion is limited to enumerated own keys under explicit managed RTLX prefixes after strict backup validation.",
+      "line": 329,
+      "ruleId": "security/detect-object-injection"
+    },
+    {
+      "classification": "reviewed_bounded_dynamic_key",
+      "column": 9,
+      "file": "src/background/personal-backup.ts",
+      "justification": "Dynamic storage-key deletion is limited to enumerated own keys under explicit managed RTLX prefixes after strict backup validation.",
+      "line": 330,
+      "ruleId": "security/detect-object-injection"
+    },
+    {
+      "classification": "reviewed_bounded_dynamic_key",
+      "column": 24,
+      "file": "src/background/personal-backup.ts",
+      "justification": "Dynamic storage-key deletion is limited to enumerated own keys under explicit managed RTLX prefixes after strict backup validation.",
+      "line": 330,
+      "ruleId": "security/detect-object-injection"
+    },
+    {
+      "classification": "reviewed_bounded_regular_expression",
+      "column": 6,
+      "file": "src/background/profile-history-repository.ts",
+      "justification": "Expression is bounded by input-size limits or fixed repository-controlled structure and is covered by deterministic tests.",
+      "line": 109,
+      "ruleId": "security/detect-unsafe-regex"
+    },
+    {
+      "classification": "reviewed_bounded_dynamic_key",
+      "column": 42,
+      "file": "src/background/profile-verifier.ts",
+      "justification": "Dynamic property access is bounded by validated registries, enums, or own-property checks.",
+      "line": 97,
+      "ruleId": "security/detect-object-injection"
+    },
+    {
+      "classification": "reviewed_bounded_regular_expression",
+      "column": 8,
+      "file": "src/background/profile-verifier.ts",
+      "justification": "Expression is bounded by input-size limits or fixed repository-controlled structure and is covered by deterministic tests.",
+      "line": 102,
+      "ruleId": "security/detect-unsafe-regex"
+    },
+    {
+      "classification": "reviewed_bounded_dynamic_key",
+      "column": 40,
+      "file": "src/background/storage-quota-governor.ts",
+      "justification": "Dynamic property access is bounded by validated registries, enums, or own-property checks.",
+      "line": 93,
+      "ruleId": "security/detect-object-injection"
+    },
+    {
+      "classification": "reviewed_bounded_dynamic_key",
+      "column": 19,
+      "file": "src/background/storage-quota-governor.ts",
+      "justification": "Dynamic property access is bounded by validated registries, enums, or own-property checks.",
+      "line": 104,
+      "ruleId": "security/detect-object-injection"
+    },
+    {
+      "classification": "reviewed_bounded_dynamic_key",
+      "column": 7,
+      "file": "src/background/storage-quota-governor.ts",
+      "justification": "Dynamic property access is bounded by validated registries, enums, or own-property checks.",
+      "line": 106,
+      "ruleId": "security/detect-object-injection"
+    },
+    {
+      "classification": "reviewed_bounded_dynamic_key",
+      "column": 7,
+      "file": "src/background/storage-quota-governor.ts",
+      "justification": "Dynamic property access is bounded by validated registries, enums, or own-property checks.",
+      "line": 110,
+      "ruleId": "security/detect-object-injection"
+    },
+    {
+      "classification": "reviewed_bounded_dynamic_key",
+      "column": 25,
+      "file": "src/background/update-coordinator.ts",
+      "justification": "Dynamic property access is bounded by validated registries, enums, or own-property checks.",
+      "line": 161,
+      "ruleId": "security/detect-object-injection"
+    },
+    {
+      "classification": "reviewed_bounded_dynamic_key",
+      "column": 43,
+      "file": "src/background/update-coordinator.ts",
+      "justification": "Dynamic property access is bounded by validated registries, enums, or own-property checks.",
+      "line": 161,
+      "ruleId": "security/detect-object-injection"
+    },
+    {
+      "classification": "reviewed_bounded_regular_expression",
+      "column": 8,
+      "file": "src/background/update-coordinator.ts",
+      "justification": "Expression is bounded by input-size limits or fixed repository-controlled structure and is covered by deterministic tests.",
+      "line": 168,
+      "ruleId": "security/detect-unsafe-regex"
+    },
+    {
+      "classification": "reviewed_bounded_regular_expression",
+      "column": 6,
+      "file": "src/background/user-profile-repository.ts",
+      "justification": "Expression is bounded by input-size limits or fixed repository-controlled structure and is covered by deterministic tests.",
+      "line": 126,
+      "ruleId": "security/detect-unsafe-regex"
+    },
+    {
+      "classification": "reviewed_bounded_dynamic_key",
+      "column": 17,
+      "file": "src/content/bidi-tokenizer.ts",
+      "justification": "Dynamic property access is bounded by validated registries, enums, or own-property checks.",
+      "line": 48,
+      "ruleId": "security/detect-object-injection"
+    },
+    {
+      "classification": "reviewed_bounded_regular_expression",
+      "column": 5,
+      "file": "src/content/bidi-tokenizer.ts",
+      "justification": "Expression is bounded by input-size limits or fixed repository-controlled structure and is covered by deterministic tests.",
+      "line": 81,
+      "ruleId": "security/detect-unsafe-regex"
+    },
+    {
+      "classification": "reviewed_bounded_regular_expression",
+      "column": 5,
+      "file": "src/content/bidi-tokenizer.ts",
+      "justification": "Expression is bounded by input-size limits or fixed repository-controlled structure and is covered by deterministic tests.",
+      "line": 88,
+      "ruleId": "security/detect-unsafe-regex"
+    },
+    {
+      "classification": "reviewed_bounded_regular_expression",
+      "column": 5,
+      "file": "src/content/bidi-tokenizer.ts",
+      "justification": "Expression is bounded by input-size limits or fixed repository-controlled structure and is covered by deterministic tests.",
+      "line": 95,
+      "ruleId": "security/detect-unsafe-regex"
+    },
+    {
+      "classification": "reviewed_bounded_regular_expression",
+      "column": 5,
+      "file": "src/content/bidi-tokenizer.ts",
+      "justification": "Expression is bounded by input-size limits or fixed repository-controlled structure and is covered by deterministic tests.",
+      "line": 110,
+      "ruleId": "security/detect-unsafe-regex"
+    },
+    {
+      "classification": "reviewed_bounded_regular_expression",
+      "column": 26,
+      "file": "src/content/bidi-tokenizer.ts",
+      "justification": "Expression is bounded by input-size limits or fixed repository-controlled structure and is covered by deterministic tests.",
+      "line": 115,
+      "ruleId": "security/detect-unsafe-regex"
+    },
+    {
+      "classification": "reviewed_bounded_regular_expression",
+      "column": 24,
+      "file": "src/content/bidi-tokenizer.ts",
+      "justification": "Expression is bounded by input-size limits or fixed repository-controlled structure and is covered by deterministic tests.",
+      "line": 119,
+      "ruleId": "security/detect-unsafe-regex"
+    },
+    {
+      "classification": "reviewed_bounded_regular_expression",
+      "column": 24,
+      "file": "src/content/bidi-tokenizer.ts",
+      "justification": "Expression is bounded by input-size limits or fixed repository-controlled structure and is covered by deterministic tests.",
+      "line": 120,
+      "ruleId": "security/detect-unsafe-regex"
+    },
+    {
+      "classification": "reviewed_bounded_regular_expression",
+      "column": 10,
+      "file": "src/content/bidi-tokenizer.ts",
+      "justification": "Expression is bounded by input-size limits or fixed repository-controlled structure and is covered by deterministic tests.",
+      "line": 134,
+      "ruleId": "security/detect-unsafe-regex"
+    },
+    {
+      "classification": "reviewed_bounded_dynamic_key",
+      "column": 25,
+      "file": "src/content/owned-mutation-suppression.ts",
+      "justification": "Dynamic property access is bounded by validated registries, enums, or own-property checks.",
+      "line": 104,
+      "ruleId": "security/detect-object-injection"
+    },
+    {
+      "classification": "reviewed_bounded_dynamic_key",
+      "column": 32,
+      "file": "src/content/performance-monitor.ts",
+      "justification": "Dynamic property access is bounded by validated registries, enums, or own-property checks.",
+      "line": 90,
+      "ruleId": "security/detect-object-injection"
+    },
+    {
+      "classification": "reviewed_bounded_dynamic_key",
+      "column": 18,
+      "file": "src/shared/api-adapter.ts",
+      "justification": "Dynamic property access is bounded by validated registries, enums, or own-property checks.",
+      "line": 140,
+      "ruleId": "security/detect-object-injection"
+    },
+    {
+      "classification": "reviewed_bounded_dynamic_key",
+      "column": 5,
+      "file": "src/shared/api-adapter.ts",
+      "justification": "Dynamic property access is bounded by validated registries, enums, or own-property checks.",
+      "line": 145,
+      "ruleId": "security/detect-object-injection"
+    },
+    {
+      "classification": "reviewed_bounded_dynamic_key",
+      "column": 15,
+      "file": "src/shared/api-adapter.ts",
+      "justification": "Dynamic property access is bounded by validated registries, enums, or own-property checks.",
+      "line": 151,
+      "ruleId": "security/detect-object-injection"
+    },
+    {
+      "classification": "reviewed_bounded_dynamic_key",
+      "column": 5,
+      "file": "src/shared/api-adapter.ts",
+      "justification": "Dynamic property access is bounded by validated registries, enums, or own-property checks.",
+      "line": 162,
+      "ruleId": "security/detect-object-injection"
+    },
+    {
+      "classification": "reviewed_bounded_dynamic_key",
+      "column": 5,
+      "file": "src/shared/api-adapter.ts",
+      "justification": "Dynamic property access is bounded by validated registries, enums, or own-property checks.",
+      "line": 175,
+      "ruleId": "security/detect-object-injection"
+    },
+    {
+      "classification": "reviewed_bounded_dynamic_key",
+      "column": 5,
+      "file": "src/shared/api-adapter.ts",
+      "justification": "Dynamic property access is bounded by validated registries, enums, or own-property checks.",
+      "line": 188,
+      "ruleId": "security/detect-object-injection"
+    },
+    {
+      "classification": "reviewed_bounded_dynamic_key",
+      "column": 23,
+      "file": "src/shared/api-adapter.ts",
+      "justification": "Dynamic property access is bounded by validated registries, enums, or own-property checks.",
+      "line": 203,
+      "ruleId": "security/detect-object-injection"
+    },
+    {
+      "classification": "reviewed_bounded_dynamic_key",
+      "column": 23,
+      "file": "src/shared/api-adapter.ts",
+      "justification": "Dynamic property access is bounded by validated registries, enums, or own-property checks.",
+      "line": 226,
+      "ruleId": "security/detect-object-injection"
+    },
+    {
+      "classification": "reviewed_bounded_dynamic_key",
+      "column": 55,
+      "file": "src/shared/canonical-json.ts",
+      "justification": "Dynamic property access is bounded by validated registries, enums, or own-property checks.",
+      "line": 58,
+      "ruleId": "security/detect-object-injection"
+    },
+    {
+      "classification": "reviewed_bounded_dynamic_key",
+      "column": 7,
+      "file": "src/shared/canonical-json.ts",
+      "justification": "Dynamic property access is bounded by validated registries, enums, or own-property checks.",
+      "line": 102,
+      "ruleId": "security/detect-object-injection"
+    },
+    {
+      "classification": "reviewed_bounded_regular_expression",
+      "column": 3,
+      "file": "src/shared/messages.ts",
+      "justification": "Expression is bounded by input-size limits or fixed repository-controlled structure and is covered by deterministic tests.",
+      "line": 259,
+      "ruleId": "security/detect-unsafe-regex"
+    },
+    {
+      "classification": "reviewed_bounded_dynamic_key",
+      "column": 22,
+      "file": "src/shared/messages.ts",
+      "justification": "Dynamic property access is bounded by validated registries, enums, or own-property checks.",
+      "line": 616,
+      "ruleId": "security/detect-object-injection"
+    },
+    {
+      "classification": "reviewed_bounded_dynamic_key",
+      "column": 57,
+      "file": "src/shared/messages.ts",
+      "justification": "Dynamic property access is bounded by validated registries, enums, or own-property checks.",
+      "line": 616,
+      "ruleId": "security/detect-object-injection"
+    },
+    {
+      "classification": "reviewed_bounded_regular_expression",
+      "column": 6,
+      "file": "src/shared/profile-builder.ts",
+      "justification": "Expression is bounded by input-size limits or fixed repository-controlled structure and is covered by deterministic tests.",
+      "line": 154,
+      "ruleId": "security/detect-unsafe-regex"
+    },
+    {
+      "classification": "reviewed_bounded_dynamic_key",
+      "column": 53,
+      "file": "src/shared/profile-schema.ts",
+      "justification": "Dynamic property access is bounded by validated registries, enums, or own-property checks.",
+      "line": 62,
+      "ruleId": "security/detect-object-injection"
+    },
+    {
+      "classification": "reviewed_bounded_dynamic_key",
+      "column": 26,
+      "file": "src/shared/profile-schema.ts",
+      "justification": "Dynamic property access is bounded by validated registries, enums, or own-property checks.",
+      "line": 75,
+      "ruleId": "security/detect-object-injection"
+    },
+    {
+      "classification": "reviewed_bounded_dynamic_key",
+      "column": 40,
+      "file": "src/shared/profile-schema.ts",
+      "justification": "Dynamic property access is bounded by validated registries, enums, or own-property checks.",
+      "line": 75,
+      "ruleId": "security/detect-object-injection"
+    },
+    {
+      "classification": "reviewed_bounded_dynamic_key",
+      "column": 5,
+      "file": "src/shared/profile-schema.ts",
+      "justification": "Dynamic property access is bounded by validated registries, enums, or own-property checks.",
+      "line": 104,
+      "ruleId": "security/detect-object-injection"
+    },
+    {
+      "classification": "reviewed_bounded_dynamic_key",
+      "column": 36,
+      "file": "src/shared/profile-schema.ts",
+      "justification": "Dynamic property access is bounded by validated registries, enums, or own-property checks.",
+      "line": 106,
+      "ruleId": "security/detect-object-injection"
+    },
+    {
+      "classification": "reviewed_bounded_dynamic_key",
+      "column": 65,
+      "file": "src/shared/profile-schema.ts",
+      "justification": "Dynamic property access is bounded by validated registries, enums, or own-property checks.",
+      "line": 106,
+      "ruleId": "security/detect-object-injection"
+    },
+    {
+      "classification": "reviewed_bounded_dynamic_key",
+      "column": 40,
+      "file": "src/shared/profile-schema.ts",
+      "justification": "Dynamic property access is bounded by validated registries, enums, or own-property checks.",
+      "line": 113,
+      "ruleId": "security/detect-object-injection"
+    },
+    {
+      "classification": "reviewed_bounded_dynamic_key",
+      "column": 52,
+      "file": "src/shared/profile-schema.ts",
+      "justification": "Dynamic property access is bounded by validated registries, enums, or own-property checks.",
+      "line": 149,
+      "ruleId": "security/detect-object-injection"
+    },
+    {
+      "classification": "reviewed_bounded_dynamic_key",
+      "column": 48,
+      "file": "src/shared/profile-schema.ts",
+      "justification": "Dynamic property access is bounded by validated registries, enums, or own-property checks.",
+      "line": 353,
+      "ruleId": "security/detect-object-injection"
+    },
+    {
+      "classification": "reviewed_bounded_dynamic_key",
+      "column": 77,
+      "file": "src/shared/profile-schema.ts",
+      "justification": "Dynamic property access is bounded by validated registries, enums, or own-property checks.",
+      "line": 412,
+      "ruleId": "security/detect-object-injection"
+    },
+    {
+      "classification": "reviewed_bounded_dynamic_key",
+      "column": 71,
+      "file": "src/shared/profile-schema.ts",
+      "justification": "Dynamic property access is bounded by validated registries, enums, or own-property checks.",
+      "line": 440,
+      "ruleId": "security/detect-object-injection"
+    },
+    {
+      "classification": "reviewed_bounded_dynamic_key",
+      "column": 42,
+      "file": "src/shared/profile-schema.ts",
+      "justification": "Dynamic property access is bounded by validated registries, enums, or own-property checks.",
+      "line": 458,
+      "ruleId": "security/detect-object-injection"
+    },
+    {
+      "classification": "reviewed_bounded_regular_expression",
+      "column": 10,
+      "file": "src/shared/profile-schema.ts",
+      "justification": "Expression is bounded by input-size limits or fixed repository-controlled structure and is covered by deterministic tests.",
+      "line": 469,
+      "ruleId": "security/detect-unsafe-regex"
+    },
+    {
+      "classification": "reviewed_bounded_dynamic_key",
+      "column": 18,
+      "file": "src/shared/site-detector.ts",
+      "justification": "Dynamic property access is bounded by validated registries, enums, or own-property checks.",
+      "line": 37,
+      "ruleId": "security/detect-object-injection"
+    },
+    {
+      "classification": "reviewed_bounded_dynamic_key",
+      "column": 7,
+      "file": "src/shared/strict-json.ts",
+      "justification": "Dynamic property access is bounded by validated registries, enums, or own-property checks.",
+      "line": 61,
+      "ruleId": "security/detect-object-injection"
+    },
+    {
+      "classification": "reviewed_bounded_regular_expression",
+      "column": 19,
+      "file": "src/shared/strict-json.ts",
+      "justification": "Expression is bounded by input-size limits or fixed repository-controlled structure and is covered by deterministic tests.",
+      "line": 115,
+      "ruleId": "security/detect-unsafe-regex"
+    },
+    {
+      "classification": "reviewed_bounded_dynamic_key",
+      "column": 17,
+      "file": "src/ui/popup/index.ts",
+      "justification": "Dynamic snapshot-field reads are bounded to a locally generated, privacy-safe runtime status object and are converted through finite-number or boolean guards before UI use.",
+      "line": 678,
+      "ruleId": "security/detect-object-injection"
+    },
+    {
+      "classification": "reviewed_bounded_dynamic_key",
+      "column": 60,
+      "file": "src/ui/popup/index.ts",
+      "justification": "Dynamic snapshot-field reads are bounded to a locally generated, privacy-safe runtime status object and are converted through finite-number or boolean guards before UI use.",
+      "line": 678,
+      "ruleId": "security/detect-object-injection"
+    },
+    {
+      "classification": "reviewed_bounded_dynamic_key",
+      "column": 81,
+      "file": "src/ui/popup/index.ts",
+      "justification": "Dynamic snapshot-field reads are bounded to a locally generated, privacy-safe runtime status object and are converted through finite-number or boolean guards before UI use.",
+      "line": 678,
+      "ruleId": "security/detect-object-injection"
+    },
+    {
+      "classification": "reviewed_bounded_dynamic_key",
+      "column": 15,
+      "file": "src/ui/popup/index.ts",
+      "justification": "Dynamic snapshot-field reads are bounded to a locally generated, privacy-safe runtime status object and are converted through finite-number or boolean guards before UI use.",
+      "line": 684,
+      "ruleId": "security/detect-object-injection"
+    },
+    {
+      "classification": "reviewed_bounded_dynamic_key",
+      "column": 15,
+      "file": "src/ui/popup/index.ts",
+      "justification": "Dynamic snapshot-field reads are bounded to a locally generated, privacy-safe runtime status object and are converted through finite-number or boolean guards before UI use.",
+      "line": 692,
+      "ruleId": "security/detect-object-injection"
+    },
+    {
+      "classification": "reviewed_bounded_dynamic_key",
+      "column": 15,
+      "file": "src/ui/popup/index.ts",
+      "justification": "Dynamic snapshot-field reads are bounded to a locally generated, privacy-safe runtime status object and are converted through finite-number or boolean guards before UI use.",
+      "line": 708,
+      "ruleId": "security/detect-object-injection"
+    },
+    {
+      "classification": "reviewed_bounded_dynamic_key",
+      "column": 15,
+      "file": "src/ui/popup/index.ts",
+      "justification": "Dynamic snapshot-field reads are bounded to a locally generated, privacy-safe runtime status object and are converted through finite-number or boolean guards before UI use.",
+      "line": 717,
+      "ruleId": "security/detect-object-injection"
+    }
+  ],
+  "registryId": "eslint-warning-baseline",
+  "registryVersion": 1,
+  "release": "15.9.11",
+  "schemaVersion": "1.0.0"
+}

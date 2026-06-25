@@ -1,0 +1,1173 @@
+{
+  "schemaVersion": "1.0.0",
+  "reportType": "RTLX_WOLF_AUDIT",
+  "mode": "AUDIT_MODE",
+  "generatedAt": "2026-06-19T05:46:28Z",
+  "language": "fa",
+  "product": {
+    "name": "RTLX",
+    "auditedVersion": "15.8.0",
+    "sourceModified": false,
+    "releaseGenerated": false
+  },
+  "executiveStatus": {
+    "status": "CHANGES_REQUIRED",
+    "criticalFindings": 0,
+    "highFindings": 3,
+    "mediumFindings": 6,
+    "lowFindings": 1,
+    "infoFindings": 2,
+    "releaseRecommendation": "DO_NOT_CERTIFY_15.8.0_AS_FINAL",
+    "proposedNextVersion": "15.8.1",
+    "rationale": "Three high-confidence high-severity defects affect complete text-block processing, dynamic typography protection and release-manifest integrity. A real Qwen 15.8.0 capture is healthy for its observed page, but it does not exercise the two runtime boundary defects."
+  },
+  "environment": {
+    "os": "Debian GNU/Linux 13 (trixie)",
+    "kernel": "Linux 4.4.0 x86_64",
+    "node": "22.16.0",
+    "npm": "10.9.2",
+    "python": "3.13.5",
+    "git": "2.47.3",
+    "chromium": "144.0.7559.96",
+    "edge": "unavailable",
+    "firefox": "unavailable",
+    "xvfb": "available"
+  },
+  "packageInventory": {
+    "inputArchive": {
+      "path": "/mnt/data/RTLX-v15.8.0-WOLF-AUDIT-HANDOFF.zip",
+      "sha256": "735730704cb60731e99ad2bea621b0393f535cd1aa502167f877eed562176fb0"
+    },
+    "sourceRoot": "SOURCE/rtlx-v15.8.0-source/",
+    "productVersion": "15.8.0",
+    "packageManager": "npm with package-lock.json",
+    "outerFiles": 543,
+    "sourceFiles": 510,
+    "sourceDirectories": 86,
+    "outerManifest": {
+      "path": "MANIFEST-SHA256.json",
+      "entries": 542,
+      "coverage": "exact_excluding_self",
+      "mismatches": 0
+    },
+    "archives": {
+      "topLevel": 7,
+      "recursive": 14,
+      "maxNestedDepth": 1,
+      "crcFailures": 0,
+      "unsafePaths": 0,
+      "encryptedEntries": 0,
+      "symlinkEntries": 0
+    },
+    "shareableSourceHygiene": {
+      "fontBinaries": 0,
+      "backupArtifacts": 0,
+      "privateKeys": 0,
+      "suspiciousSecretFilenames": 0,
+      "note": "Font manifests and OFL license texts are present; binary fonts are intentionally absent from the shareable source tree."
+    },
+    "sourceZipEquivalence": {
+      "filesCompared": 510,
+      "pathDifferences": 0,
+      "contentDifferences": 0
+    },
+    "releaseArtifactHashes": {
+      "rtlx-chromium-15.8.0.zip": "616ba7c492e6134b596c3db2ca0b91df31a5e01c35dbde602b92bd9fff3446f3",
+      "rtlx-edge-15.8.0.zip": "8cc48179bac7ced93d338ae50875310072a26d1381d7a4921999b97c6c45798e",
+      "rtlx-firefox-15.8.0.zip": "bfcdac073be58f0ef2e5ad9a0719aeed6574319709106156b6b110306acc0344",
+      "rtlx-firefox-android-15.8.0.zip": "fb0004373aec66cb693e115056f2dd770fbff2e9d9735ec724bcc1f99d61df1d",
+      "RTLX-v15.8.0-UNPACKED-INSTALL.zip": "d77f30b371718f5f7b5a34fd9c40dd51710551257bd46ae8ee8a75a0fb22f136",
+      "RTLX-v15.8.0-NEXT-DELIVERY.zip": "412420cc525d347af0aa6483d0fc257e5180dae5124637653eaf7dd5491e7051"
+    }
+  },
+  "sourcePrecedence": [
+    "docs/architecture-v15.8.md and docs/requirements-v15.8.md",
+    "versioned schemas and registries",
+    "validated fixtures and deterministic tests",
+    "current implementation",
+    "implementation reports and release artifacts",
+    "historical runtime evidence",
+    "unverified proposals"
+  ],
+  "contractMatrix": [
+    {
+      "contract": "RTLX-TEXT-BLOCK-001/002",
+      "source": "src/content/text-block-enumerator.ts; frame-runtime.ts",
+      "tests": "tests/unit/text-block-enumerator-v158.test.ts",
+      "audit": "RTLX-TEXT-BLOCK-003 shows >512 completion gap"
+    },
+    {
+      "contract": "RTLX-DIRECTION-001/002/003; RTLX-ALIGNMENT-001",
+      "source": "frame-runtime.ts; direction-target-resolver.ts; mutation-planner.ts",
+      "tests": "direction/alignment v15.8 unit tests and browser smoke",
+      "audit": "No confirmed boundary regression; standard suite and smoke passed"
+    },
+    {
+      "contract": "RTLX-TYPOGRAPHY-001/002",
+      "source": "typography-planner.ts; frame-runtime.ts",
+      "tests": "tests/unit/typography-continuation-v158.test.ts",
+      "audit": "Bounded continuation passes; cache dependency defect is RTLX-CACHE-001"
+    },
+    {
+      "contract": "RTLX-TYPOGRAPHY-003",
+      "source": "typographySkipReason; profile-zone.ts; exclusion registries",
+      "tests": "profile/typography fixtures",
+      "audit": "Static protections exist, but dynamic invalidation fails"
+    },
+    {
+      "contract": "RTLX-PROFILE-001; RTLX-EDITOR-001",
+      "source": "profile-zone.ts; bundled profiles",
+      "tests": "profile precedence/editor preservation tests; validate:profiles",
+      "audit": "Source/test confirmed; real Claude composer remains insufficient_evidence"
+    },
+    {
+      "contract": "RTLX-COVERAGE-001/002",
+      "source": "runtime-evidence-accumulator.ts; frame-runtime.ts",
+      "tests": "runtime snapshot tests; real Qwen report",
+      "audit": "Typography pending state works; text-block cap can produce false-complete subset"
+    },
+    {
+      "contract": "RTLX-INSPECTION-001",
+      "source": "FrameRuntime.inspectElement; element-selection schema",
+      "tests": "selection/provenance tests",
+      "audit": "Current Qwen mismatch selection was cleared rather than reused; no stale projection reproduced"
+    },
+    {
+      "contract": "RTLX-PRIVACY-001",
+      "source": "failure-evidence.ts; failure-evidence.schema.json",
+      "tests": "schema/security tests; real report",
+      "audit": "Confirmed privacy flags false and no page text/full URL/form/cookie/storage/network/screenshot payload"
+    },
+    {
+      "contract": "Determinism and SHA-256",
+      "source": "canonical-json.ts; package-release.mjs; manifests",
+      "tests": "hash recomputation; artifact compare; integrity verifier",
+      "audit": "Canonical report and browser ZIPs pass; aggregate release manifest is stale"
+    }
+  ],
+  "commands": [
+    {
+      "id": "CMD-001",
+      "command": "npm ci",
+      "exitCode": 0,
+      "durationSeconds": 12.044,
+      "result": "passed",
+      "log": "/mnt/data/rtlx_audit_logs/01_npm_ci.log",
+      "detail": "468 packages installed; npm reported one high-severity dev dependency vulnerability."
+    },
+    {
+      "id": "CMD-002",
+      "command": "npm run format-check",
+      "exitCode": 0,
+      "durationSeconds": 3.992,
+      "result": "passed",
+      "log": "/mnt/data/rtlx_audit_logs/02_format_check.log",
+      "detail": "Prettier check passed."
+    },
+    {
+      "id": "CMD-003",
+      "command": "npm run typecheck",
+      "exitCode": 0,
+      "durationSeconds": 3.481,
+      "result": "passed",
+      "log": "/mnt/data/rtlx_audit_logs/03_typecheck.log",
+      "detail": "tsc --noEmit passed."
+    },
+    {
+      "id": "CMD-004",
+      "command": "npm run lint",
+      "exitCode": 0,
+      "durationSeconds": 7.934,
+      "result": "passed_with_reviewed_warnings",
+      "log": "/mnt/data/rtlx_audit_logs/04_lint.log",
+      "detail": "0 errors; 63 warnings."
+    },
+    {
+      "id": "CMD-005",
+      "command": "npm run lint:warnings",
+      "exitCode": 0,
+      "durationSeconds": 7.61,
+      "result": "passed",
+      "log": "/mnt/data/rtlx_audit_logs/05_lint_warnings.log",
+      "detail": "63/63 warnings present in the reviewed baseline; no stale or unreviewed entries."
+    },
+    {
+      "id": "CMD-006",
+      "command": "npm run validate:schemas",
+      "exitCode": 0,
+      "durationSeconds": 0.499,
+      "result": "passed",
+      "log": "/mnt/data/rtlx_audit_logs/06_validate_schemas.log",
+      "detail": "11 schemas validated."
+    },
+    {
+      "id": "CMD-007",
+      "command": "npm run validate:profiles",
+      "exitCode": 0,
+      "durationSeconds": 0.46,
+      "result": "passed",
+      "log": "/mnt/data/rtlx_audit_logs/07_validate_profiles.log",
+      "detail": "12 bundled profiles, certification index and malformed fixtures passed."
+    },
+    {
+      "id": "CMD-008",
+      "command": "npm run test:coverage",
+      "exitCode": 0,
+      "durationSeconds": 12.302,
+      "result": "passed",
+      "log": "/mnt/data/rtlx_audit_logs/08_test_coverage.log",
+      "detail": "90 test files and 249 tests passed; statements 85.87%, branches 75.09%, functions 90.72%, lines 86.95%."
+    },
+    {
+      "id": "CMD-009",
+      "command": "npm run adapter:conformance",
+      "exitCode": 0,
+      "durationSeconds": 0.292,
+      "result": "passed",
+      "log": "/mnt/data/rtlx_audit_logs/09_adapter_conformance.log",
+      "detail": "Callback and Promise adapter contract shapes passed; script explicitly does not prove real-browser behavior."
+    },
+    {
+      "id": "CMD-010",
+      "command": "npm run build",
+      "exitCode": 0,
+      "durationSeconds": 2.438,
+      "result": "passed",
+      "log": "/mnt/data/rtlx_audit_logs/10_build.log",
+      "detail": "Schemas, profiles, package manifests, fonts and generated manifests validated; four browser builds completed."
+    },
+    {
+      "id": "CMD-011",
+      "command": "npm run test:browser-smoke",
+      "exitCode": 0,
+      "durationSeconds": 6.186,
+      "result": "passed",
+      "log": "/mnt/data/rtlx_audit_logs/11_browser_smoke.log",
+      "detail": "Controlled Chromium smoke passed, queues drained, typography verification failures were zero, rollback removed owned mutations."
+    },
+    {
+      "id": "CMD-012",
+      "command": "npm run manifest:validate",
+      "exitCode": 0,
+      "durationSeconds": 0.284,
+      "result": "passed",
+      "log": "/mnt/data/rtlx_audit_logs/12_manifest_validate.log",
+      "detail": "Generated browser manifests validated."
+    },
+    {
+      "id": "CMD-013",
+      "command": "npm run webext:lint",
+      "exitCode": 0,
+      "durationSeconds": 5.634,
+      "result": "passed_with_warning",
+      "log": "/mnt/data/rtlx_audit_logs/13_webext_lint.log",
+      "detail": "Firefox: 0 errors/1 warning; Firefox Android: 0 errors/0 warnings."
+    },
+    {
+      "id": "CMD-014",
+      "command": "npm run security:scan",
+      "exitCode": 0,
+      "durationSeconds": 0.372,
+      "result": "passed",
+      "log": "/mnt/data/rtlx_audit_logs/14_security_scan.log",
+      "detail": "Repository security scan passed."
+    },
+    {
+      "id": "CMD-015",
+      "command": "npm run audit:production",
+      "exitCode": 0,
+      "durationSeconds": 0.827,
+      "result": "passed",
+      "log": "/mnt/data/rtlx_audit_logs/15_audit_production.log",
+      "detail": "No production dependency vulnerabilities."
+    },
+    {
+      "id": "CMD-016",
+      "command": "npm run store:readiness",
+      "exitCode": 0,
+      "durationSeconds": 0.305,
+      "result": "passed_readiness_only",
+      "log": "/mnt/data/rtlx_audit_logs/16_store_readiness.log",
+      "detail": "Readiness-only check passed; no upload or credential use."
+    },
+    {
+      "id": "CMD-017",
+      "command": "npm run test:artifact-e2e:chromium",
+      "exitCode": 2,
+      "durationSeconds": 21.113,
+      "result": "blocked",
+      "log": "/mnt/data/rtlx_audit_logs/17_artifact_e2e_chromium.log",
+      "detail": "Exact release artifact identified, but unpacked extensions are disabled by browser administrator policy."
+    },
+    {
+      "id": "CMD-018",
+      "command": "npm run test:artifact-e2e:edge",
+      "exitCode": 2,
+      "durationSeconds": 0.622,
+      "result": "blocked",
+      "log": "/mnt/data/rtlx_audit_logs/18_artifact_e2e_edge.log",
+      "detail": "Edge executable unavailable."
+    },
+    {
+      "id": "CMD-019",
+      "command": "npm run test:artifact-e2e:firefox",
+      "exitCode": 2,
+      "durationSeconds": 0.462,
+      "result": "blocked",
+      "log": "/mnt/data/rtlx_audit_logs/19_artifact_e2e_firefox.log",
+      "detail": "Firefox executable unavailable."
+    },
+    {
+      "id": "CMD-020",
+      "command": "npx vitest run tests/audit-wolf/high-severity-repro.audit.test.ts --reporter=verbose",
+      "exitCode": 0,
+      "durationSeconds": 1.96,
+      "result": "passed_reproducer",
+      "log": "/mnt/data/rtlx_audit_logs/20_audit_high_severity_repro.log",
+      "detail": "Four audit-only tests reproduced the text-block cap, falsified Latin alternate-discovery rescue, and reproduced both protection-cache transition failures."
+    },
+    {
+      "id": "CMD-021",
+      "command": "npm run audit:all",
+      "exitCode": 0,
+      "durationSeconds": 1.48,
+      "result": "passed_threshold_but_vulnerability_reported",
+      "log": "/mnt/data/rtlx_audit_logs/21_audit_all.log",
+      "detail": "The command uses audit-level=critical; npm reported one high-severity undici vulnerability but returned zero."
+    },
+    {
+      "id": "CMD-022",
+      "command": "npm run personal:verify",
+      "exitCode": 0,
+      "durationSeconds": 0.28,
+      "result": "passed",
+      "log": "/mnt/data/rtlx_audit_logs/22_personal_verify.log",
+      "detail": "Personal install identity verified."
+    },
+    {
+      "id": "CMD-023",
+      "command": "npm run evidence:verify",
+      "exitCode": 1,
+      "durationSeconds": 0.27,
+      "result": "blocked_prerequisite_missing",
+      "log": "/mnt/data/rtlx_audit_logs/23_evidence_verify.log",
+      "detail": "dist/evidence/release-attestation.json was absent because attestation generation was not performed in this audit."
+    },
+    {
+      "id": "CMD-024",
+      "command": "npm run artifact:signed-verify",
+      "exitCode": 2,
+      "durationSeconds": 0.26,
+      "result": "blocked",
+      "log": "/mnt/data/rtlx_audit_logs/24_signed_artifact_verify.log",
+      "detail": "RTLX_UNSIGNED_ARTIFACT and RTLX_SIGNED_ARTIFACT were not supplied."
+    },
+    {
+      "id": "CMD-025",
+      "command": "npm run evidence:external-status",
+      "exitCode": 0,
+      "durationSeconds": 0.25,
+      "result": "false_positive_output_reproduced",
+      "log": "/mnt/data/rtlx_audit_logs/25_external_status.log",
+      "detail": "Script emitted status=passed while writing five status=not_run reports."
+    },
+    {
+      "id": "CMD-026",
+      "command": "npm run evidence:gates",
+      "exitCode": 2,
+      "durationSeconds": 0.26,
+      "result": "blocked",
+      "log": "/mnt/data/rtlx_audit_logs/26_evidence_gates.log",
+      "detail": "Aggregate release gates correctly remained blocked because external and signed-artifact gates were not passed."
+    },
+    {
+      "id": "CMD-027",
+      "command": "npm run test:firefox-android-device",
+      "exitCode": 2,
+      "durationSeconds": 0.24,
+      "result": "blocked",
+      "log": "/mnt/data/rtlx_audit_logs/27_firefox_android_device.log",
+      "detail": "Static packaging passed; real device/emulator execution not supplied."
+    },
+    {
+      "id": "CMD-028",
+      "command": "node verify_user_report.mjs",
+      "exitCode": 0,
+      "durationSeconds": 0.22,
+      "result": "passed",
+      "log": "/mnt/data/rtlx_audit_logs/28_verify_user_report.log",
+      "detail": "User-supplied Qwen 15.8.0 report passed failure-evidence schema 1.2.0 and canonical SHA-256 recomputation."
+    },
+    {
+      "id": "CMD-029",
+      "command": "python /mnt/data/rtlx_audit_integrity_check.py",
+      "exitCode": 1,
+      "durationSeconds": 1.58,
+      "result": "finding_reproduced",
+      "log": "/mnt/data/rtlx_audit_logs/29_integrity_check.log",
+      "detail": "Outer manifest and ZIP safety passed, but three records in the top release SHA manifest did not match delivered files."
+    },
+    {
+      "id": "CMD-030",
+      "command": "python /mnt/data/rtlx_artifact_compare.py",
+      "exitCode": 0,
+      "durationSeconds": 1.28,
+      "result": "passed",
+      "log": "/mnt/data/rtlx_audit_logs/30_artifact_compare.log",
+      "detail": "Current build output and all four release ZIPs matched exactly: 56/56 files each, no path or content differences."
+    },
+    {
+      "id": "CMD-031",
+      "command": "npm audit --json",
+      "exitCode": 1,
+      "durationSeconds": null,
+      "result": "finding_reproduced",
+      "log": "/mnt/data/rtlx_audit_logs/31_npm_audit_json.log",
+      "detail": "One high-severity, fix-available transitive dev dependency vulnerability in undici 7.27.2."
+    }
+  ],
+  "findings": [
+    {
+      "id": "RTLX-CACHE-001",
+      "title": "Typography Text-node fingerprints omit protection and DOM-state dependencies, producing stale eligibility decisions",
+      "status": "test_reproduced",
+      "severity": "high",
+      "confidence": "high",
+      "affectedFiles": [
+        "SOURCE/rtlx-v15.8.0-source/src/content/typography-planner.ts",
+        "SOURCE/rtlx-v15.8.0-source/src/content/observer-manager.ts",
+        "SOURCE/rtlx-v15.8.0-source/src/content/frame-runtime.ts",
+        "SOURCE/rtlx-v15.8.0-source/docs/requirements-v15.8.md"
+      ],
+      "affectedSymbols": [
+        "collectTypographyBatch",
+        "typographyFingerprint",
+        "typographySkipReason",
+        "ObserverManager.observe",
+        "FrameRuntime.processedTypographyNodes"
+      ],
+      "evidence": [
+        {
+          "kind": "source",
+          "reference": "src/content/typography-planner.ts:156-190",
+          "detail": "The cache comparison happens before typographySkipReason is reevaluated; fingerprints are stored for protected and eligible nodes alike."
+        },
+        {
+          "kind": "source",
+          "reference": "src/content/typography-planner.ts:271-299",
+          "detail": "Protection depends on code/icon/layout state and element/ancestor selectors, but the fingerprint contains only text, parent tag, role, dir and contextKey."
+        },
+        {
+          "kind": "source",
+          "reference": "src/content/observer-manager.ts:7-23",
+          "detail": "class, role, contenteditable, hidden and inert mutations are observed, but mutation handling does not invalidate the per-Text typography fingerprint for those dependency changes."
+        },
+        {
+          "kind": "source",
+          "reference": "src/content/frame-runtime.ts:249-255,1113-1123",
+          "detail": "The cache is reset on settings changes/teardown, not on ordinary protection-class or ancestor-state mutations; batch fingerprints are persisted after each scan."
+        },
+        {
+          "kind": "test",
+          "reference": "/mnt/data/rtlx_audit_logs/20_audit_high_severity_repro.log",
+          "detail": "Both transitions reproduced: protected→eligible remained skipped with inspectedNodes=0, and eligible→protected bypassed protection reevaluation with inspectedNodes=0."
+        }
+      ],
+      "impact": [
+        "Typography may fail to apply after a protected region becomes normal content.",
+        "An already-processed node that becomes code/editor/icon/layout-protected can retain or reuse stale typography state instead of honoring the current hard/protective boundary.",
+        "Dynamic React/Vue class and ancestor changes are specifically exposed because Text node identity can remain stable while eligibility changes."
+      ],
+      "reproduction": [
+        "Run CMD-020.",
+        "Process a Persian Text node under .profile-protected and persist fingerprints; remove the class and rescan with the same context.",
+        "Reverse the transition by adding the protection class after the eligible scan."
+      ],
+      "requiredFix": [
+        "Make the cache key cover every dependency used by typographySkipReason, including relevant ancestor/protection state, or explicitly invalidate affected Text nodes on matching mutations.",
+        "Reconcile already-owned typography mutations when a target transitions into a protected state; skipping future planning alone is insufficient.",
+        "Keep invalidation bounded and deterministic."
+      ],
+      "requiredTests": [
+        "Protected→eligible and eligible→protected transitions on the element and an ancestor.",
+        "contenteditable, role=textbox, code/math/editor/terminal/icon/layout-sensitive transition fixtures.",
+        "Stable Text-node identity under class replacement and framework-style rerender fixtures.",
+        "Verification that stale TYPOGRAPHY_CLASS ownership is removed or rolled back when protection becomes active."
+      ],
+      "contractImpact": "compatible",
+      "verificationState": "verified_by_synthetic_fixture"
+    },
+    {
+      "id": "RTLX-RELEASE-001",
+      "title": "Top-level release SHA-256 manifest is stale for three delivered artifacts",
+      "status": "test_reproduced",
+      "severity": "high",
+      "confidence": "high",
+      "affectedFiles": [
+        "RELEASE-ARTIFACTS/RTLX-v15.8.0-SHA256-MANIFEST.json",
+        "RELEASE-ARTIFACTS/RTLX-v15.8.0-NEXT-DELIVERY.zip",
+        "EVIDENCE/RTLX-v15.8.0-EVIDENCE.zip"
+      ],
+      "affectedSymbols": ["artifacts[]"],
+      "evidence": [
+        {
+          "kind": "artifact",
+          "reference": "RELEASE-ARTIFACTS/RTLX-v15.8.0-SHA256-MANIFEST.json",
+          "detail": "The records for RTLX-v15.8.0-COMPONENT-SHA256-MANIFEST.json, RTLX-v15.8.0-EVIDENCE.zip and RTLX-v15.8.0-NEXT-DELIVERY.zip match no delivered candidate by both bytes and SHA-256."
+        },
+        {
+          "kind": "test",
+          "reference": "/mnt/data/rtlx_audit_logs/29_integrity_check.log",
+          "detail": "Deterministic verifier exited 1 and printed all three expected/actual size and hash differences."
+        },
+        {
+          "kind": "artifact",
+          "reference": "MANIFEST-SHA256.json",
+          "detail": "The outer handoff manifest is internally valid: 542/542 listed non-manifest files matched with exact coverage."
+        },
+        {
+          "kind": "artifact",
+          "reference": "RTLX-v15.8.0-NEXT-DELIVERY.zip!/RTLX-v15.8.0-COMPONENT-SHA256-MANIFEST.json",
+          "detail": "The actual nested component manifest validates all 12 components, limiting the defect to stale top-level release metadata rather than corrupted browser ZIP contents."
+        }
+      ],
+      "impact": [
+        "Consumers cannot authenticate the complete delivered release set using the advertised top-level manifest.",
+        "Automation may reject valid components or trust hashes for artifacts that are not present.",
+        "The release cannot be certified as a coherent immutable bundle until the manifest is regenerated and reverified."
+      ],
+      "reproduction": [
+        "Run CMD-029 against the delivered handoff.",
+        "Compare expected and actual bytes/SHA-256 for the three unmatched names."
+      ],
+      "requiredFix": [
+        "Generate the top-level release manifest only after every component and container ZIP is finalized.",
+        "Add a release gate that resolves every manifest record to exactly one delivered file and fails on extra, missing, size-mismatched or hash-mismatched artifacts.",
+        "Regenerate the outer handoff manifest after correcting release artifacts."
+      ],
+      "requiredTests": [
+        "A clean-room release assembly test validating all top-level and nested manifests.",
+        "A mutation test proving a one-byte change fails the release gate.",
+        "A deterministic rebuild test proving repeated packaging produces identical component and container hashes."
+      ],
+      "contractImpact": "compatible",
+      "verificationState": "verified_by_real_fixture"
+    },
+    {
+      "id": "RTLX-TEXT-BLOCK-003",
+      "title": "Ordered text-block enumeration silently stops after 512 inspected descendants and has no continuation contract",
+      "status": "test_reproduced",
+      "severity": "high",
+      "confidence": "high",
+      "affectedFiles": [
+        "SOURCE/rtlx-v15.8.0-source/src/content/text-block-enumerator.ts",
+        "SOURCE/rtlx-v15.8.0-source/src/content/frame-runtime.ts",
+        "SOURCE/rtlx-v15.8.0-source/src/content/candidate-discovery.ts",
+        "SOURCE/rtlx-v15.8.0-source/docs/requirements-v15.8.md"
+      ],
+      "affectedSymbols": [
+        "ENUMERATION_LIMIT",
+        "enumerateTextBlocks",
+        "FrameRuntime.processCandidate",
+        "CandidateDiscoveryCursor.nextBatch"
+      ],
+      "evidence": [
+        {
+          "kind": "source",
+          "reference": "src/content/text-block-enumerator.ts:25,49-67",
+          "detail": "ENUMERATION_LIMIT is 512; traversal exits when inspected reaches the cap and returns only the selected array, without hasMore/cursor/continuation metadata."
+        },
+        {
+          "kind": "source",
+          "reference": "src/content/frame-runtime.ts:849-877",
+          "detail": "FrameRuntime records discovered and processed counters only from the truncated array and marks the semantic region expanded; no enumeration continuation is queued."
+        },
+        {
+          "kind": "source",
+          "reference": "src/content/candidate-discovery.ts:150-168",
+          "detail": "The text-walker rescue path creates candidates only for Arabic-script text, so Latin blocks omitted after the cap are not universally rediscovered."
+        },
+        {
+          "kind": "test",
+          "reference": "/mnt/data/rtlx_audit_logs/20_audit_high_severity_repro.log",
+          "detail": "Audit-only 600-paragraph fixtures returned exactly paragraph-0..paragraph-511; paragraph-599 was absent. An exhausted CandidateDiscoveryCursor discovered only the containing main element for 600 Latin paragraphs."
+        },
+        {
+          "kind": "source",
+          "reference": "docs/requirements-v15.8.md:5,20,26-29",
+          "detail": "Conflicts with complete deterministic text-block decomposition and reliable discovered-versus-processed evidence."
+        }
+      ],
+      "impact": [
+        "Structured regions with more than 512 inspected descendants can leave later natural-language blocks unprocessed.",
+        "For Latin-only or Latin-tail blocks, another discovery path does not guarantee recovery.",
+        "textBlocksDiscovered == textBlocksProcessed can still be true for the truncated subset, creating a false-complete coverage signal."
+      ],
+      "reproduction": [
+        "Run CMD-020.",
+        "Construct a main/section with 600 Latin p elements.",
+        "Exhaust CandidateDiscoveryCursor and call enumerateTextBlocks; only the container candidate and first 512 blocks are represented."
+      ],
+      "requiredFix": [
+        "Replace the one-shot cap with a deterministic resumable enumeration cursor or an equivalent bounded continuation mechanism.",
+        "Do not mark a semantic region fully expanded or complete until enumeration has no remaining descendants.",
+        "Expose incomplete enumeration in runtime evidence or ensure coverage counters cannot reach a complete state while enumeration remains pending."
+      ],
+      "requiredTests": [
+        "A >512 Latin-block fixture that reaches the final block.",
+        "A mixed Arabic/Latin fixture proving both discovery paths converge without duplicates.",
+        "A quiescence assertion that remains incomplete until text-block enumeration drains.",
+        "Boundary tests at 511, 512, 513 and large nested list/table regions."
+      ],
+      "contractImpact": "compatible",
+      "verificationState": "verified_by_synthetic_fixture"
+    },
+    {
+      "id": "RTLX-DEPENDENCY-001",
+      "title": "The locked development toolchain contains a fix-available high-severity undici vulnerability",
+      "status": "test_reproduced",
+      "severity": "medium",
+      "confidence": "high",
+      "affectedFiles": [
+        "SOURCE/rtlx-v15.8.0-source/package.json",
+        "SOURCE/rtlx-v15.8.0-source/package-lock.json"
+      ],
+      "affectedSymbols": ["devDependencies.web-ext", "node_modules/undici"],
+      "evidence": [
+        {
+          "kind": "test",
+          "reference": "/mnt/data/rtlx_audit_logs/31_npm_audit_json.log",
+          "detail": "npm audit --json exited 1 and reported undici 7.27.2 as high severity with fixAvailable=true."
+        },
+        {
+          "kind": "source",
+          "reference": "package.json:87; package-lock.json:2142,6060",
+          "detail": "Dependency chain is web-ext 10.4.0 → addons-linter 10.7.0 → cheerio 1.2.0 → undici 7.27.2."
+        },
+        {
+          "kind": "test",
+          "reference": "/mnt/data/rtlx_audit_logs/15_audit_production.log",
+          "detail": "npm audit --omit=dev --audit-level=high found zero vulnerabilities; the packaged extension runtime is not shown to contain this dependency."
+        },
+        {
+          "kind": "test",
+          "reference": "/mnt/data/rtlx_audit_logs/21_audit_all.log",
+          "detail": "audit:all uses audit-level=critical, so it printed the high vulnerability but returned exit 0."
+        }
+      ],
+      "impact": [
+        "Risk is limited to development/lint/build tooling based on the current dependency classification, not the extension's production dependency graph.",
+        "Build agents using affected proxy/cache paths may be exposed to the reported advisory classes.",
+        "The current audit:all name can be misread as gating all severities although high findings do not fail it."
+      ],
+      "reproduction": [
+        "Run CMD-031 or npm audit.",
+        "Run npm explain undici to confirm the transitive chain."
+      ],
+      "requiredFix": [
+        "Update the lockfile/toolchain to a dependency graph containing undici >=7.28.0 or an upstream release that removes the vulnerable range.",
+        "Change the all-dependency audit gate to fail at the project's accepted severity threshold, or document an explicit time-bounded exception."
+      ],
+      "requiredTests": [
+        "npm ci followed by npm audit --json with zero high/critical vulnerabilities.",
+        "web-ext lint and all release checks after the dependency update."
+      ],
+      "contractImpact": "none",
+      "verificationState": "verified_by_real_fixture"
+    },
+    {
+      "id": "RTLX-EVIDENCE-001",
+      "title": "external-gate status command reports passed while every generated external gate is not_run",
+      "status": "test_reproduced",
+      "severity": "medium",
+      "confidence": "high",
+      "affectedFiles": [
+        "SOURCE/rtlx-v15.8.0-source/scripts/external-gate-status.mjs",
+        "SOURCE/rtlx-v15.8.0-source/scripts/release-evidence-gates.mjs",
+        "SOURCE/rtlx-v15.8.0-source/package.json"
+      ],
+      "affectedSymbols": ["reports", "status"],
+      "evidence": [
+        {
+          "kind": "source",
+          "reference": "scripts/external-gate-status.mjs:9-50",
+          "detail": "The script creates five reports with status=not_run and evidenceState=insufficient_evidence."
+        },
+        {
+          "kind": "source",
+          "reference": "scripts/external-gate-status.mjs:52-59",
+          "detail": "The same invocation prints top-level status=passed unconditionally and exits zero."
+        },
+        {
+          "kind": "test",
+          "reference": "/mnt/data/rtlx_audit_logs/25_external_status.log",
+          "detail": "CMD-025 reproduced the contradictory successful output."
+        },
+        {
+          "kind": "test",
+          "reference": "/mnt/data/rtlx_audit_logs/26_evidence_gates.log",
+          "detail": "The authoritative aggregate gate script correctly normalized the same reports to blocked and exited 2."
+        }
+      ],
+      "impact": [
+        "CI or a human consuming only npm run evidence:external-status can mistake placeholder creation for external validation success.",
+        "The output conflicts with CURRENT-STATUS.json and the explicit external-evidence policy."
+      ],
+      "reproduction": [
+        "Run CMD-025.",
+        "Inspect the five written dist/evidence reports and compare their not_run values with the printed passed value."
+      ],
+      "requiredFix": [
+        "Return blocked or insufficient_evidence when any generated report is not_run.",
+        "Use a non-zero blocked exit code consistent with release-evidence-gates.mjs.",
+        "Separate a 'placeholder_files_created' operation result from evidence gate status."
+      ],
+      "requiredTests": [
+        "Unit test all combinations: all passed, any failed, any not_run, any insufficient_evidence and missing report.",
+        "CLI exit-code assertions and schema validation for generated status output."
+      ],
+      "contractImpact": "compatible",
+      "verificationState": "verified_by_synthetic_fixture"
+    },
+    {
+      "id": "RTLX-EXTERNAL-001",
+      "title": "Exact release-artifact execution is not established across supported browsers",
+      "status": "insufficient_evidence",
+      "severity": "medium",
+      "confidence": "high",
+      "affectedFiles": [
+        "SOURCE/rtlx-v15.8.0-source/docs/acceptance-v15.8.md",
+        "RELEASE-ARTIFACTS/rtlx-chromium-15.8.0.zip",
+        "RELEASE-ARTIFACTS/rtlx-edge-15.8.0.zip",
+        "RELEASE-ARTIFACTS/rtlx-firefox-15.8.0.zip",
+        "RELEASE-ARTIFACTS/rtlx-firefox-android-15.8.0.zip"
+      ],
+      "affectedSymbols": ["exact-artifact-e2e"],
+      "evidence": [
+        {
+          "kind": "test",
+          "reference": "CMD-017..CMD-019, CMD-027",
+          "detail": "Chromium was blocked by administrator policy; Edge and Firefox executables were unavailable; Firefox Android had no device/emulator execution."
+        }
+      ],
+      "impact": [
+        "Cross-browser API, manifest loading, permission and rollback behavior remain unverified on the exact delivered ZIPs."
+      ],
+      "reproduction": ["See command logs 17, 18, 19 and 27."],
+      "requiredFix": [],
+      "requiredTests": [
+        "Run each exact artifact in an unmanaged clean browser profile and Firefox Android device/emulator; retain machine-readable reports, browser versions and artifact SHA-256."
+      ],
+      "contractImpact": "none",
+      "verificationState": "unverified_rule"
+    },
+    {
+      "id": "RTLX-EXTERNAL-002",
+      "title": "Real Claude composer, IME, keyboard/caret and manual accessibility behavior remains unverified",
+      "status": "insufficient_evidence",
+      "severity": "medium",
+      "confidence": "high",
+      "affectedFiles": [
+        "SOURCE/rtlx-v15.8.0-source/docs/acceptance-v15.8.md",
+        "SOURCE/rtlx-v15.8.0-source/profiles/bundled/claude.json",
+        "SOURCE/rtlx-v15.8.0-source/dist/evidence/manual-accessibility.json"
+      ],
+      "affectedSymbols": ["official:claude editor rules", "manual_accessibility_certification"],
+      "evidence": [
+        {
+          "kind": "fixture",
+          "reference": "dist/evidence/manual-accessibility.json",
+          "detail": "status=not_run; requires keyboard, screen-reader, zoom, forced-colors and focus verification."
+        },
+        {
+          "kind": "source",
+          "reference": "profiles/bundled/claude.json",
+          "detail": "Editor rules preserve direction, alignment and typography in source, but no real composer fixture was supplied."
+        }
+      ],
+      "impact": [
+        "Cannot claim real editor preservation, IME safety, caret stability or accessibility certification."
+      ],
+      "reproduction": [],
+      "requiredFix": [],
+      "requiredTests": [
+        "Execute a real Claude composer matrix with Persian/English IME, selection, keyboard navigation, screen reader, zoom and forced-colors evidence."
+      ],
+      "contractImpact": "none",
+      "verificationState": "unverified_rule"
+    },
+    {
+      "id": "RTLX-EXTERNAL-004",
+      "title": "Signed artifact, store validation, installed-update rollback and staged rollout gates remain unverified",
+      "status": "insufficient_evidence",
+      "severity": "medium",
+      "confidence": "high",
+      "affectedFiles": [
+        "SOURCE/rtlx-v15.8.0-source/dist/evidence/signed-artifact-verification.json",
+        "SOURCE/rtlx-v15.8.0-source/dist/evidence/store-validation.json",
+        "SOURCE/rtlx-v15.8.0-source/dist/evidence/installed-update-rollback.json",
+        "SOURCE/rtlx-v15.8.0-source/dist/evidence/rollout-rehearsal.json"
+      ],
+      "affectedSymbols": [
+        "signed_artifact_verification",
+        "store_signing_and_validation",
+        "installed_update_rollback",
+        "staged_rollout_and_rollback_rehearsal"
+      ],
+      "evidence": [
+        {
+          "kind": "test",
+          "reference": "CMD-024 and CMD-026",
+          "detail": "Signed artifacts were not supplied and aggregate release gates remained blocked."
+        },
+        {
+          "kind": "fixture",
+          "reference": "dist/evidence/*.json",
+          "detail": "The relevant reports are not_run or insufficient_evidence."
+        }
+      ],
+      "impact": ["Store-ready, signed, update-safe or rollout-ready claims are not established."],
+      "reproduction": [],
+      "requiredFix": [],
+      "requiredTests": [
+        "Supply signed/unsigned artifacts, authenticated store validation results, installed 15.7.3→15.8.x update/rollback evidence and staged rollout rehearsal logs."
+      ],
+      "contractImpact": "none",
+      "verificationState": "unverified_rule"
+    },
+    {
+      "id": "RTLX-EXTERNAL-005",
+      "title": "The supplied Qwen 15.8.0 capture is not a controlled same-page regression comparison",
+      "status": "insufficient_evidence",
+      "severity": "medium",
+      "confidence": "high",
+      "affectedFiles": [
+        "EVIDENCE/real-runtime/rtlx-report-chat.qwen.ai-2026-06-18T22-09-37-027Z.json",
+        "/mnt/data/rtlx-report-chat.qwen.ai-2026-06-19T05-01-26-294Z.json",
+        "EVIDENCE/visual/",
+        "/mnt/data/screencapture-chat-qwen-ai-c-edf7f90e-b698-42d6-bdc7-dea39921ada3-2026-06-19-08_30_53.jpg"
+      ],
+      "affectedSymbols": ["historical 15.7.3 report", "current 15.8.0 report"],
+      "evidence": [
+        {
+          "kind": "runtime",
+          "reference": "historical report metadata",
+          "detail": "Archive Qwen runtime evidence is 15.7.2/15.7.3, while the user-supplied report is 15.8.0 at a later capture time."
+        },
+        {
+          "kind": "runtime",
+          "reference": "current selectedElement",
+          "detail": "Current selectedElement.status=no_data with RTLX-FEC-SELECTION-LOCATION-MISMATCH-CLEARED, so no selected-block before/after projection is available."
+        }
+      ],
+      "impact": [
+        "The evidence supports a current 15.8.0 run, but cannot prove that every historical visual inconsistency was fixed on the identical DOM/conversation."
+      ],
+      "reproduction": [],
+      "requiredFix": [],
+      "requiredTests": [
+        "Capture the same saved conversation/DOM fixture under both versions with identical viewport, browser settings, selected blocks and pixel/per-block assertions."
+      ],
+      "contractImpact": "none",
+      "verificationState": "unverified_rule"
+    },
+    {
+      "id": "RTLX-EXTERNAL-003",
+      "title": "Long-run memory retention and framework node-replacement behavior remains unverified",
+      "status": "insufficient_evidence",
+      "severity": "low",
+      "confidence": "medium",
+      "affectedFiles": [
+        "SOURCE/rtlx-v15.8.0-source/src/content/mutation-journal.ts",
+        "SOURCE/rtlx-v15.8.0-source/src/content/frame-runtime.ts",
+        "SOURCE/rtlx-v15.8.0-source/dist/evidence/eight-hour-soak.json"
+      ],
+      "affectedSymbols": [
+        "MutationJournal.entries",
+        "FrameRuntime.pending",
+        "eight_hour_multi_tab_soak"
+      ],
+      "evidence": [
+        {
+          "kind": "source",
+          "reference": "src/content/mutation-journal.ts:13-42",
+          "detail": "Committed journal entries intentionally retain strong Node references until rollback/removal."
+        },
+        {
+          "kind": "fixture",
+          "reference": "dist/evidence/eight-hour-soak.json",
+          "detail": "status=not_run; no eight-hour real-browser memory profile is present."
+        }
+      ],
+      "impact": [
+        "No evidence establishes a leak, but the requested React/Vue replacement and long-run retention claim cannot be certified from unit tests alone."
+      ],
+      "reproduction": [],
+      "requiredFix": [],
+      "requiredTests": [
+        "Run multi-tab framework replacement and detach/reinsert campaigns with heap snapshots, journal-size trends, ownership counters and rollback assertions."
+      ],
+      "contractImpact": "none",
+      "verificationState": "unverified_rule"
+    },
+    {
+      "id": "RTLX-ARTIFACT-001",
+      "title": "Current source build output matches all four supplied browser release ZIPs exactly",
+      "status": "test_reproduced",
+      "severity": "info",
+      "confidence": "high",
+      "affectedFiles": [
+        "SOURCE/rtlx-v15.8.0-source/dist/",
+        "RELEASE-ARTIFACTS/rtlx-chromium-15.8.0.zip",
+        "RELEASE-ARTIFACTS/rtlx-edge-15.8.0.zip",
+        "RELEASE-ARTIFACTS/rtlx-firefox-15.8.0.zip",
+        "RELEASE-ARTIFACTS/rtlx-firefox-android-15.8.0.zip"
+      ],
+      "affectedSymbols": ["scripts/build.mjs", "scripts/package-release.mjs"],
+      "evidence": [
+        {
+          "kind": "test",
+          "reference": "/mnt/data/rtlx_audit_logs/30_artifact_compare.log",
+          "detail": "For chromium, edge, firefox and firefox-android, builtFiles=56 and artifactFiles=56 with no onlyBuilt, onlyArtifact or different entries."
+        },
+        {
+          "kind": "source",
+          "reference": "scripts/package-release.mjs:1-25",
+          "detail": "Packaging sorts paths and assigns the fixed 1980 ZIP timestamp."
+        },
+        {
+          "kind": "artifact",
+          "reference": "RELEASE-ARTIFACTS/*.zip",
+          "detail": "ZIP CRC checks passed with no unsafe path, encrypted entry or symlink entry."
+        }
+      ],
+      "impact": [
+        "The browser ZIP contents are traceable to the provided current source build despite the stale aggregate release manifest.",
+        "This is content equivalence, not real-browser execution certification."
+      ],
+      "reproduction": ["Run CMD-010 then CMD-030."],
+      "requiredFix": [],
+      "requiredTests": ["Keep this comparison as a mandatory clean-source release gate."],
+      "contractImpact": "none",
+      "verificationState": "verified_by_real_fixture"
+    },
+    {
+      "id": "RTLX-RUNTIME-001",
+      "title": "A real Qwen/Edge RTLX 15.8.0 report is schema-valid, hash-valid and quiescent for the captured page",
+      "status": "real_fixture_confirmed",
+      "severity": "info",
+      "confidence": "high",
+      "affectedFiles": [
+        "/mnt/data/rtlx-report-chat.qwen.ai-2026-06-19T05-01-26-294Z.json",
+        "SOURCE/rtlx-v15.8.0-source/schemas/failure-evidence.schema.json",
+        "SOURCE/rtlx-v15.8.0-source/src/shared/canonical-json.ts"
+      ],
+      "affectedSymbols": [
+        "FailureEvidenceReport",
+        "reportHash",
+        "runtimeSnapshot.data.textBlockCoverage"
+      ],
+      "evidence": [
+        {
+          "kind": "runtime",
+          "reference": "rtlx-report-chat.qwen.ai-2026-06-19T05-01-26-294Z.json",
+          "detail": "productVersion, extensionVersion and processorVersion are 15.8.0; browser is Edge 149 on Windows x86-64 with official:qwen profile v3."
+        },
+        {
+          "kind": "test",
+          "reference": "/mnt/data/rtlx_audit_logs/28_verify_user_report.log",
+          "detail": "Schema 1.2.0 validation passed and recomputed canonical report hash exactly matched sha256:0ab887e93bb34e2771a8468a2707adcb0b8cccc78eedbbe2d8295737e3b58664."
+        },
+        {
+          "kind": "runtime",
+          "reference": "runtimeSnapshot.data",
+          "detail": "pendingCandidates=0, pendingDiscoveryRoots=0, typographyContinuationsPending=0, textBlocksDiscovered=175, textBlocksProcessed=175 and verificationFailures=0."
+        },
+        {
+          "kind": "runtime",
+          "reference": "diagnostics[0]",
+          "detail": "RTLX-LIMIT-001 recorded candidateBudgetReached=true and continuationQueued=true; final discovery queues and active cursors were zero."
+        },
+        {
+          "kind": "fixture",
+          "reference": "/mnt/data/screencapture-chat-qwen-ai-c-edf7f90e-b698-42d6-bdc7-dea39921ada3-2026-06-19-08_30_53.jpg",
+          "detail": "The 289x2048 screenshot visually corroborates a rendered Persian/mixed Qwen conversation, but its resolution is insufficient for pixel-level font, caret or per-block assertions."
+        }
+      ],
+      "impact": [
+        "Closes the broad 'no real 15.8.0 Qwen execution evidence' gap for this one captured page/state.",
+        "Does not falsify RTLX-TEXT-BLOCK-003 because this report records 175 text blocks, below the 512-descendant enumeration boundary.",
+        "Does not exercise the dynamic protection-cache transitions in RTLX-CACHE-001."
+      ],
+      "reproduction": [
+        "Validate the JSON against failure-evidence.schema.json and recompute reportHash using canonicalizationVersion 1.0.0.",
+        "Inspect the runtime acceptance counters."
+      ],
+      "requiredFix": [],
+      "requiredTests": [
+        "Repeat on a controlled same conversation before/after fixture with selected-element evidence and a region above the enumeration boundary.",
+        "Capture per-block visual assertions for headings, paragraphs, lists, quotes, code and action icons."
+      ],
+      "contractImpact": "none",
+      "verificationState": "verified_by_real_fixture"
+    }
+  ],
+  "rejectedHypotheses": [
+    {
+      "hypothesis": "Historical RTLX 15.7.3 Qwen/DeepSeek evidence proves RTLX 15.8.0 runtime behavior",
+      "status": "not_reproduced",
+      "basis": "Version metadata explicitly differs; historical files were used only as symptom/regression context."
+    },
+    {
+      "hypothesis": "Candidate-discovery budget limit loses work",
+      "status": "not_reproduced",
+      "basis": "CandidateDiscoveryCursor exposes hasMore and the real 15.8.0 report recorded RTLX-LIMIT-001 with continuationQueued=true, activeCursors=0 and drained queues."
+    },
+    {
+      "hypothesis": "Bounded typography slicing starves after the first slice",
+      "status": "not_reproduced",
+      "basis": "The repository 121-node continuation test passed and the real report had typographyContinuationsPending=0. The confirmed cache defect is dependency invalidation, not slice starvation."
+    },
+    {
+      "hypothesis": "Protective profile precedence follows JSON order",
+      "status": "not_reproduced",
+      "basis": "profile-zone.ts applies category rank before profile order; validate:profiles and precedence tests passed."
+    },
+    {
+      "hypothesis": "RTLX globally mutates html/body direction",
+      "status": "not_reproduced",
+      "basis": "FrameRuntime rejects HTML/BODY candidates; no source mutation path setting global document direction was found; security and smoke checks passed."
+    },
+    {
+      "hypothesis": "Wrapper proliferation is present in the supplied Qwen capture",
+      "status": "not_reproduced",
+      "basis": "ownedWrappers=0 and wrapperLifecycle.current=0 in the valid 15.8.0 report."
+    },
+    {
+      "hypothesis": "selected-element evidence reused a stale element after location change",
+      "status": "not_reproduced",
+      "basis": "The current report cleared the mismatch and emitted RTLX-SELECTION-101 plus reason RTLX-FEC-SELECTION-LOCATION-MISMATCH-CLEARED."
+    },
+    {
+      "hypothesis": "CSS Custom Highlight absence is a release defect",
+      "status": "not_reproduced",
+      "basis": "architecture-v15.8.md explicitly marks it deferred and optional."
+    },
+    {
+      "hypothesis": "typographyScansCompleted must equal unique text blocks",
+      "status": "not_reproduced",
+      "basis": "The active architecture describes a completion counter, not a unique-object counter; unique text-block counts are separately exposed."
+    }
+  ],
+  "boundaryReview": {
+    "architecture": "Preserved in the audit; no source or release changes were made.",
+    "permissions": "Generated manifests retain activeTab, alarms, scripting and storage plus optional HTTP/HTTPS host permissions; no mandatory host_permissions were added.",
+    "privacy": "Failure evidence schema 1.2.0 enforces false for page text, full URL, query, fragment, form values, cookies, localStorage, network capture, screenshot and automatic upload. The supplied real report satisfies these fields.",
+    "directionTypography": "Direction and typography remain separate source paths. No global html/body direction mutation was found. Dynamic typography cache invalidation is the confirmed exception requiring repair.",
+    "ownershipRollback": "Hybrid ownership, MutationJournal and rollback paths are present; controlled smoke rollback passed. Long-run strong-reference behavior remains insufficient_evidence.",
+    "scheduling": "Candidate discovery and typography work are bounded and requeued; discovery continuation is confirmed. Text-block enumeration is the unbounded-contract gap because its local 512 cap has no cursor.",
+    "profiles": "All bundled profiles/schema fixtures validate and protective category precedence is source/test confirmed.",
+    "browserCompatibility": "Manifest differences are generated correctly and static lint passes. Exact artifact execution remains blocked outside the supplied real Edge/Qwen installation report.",
+    "determinism": "Canonical report hash recomputation and browser artifact/source equivalence pass. The stale top release manifest blocks complete release-integrity certification."
+  },
+  "releaseScope": {
+    "recommendedVersion": "15.8.1",
+    "required": [
+      "RTLX-TEXT-BLOCK-003",
+      "RTLX-CACHE-001",
+      "RTLX-RELEASE-001",
+      "RTLX-EVIDENCE-001",
+      "RTLX-DEPENDENCY-001"
+    ],
+    "mustNotExpandInto": [
+      "new browser permissions",
+      "telemetry or automatic upload",
+      "global html/body direction",
+      "profile-owned final direction truth",
+      "CSS Custom Highlight implementation",
+      "unrelated refactoring"
+    ],
+    "releaseGates": [
+      "All current deterministic checks",
+      "New boundary tests for >512 text blocks and typography protection transitions",
+      "Clean regenerated top-level and nested SHA-256 manifests",
+      "Zero high/critical npm audit findings or an explicitly approved exception",
+      "Exact Chromium/Edge/Firefox/Firefox Android execution where environments are available",
+      "Controlled Qwen regression fixture and real Claude composer evidence before claims broader than the fixed code paths"
+    ]
+  },
+  "machineReadableFindingIndex": [
+    {
+      "id": "RTLX-CACHE-001",
+      "status": "test_reproduced",
+      "severity": "high",
+      "confidence": "high"
+    },
+    {
+      "id": "RTLX-RELEASE-001",
+      "status": "test_reproduced",
+      "severity": "high",
+      "confidence": "high"
+    },
+    {
+      "id": "RTLX-TEXT-BLOCK-003",
+      "status": "test_reproduced",
+      "severity": "high",
+      "confidence": "high"
+    },
+    {
+      "id": "RTLX-DEPENDENCY-001",
+      "status": "test_reproduced",
+      "severity": "medium",
+      "confidence": "high"
+    },
+    {
+      "id": "RTLX-EVIDENCE-001",
+      "status": "test_reproduced",
+      "severity": "medium",
+      "confidence": "high"
+    },
+    {
+      "id": "RTLX-EXTERNAL-001",
+      "status": "insufficient_evidence",
+      "severity": "medium",
+      "confidence": "high"
+    },
+    {
+      "id": "RTLX-EXTERNAL-002",
+      "status": "insufficient_evidence",
+      "severity": "medium",
+      "confidence": "high"
+    },
+    {
+      "id": "RTLX-EXTERNAL-004",
+      "status": "insufficient_evidence",
+      "severity": "medium",
+      "confidence": "high"
+    },
+    {
+      "id": "RTLX-EXTERNAL-005",
+      "status": "insufficient_evidence",
+      "severity": "medium",
+      "confidence": "high"
+    },
+    {
+      "id": "RTLX-EXTERNAL-003",
+      "status": "insufficient_evidence",
+      "severity": "low",
+      "confidence": "medium"
+    },
+    {
+      "id": "RTLX-ARTIFACT-001",
+      "status": "test_reproduced",
+      "severity": "info",
+      "confidence": "high"
+    },
+    {
+      "id": "RTLX-RUNTIME-001",
+      "status": "real_fixture_confirmed",
+      "severity": "info",
+      "confidence": "high"
+    }
+  ]
+}

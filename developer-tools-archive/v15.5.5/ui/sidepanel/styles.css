@@ -1,0 +1,110 @@
+:root {
+  color-scheme: light dark;
+  font:
+    14px/1.5 system-ui,
+    sans-serif;
+}
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+}
+main {
+  padding: 12px;
+  display: grid;
+  gap: 12px;
+}
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+}
+h1 {
+  font-size: 20px;
+  margin: 0;
+}
+h2 {
+  font-size: 16px;
+  margin: 0 0 8px;
+}
+section {
+  border: 1px solid color-mix(in srgb, currentColor 20%, transparent);
+  border-radius: 10px;
+  padding: 10px;
+  display: grid;
+  gap: 8px;
+}
+label {
+  display: grid;
+  gap: 4px;
+}
+button,
+select,
+input {
+  font: inherit;
+  min-height: 36px;
+}
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.rule {
+  border-block-start: 1px solid color-mix(in srgb, currentColor 15%, transparent);
+  padding-block: 8px;
+  display: grid;
+  gap: 6px;
+}
+.selector {
+  direction: ltr;
+  overflow-wrap: anywhere;
+  font-family: monospace;
+}
+.hint {
+  opacity: 0.75;
+}
+#status {
+  min-height: 1.5em;
+}
+.catalog-item {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+}
+.metrics {
+  display: grid;
+  grid-template-columns: minmax(120px, 1fr) minmax(80px, 1fr);
+  gap: 4px 8px;
+  margin: 0;
+}
+.metrics dt {
+  font-weight: 600;
+}
+.metrics dd {
+  margin: 0;
+  direction: ltr;
+  text-align: start;
+}
+.health {
+  margin: 4px 0;
+  padding: 4px 6px;
+  border-inline-start: 3px solid currentColor;
+}
+.health-healthy {
+  opacity: 0.9;
+}
+.health-degraded,
+.health-no-match,
+.health-excessive-match,
+.health-invalid-selector {
+  font-weight: 600;
+}
+.history-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding-block: 5px;
+  border-block-start: 1px solid color-mix(in srgb, currentColor 12%, transparent);
+}

@@ -1,0 +1,1 @@
+Font binaries (*.woff2, *.ttf, *.otf) are intentionally omitted from this shared source copy. Restore them from the original trusted project source or the project's approved font vendoring process before running a full local release build.

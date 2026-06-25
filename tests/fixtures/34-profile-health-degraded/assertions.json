@@ -1,0 +1,8 @@
+{
+  "fixtureVersion": "1.0.0",
+  "assertions": [
+    "a matching content rule is healthy",
+    "a second active missing rule degrades the profile",
+    "profile health never repairs or rewrites selectors automatically"
+  ]
+}

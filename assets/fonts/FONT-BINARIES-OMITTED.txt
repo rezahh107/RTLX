@@ -1,0 +1,3 @@
+Font binaries were intentionally omitted from this handoff package.
+The source was tested in the build workspace with font binaries present, but this downloadable handoff does not include font files.
+To rebuild identical install artifacts, restore the licensed font files referenced by assets/fonts/manifest.json before running npm run build:release.

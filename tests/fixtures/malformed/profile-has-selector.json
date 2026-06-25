@@ -1,0 +1,32 @@
+{
+  "schemaVersion": "2.0.0",
+  "profileId": "user:example.com",
+  "profileVersion": 1,
+  "profileKind": "user",
+  "displayName": "Invalid profile",
+  "match": {
+    "hosts": ["example.com"],
+    "pathPrefixes": ["/"]
+  },
+  "selectors": {
+    "content": ["main:has(script)"],
+    "exclude": [],
+    "code": [],
+    "math": [],
+    "editor": [],
+    "terminal": [],
+    "mutationSensitive": []
+  },
+  "features": {
+    "direction": true,
+    "bidi": true,
+    "typography": true,
+    "shadowOpen": true
+  },
+  "thresholds": {},
+  "metadata": {
+    "source": "imported",
+    "verification": "unverified",
+    "product": null
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "profiles": [
+    "chatgpt.json",
+    "claude.json",
+    "copilot.json",
+    "deepseek.json",
+    "discord.json",
+    "gemini.json",
+    "github.json",
+    "notebooklm.json",
+    "notion.json",
+    "perplexity.json",
+    "qwen.json",
+    "slack.json"
+  ],
+  "schemaVersion": "3.0.0"
+}

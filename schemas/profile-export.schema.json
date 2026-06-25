@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rtlx.invalid/schemas/profile-export.schema.json",
+  "title": "RTLX User Profile Export v2",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "productVersion", "profiles"],
+  "properties": {
+    "schemaVersion": { "const": "2.0.0" },
+    "productVersion": { "const": "15.5.0" },
+    "profiles": {
+      "type": "array",
+      "maxItems": 100,
+      "items": { "$ref": "site-profile.schema.json" }
+    }
+  },
+  "x-registry": {
+    "version": 2,
+    "changelog": ["2.0.0 exports Site Profile v3"],
+    "forwardCompatibility": "Import v1 packages through the deterministic normalizer; reject unknown fields."
+  }
+}

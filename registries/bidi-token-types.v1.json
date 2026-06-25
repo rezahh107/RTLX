@@ -1,0 +1,21 @@
+{
+  "schemaVersion": "1.0.0",
+  "registryId": "bidi-token-types",
+  "registryVersion": 1,
+  "types": [
+    { "priority": 1, "type": "existing_semantic_boundary", "enabled": true },
+    { "priority": 2, "type": "inline_code", "enabled": true },
+    { "priority": 3, "type": "email", "enabled": true },
+    { "priority": 3, "type": "url", "enabled": true },
+    { "priority": 4, "type": "file_path", "enabled": true },
+    { "priority": 4, "type": "package_identifier", "enabled": true },
+    { "priority": 5, "type": "api_signature", "enabled": true },
+    { "priority": 5, "type": "cli_flag_or_command", "enabled": true },
+    { "priority": 5, "type": "technical_identifier", "enabled": true },
+    { "priority": 6, "type": "ip_mac_phone", "enabled": true },
+    { "priority": 6, "type": "version", "enabled": true },
+    { "priority": 100, "type": "natural_ltr_phrase", "enabled": false }
+  ],
+  "changelog": ["1.0.0 initial SSOT v12 priorities"],
+  "forwardCompatibility": "Unknown token types are rejected by v1 resolver."
+}

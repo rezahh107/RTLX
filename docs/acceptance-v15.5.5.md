@@ -1,0 +1,16 @@
+# RTLX 15.6.0 Acceptance Criteria
+
+| ID          | Acceptance criterion                                                                                                             | Verification                                                                           |
+| ----------- | -------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
+| AC-1555-001 | More than 100 eligible Persian blocks are discovered across deterministic continuation batches with no duplicate omission.       | Unit test                                                                              |
+| AC-1555-002 | A user-selected seed is preserved in the first batch.                                                                            | Unit test                                                                              |
+| AC-1555-003 | Semantic content ranks ahead of button/navigation chrome.                                                                        | Unit test                                                                              |
+| AC-1555-004 | Offscreen candidates have a background drain path independent of scrolling.                                                      | Runtime implementation review + browser smoke; exact Gmail validation remains external |
+| AC-1555-005 | Typography targets Persian text leaves while excluding code and hidden/icon zones; no universal descendant forcing is generated. | Unit test                                                                              |
+| AC-1555-006 | Computed-font failures produce bounded text-free diagnostics.                                                                    | Unit/integration path + runtime report                                                 |
+| AC-1555-007 | Identical diagnostics from different documents/runtimes do not merge and page reports include only exact correlations.           | Unit test                                                                              |
+| AC-1555-008 | Repeated ordinary queue failures stop at level 3; repeated terminal failures can reach level 4.                                  | Unit test                                                                              |
+| AC-1555-009 | `scheduler.yield()` is used only when available and fallback resolves otherwise.                                                 | Unit test                                                                              |
+| AC-1555-010 | Profile Schema v3, permissions, host policy, privacy fields, and rollback contracts remain unchanged.                            | Schema/manifest/security checks                                                        |
+| AC-1555-011 | Chromium, Edge, Firefox Desktop, and Firefox Android packages are reproducible across two packaging runs.                        | SHA-256 comparison                                                                     |
+| AC-1555-012 | Exact user Windows/Gmail behavior is not marked PASS without execution on that environment.                                      | Release report                                                                         |

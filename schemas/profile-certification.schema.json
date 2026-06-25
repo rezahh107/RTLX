@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rtlx.invalid/schemas/profile-certification.schema.json",
+  "title": "RTLX Official Profile Certification Index v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "records"],
+  "properties": {
+    "schemaVersion": { "const": "1.0.0" },
+    "records": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "profileId",
+          "fixtureStatus",
+          "liveStatus",
+          "chrome",
+          "edge",
+          "firefox",
+          "lastCheckedAt"
+        ],
+        "properties": {
+          "profileId": { "type": "string", "pattern": "^official:[a-z0-9.-]+$" },
+          "fixtureStatus": { "enum": ["verified", "synthetic", "failed"] },
+          "liveStatus": { "enum": ["not-run", "passed", "failed"] },
+          "chrome": { "enum": ["not-run", "passed", "failed"] },
+          "edge": { "enum": ["not-run", "passed", "failed"] },
+          "firefox": { "enum": ["not-run", "passed", "failed"] },
+          "lastCheckedAt": {
+            "type": ["string", "null"],
+            "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(?:\\.\\d{3})?Z$"
+          }
+        }
+      }
+    }
+  },
+  "x-registry": {
+    "version": 1,
+    "changelog": [
+      "1.0.0 records fixture and live-browser evidence without overstating verification."
+    ],
+    "forwardCompatibility": "Reject unsupported major versions and unknown fields."
+  }
+}

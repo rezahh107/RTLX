@@ -1,0 +1,695 @@
+{
+  "accessibility": {
+    "message": "دسترس‌پذیری"
+  },
+  "accessibilityText": {
+    "message": "کنترل‌ها، live regionها، editorها و نواحی تعاملی به‌صورت پیش‌فرض از wrapper mutation محافظت می‌شوند."
+  },
+  "actions": {
+    "message": "عملیات"
+  },
+  "activateForSite": {
+    "message": "فعال‌سازی برای این سایت"
+  },
+  "activateForSiteHint": {
+    "message": "تنظیمات برای همین سایت ذخیره می‌شود."
+  },
+  "active": {
+    "message": "فعال"
+  },
+  "activeProfile": {
+    "message": "پروفایل فعال"
+  },
+  "advancedTools": {
+    "message": "ابزارهای پیشرفته"
+  },
+  "amazonLocalOnlyNote": {
+    "message": "Amazon Ember Display داخل افزونه توزیع نمی‌شود و فقط در صورت نصب بودن روی سیستم استفاده می‌شود."
+  },
+  "appearanceHeading": {
+    "message": "نمایش متن"
+  },
+  "appearanceHelp": {
+    "message": "فارسی راست‌چین و انگلیسی چپ‌چین می‌شود؛ ناحیه‌های کد، فرمول و ویرایشگر محافظت می‌شوند."
+  },
+  "applied": {
+    "message": "پردازش تب درخواست شد."
+  },
+  "applyBackup": {
+    "message": "اعمال پشتیبان اعتبارسنجی‌شده"
+  },
+  "applyCurrent": {
+    "message": "اصلاح همین تب"
+  },
+  "attemptRecovery": {
+    "message": "تلاش برای بازیابی دترمینیستیک"
+  },
+  "backupApplied": {
+    "message": "پشتیبان اعمال شد. ممکن است لازم باشد دسترسی‌ها دوباره تأیید شوند."
+  },
+  "backupExported": {
+    "message": "پشتیبان کامل شخصی صادر شد."
+  },
+  "backupSelected": {
+    "message": "فایل پشتیبان انتخاب شد. پیش از اعمال آن را اعتبارسنجی کنید."
+  },
+  "backupValidated": {
+    "message": "پشتیبان معتبر است. پیش‌نمایش را قبل از اعمال بررسی کنید."
+  },
+  "bidiIsolation": {
+    "message": "ایزوله‌سازی عبارت‌های LTR"
+  },
+  "builtInDefault": {
+    "message": "پیش‌فرض داخلی"
+  },
+  "cancel": {
+    "message": "لغو"
+  },
+  "chooseBackup": {
+    "message": "انتخاب فایل پشتیبان"
+  },
+  "clearDiagnostics": {
+    "message": "پاک‌کردن تشخیص‌ها"
+  },
+  "close": {
+    "message": "بستن"
+  },
+  "confirmSuspicious": {
+    "message": "تأیید اصلاح برای این سایت"
+  },
+  "currentShortcut": {
+    "message": "میانبر فعلی:"
+  },
+  "defaultSiteMode": {
+    "message": "حالت پیش‌فرض سایت‌ها"
+  },
+  "deleteProfile": {
+    "message": "حذف"
+  },
+  "detectedSite": {
+    "message": "سایت تشخیص‌داده‌شده"
+  },
+  "diagnosticCount": {
+    "message": "تعداد تشخیص‌ها"
+  },
+  "diagnostics": {
+    "message": "تشخیص‌ها"
+  },
+  "diagnosticsCleared": {
+    "message": "تشخیص‌ها پاک شدند."
+  },
+  "diagnosticsPersistence": {
+    "message": "ذخیره محلی تشخیص‌های بدون متن"
+  },
+  "diagnosticsText": {
+    "message": "خروجی تشخیص شامل کد، شمارش و bucketهای زمانی است و متن صفحه ندارد."
+  },
+  "directionCorrection": {
+    "message": "اصلاح جهت"
+  },
+  "directionPolicyNote": {
+    "message": "فارسی: راست‌چین · انگلیسی: چپ‌چین"
+  },
+  "disableSite": {
+    "message": "غیرفعال‌کردن این سایت"
+  },
+  "downloadPageDebugReport": {
+    "message": "دانلود گزارش دیباگ همین صفحه"
+  },
+  "elementCode": {
+    "message": "کد"
+  },
+  "elementContent": {
+    "message": "محتوا"
+  },
+  "elementEditor": {
+    "message": "ویرایشگر"
+  },
+  "elementIgnore": {
+    "message": "نادیده‌گرفتن"
+  },
+  "elementMath": {
+    "message": "ریاضی"
+  },
+  "elementTerminal": {
+    "message": "ترمینال"
+  },
+  "elementType": {
+    "message": "نوع عنصر"
+  },
+  "enableContextMenu": {
+    "message": "فعال‌کردن میانبر راست‌کلیک"
+  },
+  "enableSite": {
+    "message": "فعال‌کردن این سایت"
+  },
+  "englishFontAmazon": {
+    "message": "Amazon Ember Display محلی؛ در نبود، Inter"
+  },
+  "englishFontInter": {
+    "message": "Inter بسته‌بندی‌شده"
+  },
+  "englishFontLabel": {
+    "message": "فونت انگلیسی"
+  },
+  "exportCompleteBackup": {
+    "message": "خروجی پشتیبان کامل"
+  },
+  "exportDiagnostics": {
+    "message": "خروجی تشخیص‌ها"
+  },
+  "exportProfiles": {
+    "message": "خروجی پروفایل‌ها"
+  },
+  "exportSupportBundle": {
+    "message": "خروجی بسته پشتیبانی"
+  },
+  "exported": {
+    "message": "فایل تشخیص ساخته شد."
+  },
+  "extensionDescription": {
+    "message": "اصلاح محافظه‌کارانه جهت و تایپوگرافی متن‌های مختلط فارسی و انگلیسی."
+  },
+  "extensionEnabled": {
+    "message": "فعال‌بودن افزونه"
+  },
+  "extensionId": {
+    "message": "شناسه افزونه"
+  },
+  "extensionName": {
+    "message": "RTLX — اصلاح متن مختلط"
+  },
+  "failureActual": {
+    "message": "در عمل چه اتفاقی افتاد؟"
+  },
+  "failureCaptureHeading": {
+    "message": "گزارش مشکل این صفحه"
+  },
+  "failureCaptureHelp": {
+    "message": "یک گزارش JSON بدون متن صفحه برای بررسی مشکل RTLX بسازید."
+  },
+  "failureDownload": {
+    "message": "دانلود JSON"
+  },
+  "failureDownloaded": {
+    "message": "فایل JSON گزارش مشکل دانلود شد."
+  },
+  "failureExpected": {
+    "message": "انتظار داشتید چه اتفاقی بیفتد؟"
+  },
+  "failurePickerStarted": {
+    "message": "عنصر مشکل‌دار را در صفحه انتخاب کنید و سپس RTLX را دوباره باز کنید."
+  },
+  "failurePreview": {
+    "message": "ساخت پیش‌نمایش"
+  },
+  "failurePreviewReady": {
+    "message": "پیش‌نمایش گزارش مشکل آماده است."
+  },
+  "failurePreviewSummary": {
+    "message": "پیش‌نمایش شواهد"
+  },
+  "failurePrivacyNoText": {
+    "message": "متن صفحه، مقدار فرم، کوکی و Local Storage ثبت نمی‌شود."
+  },
+  "failurePrivacyNoUpload": {
+    "message": "اسکرین‌شات یا ارسال خودکار انجام نمی‌شود."
+  },
+  "failurePrivacyNoUrl": {
+    "message": "آدرس کامل، Query String و Fragment ثبت نمی‌شود."
+  },
+  "failureRestrictedHint": {
+    "message": "این صفحه توسط مرورگر محدود شده است. RTLX فقط می‌تواند وضعیت دسترسی را گزارش کند و به DOM صفحه دسترسی ندارد."
+  },
+  "failureSelectElement": {
+    "message": "انتخاب عنصر مشکل‌دار"
+  },
+  "fixBalanced": {
+    "message": "هوشمند و متعادل"
+  },
+  "fixStrength": {
+    "message": "قدرت اصلاح"
+  },
+  "fixStrong": {
+    "message": "قوی برای سایت‌های مقاوم"
+  },
+  "focusedEdition": {
+    "message": "نسخه شخصی و متمرکز"
+  },
+  "focusedPrivacyNote": {
+    "message": "گزارش مشکل شامل متن صفحه، آدرس کامل، فرم‌ها، کوکی یا اسکرین‌شات نیست."
+  },
+  "general": {
+    "message": "عمومی"
+  },
+  "genericDefaults": {
+    "message": "پیش‌فرض عمومی"
+  },
+  "grantAll": {
+    "message": "دسترسی همه سایت‌ها"
+  },
+  "grantSite": {
+    "message": "همیشه این سایت"
+  },
+  "healthCheckDone": {
+    "message": "بررسی سلامت کامل شد."
+  },
+  "healthCheckRunning": {
+    "message": "بررسی سلامت در حال اجراست…"
+  },
+  "healthStatus": {
+    "message": "وضعیت سلامت"
+  },
+  "help": {
+    "message": "راهنما"
+  },
+  "helpHeading": {
+    "message": "راهنمای سریع استفاده"
+  },
+  "helpStepApply": {
+    "message": "سپس «اصلاح همین تب» را بزنید یا صفحه را Refresh کنید تا متن فارسی راست‌چین و با فونت مناسب نمایش داده شود."
+  },
+  "helpStepGrant": {
+    "message": "در صفحه هدف، از پنجره افزونه گزینه «همیشه این سایت» را بزنید تا دسترسی اختیاری همان سایت ثبت شود."
+  },
+  "helpStepMode": {
+    "message": "حالت پیش‌فرض «خودکار امن» است. اگر سایتی ساختار پیچیده دارد، از پنجره افزونه حالت «اجبار فقط روی کانتینرها» را برای همان سایت انتخاب کنید."
+  },
+  "helpStepRollback": {
+    "message": "اگر نتیجه مناسب نبود، از «غیرفعال و بازگردانی تغییرات» استفاده کنید؛ rollback مالکیت‌محور و idempotent باقی مانده است."
+  },
+  "importProfiles": {
+    "message": "ورود پروفایل‌ها"
+  },
+  "importSignedProfile": {
+    "message": "ورود پروفایل اشتراکی امضاشده"
+  },
+  "inactive": {
+    "message": "غیرفعال"
+  },
+  "issuePickerAria": {
+    "message": "انتخاب بخش مشکل‌دار RTLX"
+  },
+  "issuePickerFailed": {
+    "message": "ثبت شواهد انجام نشد"
+  },
+  "issuePickerHint": {
+    "message": "فقط شواهد ساختاری و استایل محاسبه‌شده ذخیره می‌شود؛ متن صفحه و مقادیر فرم ثبت نمی‌شوند."
+  },
+  "issuePickerSaved": {
+    "message": "شواهد این بخش ذخیره شد. RTLX را دوباره باز کنید و گزارش مشکل را دانلود کنید."
+  },
+  "issuePickerTitle": {
+    "message": "بخش اصلاح‌نشده را انتخاب کنید"
+  },
+  "keyboardShortcut": {
+    "message": "میانبر صفحه‌کلید"
+  },
+  "latinFontAmazonLocal": {
+    "message": "Amazon Ember فقط اگر روی سیستم نصب باشد"
+  },
+  "latinFontInter": {
+    "message": "Inter بسته‌بندی‌شده"
+  },
+  "latinFontPolicy": {
+    "message": "فونت لاتین"
+  },
+  "latinFontPreserve": {
+    "message": "حفظ فونت سایت"
+  },
+  "licenses": {
+    "message": "مجوزها"
+  },
+  "licensesText": {
+    "message": "فونت‌های بسته‌بندی‌شده فقط با مجوز OFL و هش ثبت‌شده قابل Build هستند."
+  },
+  "loadFailed": {
+    "message": "بارگذاری تنظیمات ناموفق بود."
+  },
+  "localFontNoPermission": {
+    "message": "این نسخه فونت‌های ویندوز را با local() استفاده می‌کند و برای شمارش یا خواندن فایل فونت‌ها permission جدید نمی‌گیرد."
+  },
+  "modeAsk": {
+    "message": "پرسش در موارد مشکوک"
+  },
+  "modeAutoSafe": {
+    "message": "خودکار امن پیشنهادی"
+  },
+  "modeDisabled": {
+    "message": "غیرفعال"
+  },
+  "modeForce": {
+    "message": "اجبار فقط روی کانتینرها"
+  },
+  "modeHeading": {
+    "message": "رفتار این سایت"
+  },
+  "modeHelp": {
+    "message": "حالت خودکار امن روی متن فارسی با اطمینان بالا dir=\"rtl\" را فقط روی همان کاندید اعمال می‌کند؛ html و body هرگز تغییر نمی‌کنند."
+  },
+  "noGrants": {
+    "message": "دسترسی دائمی ثبت نشده است."
+  },
+  "noProfiles": {
+    "message": "پروفایل کاربری وجود ندارد."
+  },
+  "notAssigned": {
+    "message": "تعیین نشده"
+  },
+  "notAvailable": {
+    "message": "در دسترس نیست"
+  },
+  "notDetected": {
+    "message": "تشخیص داده نشد"
+  },
+  "openControlPanel": {
+    "message": "باز کردن پنل کنترل"
+  },
+  "options": {
+    "message": "تنظیمات"
+  },
+  "optionsEyebrow": {
+    "message": "کنترل‌پنل فارسی RTLX"
+  },
+  "optionsTitle": {
+    "message": "تنظیمات RTLX"
+  },
+  "packageIntegrity": {
+    "message": "صحت فایل‌های بسته"
+  },
+  "pageActivationActive": {
+    "message": "فعال است؛ اگر صفحه اصلاح نشده، «اصلاح همین تب» را بزنید یا صفحه را Refresh کنید."
+  },
+  "pageActivationHint": {
+    "message": "با روشن‌کردن، مرورگر دسترسی همین سایت را می‌پرسد و سپس اصلاح صفحه اجرا می‌شود."
+  },
+  "pageActivationInactive": {
+    "message": "غیرفعال است؛ RTLX روی این صفحه تغییری اعمال نمی‌کند."
+  },
+  "pageActivationNeedsPermission": {
+    "message": "روشن است اما دسترسی دائمی این سایت ثبت نشده؛ Toggle را دوباره روشن کنید و اجازه بدهید."
+  },
+  "pageActivationToggle": {
+    "message": "فعال‌سازی RTLX برای این صفحه"
+  },
+  "pageDebugActual": {
+    "message": "گزارش دیباگ خودکار صفحه از داخل popup ساخته شده است؛ متن صفحه، URL کامل، مقدار فرم، کوکی، localStorage، شبکه و تصویر در گزارش وجود ندارد."
+  },
+  "pageDebugExpected": {
+    "message": "انتظار: متن فارسی و متن ترکیبی فارسی/انگلیسی راست‌چین شود و فونت بسته‌بندی‌شده RTLX Mixed Text / Vazirmatn برای نویسه‌های فارسی اعمال شود."
+  },
+  "pageStatus": {
+    "message": "وضعیت این صفحه"
+  },
+  "pendingTransactions": {
+    "message": "تراکنش‌های ناتمام"
+  },
+  "permissionDenied": {
+    "message": "دسترسی داده نشد."
+  },
+  "permissionGranted": {
+    "message": "دسترسی داده شد."
+  },
+  "permissionHeading": {
+    "message": "دسترسی سایت"
+  },
+  "permissionNotGranted": {
+    "message": "دسترسی دائمی برای این سایت وجود ندارد."
+  },
+  "permissions": {
+    "message": "دسترسی‌ها"
+  },
+  "persianFontBundled": {
+    "message": "Vazirmatn بسته‌بندی‌شده"
+  },
+  "persianFontLabel": {
+    "message": "فونت فارسی"
+  },
+  "persianFontLocalFirst": {
+    "message": "اول فونت‌های نصب‌شده ویندوز، سپس Vazirmatn"
+  },
+  "personalInstall": {
+    "message": "نصب شخصی"
+  },
+  "personalInstallHelp": {
+    "message": "ابزارهای محلی سلامت، پشتیبان‌گیری و بازیابی برای نصب دائمی RTLX در حالت sideload."
+  },
+  "popupEyebrow": {
+    "message": "RTLX نسخه شخصی"
+  },
+  "popupTitle": {
+    "message": "اصلاح فارسی صفحه"
+  },
+  "privacy": {
+    "message": "حریم خصوصی"
+  },
+  "privacyText": {
+    "message": "پردازش متن فقط در مرورگر انجام می‌شود. متن صفحه، URL کامل، داده فرم و clipboard ارسال یا ذخیره نمی‌شود."
+  },
+  "problemAreaPickerStarted": {
+    "message": "روی بخش مشکل‌دار صفحه کلیک کنید؛ قانونی ذخیره نمی‌شود."
+  },
+  "profileBuilder": {
+    "message": "سازنده پروفایل"
+  },
+  "profileBuilderHelp": {
+    "message": "پروفایل‌ها با انتخاب‌گر هوشمند ساخته می‌شوند و نیازی به نوشتن CSS selector نیست."
+  },
+  "profileCount": {
+    "message": "پروفایل‌های کاربری"
+  },
+  "profileDeleted": {
+    "message": "پروفایل حذف شد."
+  },
+  "profileHost": {
+    "message": "میزبان"
+  },
+  "profileInspector": {
+    "message": "بازرس پروفایل"
+  },
+  "profileName": {
+    "message": "نام"
+  },
+  "profileSource": {
+    "message": "منبع"
+  },
+  "profileVersion": {
+    "message": "نسخه"
+  },
+  "profiles": {
+    "message": "پروفایل‌ها"
+  },
+  "profilesExported": {
+    "message": "پروفایل‌ها صادر شدند."
+  },
+  "profilesImported": {
+    "message": "پروفایل‌ها وارد شدند."
+  },
+  "quickFixHeading": {
+    "message": "اقدام سریع"
+  },
+  "quickFixHelp": {
+    "message": "برای بیشتر سایت‌ها همین دو کار کافی است: دسترسی سایت را بدهید و اصلاح همین تب را اجرا کنید."
+  },
+  "recoveryDone": {
+    "message": "بازیابی کامل شد."
+  },
+  "recoveryRunning": {
+    "message": "بازیابی دترمینیستیک در حال اجراست…"
+  },
+  "remoteProfiles": {
+    "message": "پروفایل‌های راه‌دور"
+  },
+  "remoteProfilesUnavailable": {
+    "message": "تا تعیین endpoint و کلید امضای تولیدی معتبر، این قابلیت در وضعیت insufficient_evidence غیرفعال است."
+  },
+  "reset": {
+    "message": "بازنشانی"
+  },
+  "resetDone": {
+    "message": "تنظیمات بازنشانی شد."
+  },
+  "resetSite": {
+    "message": "پاک‌کردن تنظیمات قدیمی این سایت"
+  },
+  "resetSiteConfirm": {
+    "message": "تنظیمات و قوانین قدیمی این سایت پاک شوند؟"
+  },
+  "resetSiteDone": {
+    "message": "تنظیمات این سایت پاک شد."
+  },
+  "resetTemporaryDisable": {
+    "message": "فعال‌سازی دوباره"
+  },
+  "restoreBackup": {
+    "message": "بازیابی پشتیبان"
+  },
+  "restoreBackupWarning": {
+    "message": "ورود ابتدا به‌صورت dry-run بررسی می‌شود. دسترسی‌ها، تشخیص‌ها، Safe Mode و journalهای عملیاتی هرگز خودکار بازیابی نمی‌شوند."
+  },
+  "revoke": {
+    "message": "لغو"
+  },
+  "revokeAll": {
+    "message": "لغو همه دسترسی‌های سایت"
+  },
+  "revoked": {
+    "message": "دسترسی‌ها لغو شدند."
+  },
+  "rollbackDisable": {
+    "message": "غیرفعال و بازگردانی تغییرات"
+  },
+  "rolledBack": {
+    "message": "تغییرات افزونه بازگردانی شد."
+  },
+  "runHealthCheck": {
+    "message": "اجرای خودآزمایی"
+  },
+  "safetyHeading": {
+    "message": "ایمنی و بازگردانی"
+  },
+  "save": {
+    "message": "ذخیره"
+  },
+  "saved": {
+    "message": "ذخیره شد."
+  },
+  "selectProblemArea": {
+    "message": "مشخص‌کردن بخش اصلاح‌نشده"
+  },
+  "shortcutHelp": {
+    "message": "میانبر این فرمان از تنظیمات میانبر افزونه‌های مرورگر قابل تغییر است."
+  },
+  "signedProfileImported": {
+    "message": "پروفایل اشتراکی امضاشده وارد شد."
+  },
+  "siteDisabled": {
+    "message": "RTLX برای این سایت غیرفعال شد."
+  },
+  "siteEnabled": {
+    "message": "RTLX برای این سایت فعال شد."
+  },
+  "siteMode": {
+    "message": "حالت سایت"
+  },
+  "smartFixPage": {
+    "message": "اصلاح هوشمند صفحه"
+  },
+  "smartPicker": {
+    "message": "انتخاب‌گر هوشمند عنصر"
+  },
+  "smartPickerHelp": {
+    "message": "نوع را انتخاب کنید و سپس عنصر را در صفحه برگزینید. RTLX selector را خودکار می‌سازد."
+  },
+  "startPicker": {
+    "message": "انتخاب از صفحه"
+  },
+  "statusBadgeError": {
+    "message": "نیازمند بررسی"
+  },
+  "statusBadgeHealthy": {
+    "message": "سالم"
+  },
+  "statusBadgeOff": {
+    "message": "خاموش"
+  },
+  "statusBadgeWarning": {
+    "message": "در حال کار"
+  },
+  "statusChecking": {
+    "message": "در حال بررسی صفحه…"
+  },
+  "statusHealthy": {
+    "message": "افزونه فعال است و پردازش اصلی صفحه کامل شده است."
+  },
+  "statusInactive": {
+    "message": "RTLX برای این سایت خاموش است."
+  },
+  "captureRequiresVisibleTab": {
+    "message": "زبانهٔ هدف مخفی یا غیرفعال است. به آن برگردید و سپس دوباره گزارش را دانلود کنید."
+  },
+  "statusCaptureRequiresVisibleTab": {
+    "message": "پیش از ساخت گزارش به زبانهٔ هدف برگردید."
+  },
+  "statusNeedsAttention": {
+    "message": "پردازش متوقف یا دچار خطای جدی شده است؛ گزارش مشکل بگیر."
+  },
+  "statusPermissionRequired": {
+    "message": "برای این سایت اجازه دسترسی لازم است."
+  },
+  "statusProcessing": {
+    "message": "افزونه فعال است و هنوز بخشی از صفحه را پردازش می‌کند."
+  },
+  "statusStarting": {
+    "message": "افزونه فعال است و در حال شروع پردازش صفحه است."
+  },
+  "storageUsage": {
+    "message": "حجم ذخیره‌سازی (local / sync)"
+  },
+  "supportExported": {
+    "message": "بسته پشتیبانی صادر شد."
+  },
+  "supportHeading": {
+    "message": "پشتیبانی"
+  },
+  "suspiciousDirection": {
+    "message": "جهت ارث‌رسیده LTR با محتوای فارسی پرقدرت تشخیص داده شد."
+  },
+  "temporarilyDisabled": {
+    "message": "تعلیق موقت"
+  },
+  "temporaryDisable": {
+    "message": "تعلیق ۱۰ دقیقه‌ای"
+  },
+  "temporaryDisableReset": {
+    "message": "تعلیق موقت حذف شد."
+  },
+  "temporaryDisableSet": {
+    "message": "افزونه برای این سایت ۱۰ دقیقه تعلیق شد."
+  },
+  "toggleShortcutDescription": {
+    "message": "تغییر وضعیت RTLX برای سایت فعلی"
+  },
+  "toggleSite": {
+    "message": "تغییر وضعیت این سایت"
+  },
+  "typography": {
+    "message": "فونت و تایپوگرافی"
+  },
+  "typographyHelp": {
+    "message": "فونت فارسی از فونت محلی ویندوز یا فونت بسته‌بندی‌شده Vazirmatn تأمین می‌شود. برای لاتین می‌توانید Inter بسته‌بندی‌شده، Amazon Ember محلی یا حفظ فونت سایت را انتخاب کنید."
+  },
+  "unsupportedPage": {
+    "message": "این صفحه قابل پردازش نیست."
+  },
+  "validateBackup": {
+    "message": "اعتبارسنجی / dry-run"
+  },
+  "versionLabel": {
+    "message": "نسخه:"
+  },
+  "windowsFontsHelp": {
+    "message": "RTLX بدون دسترسی جدید، ابتدا فونت‌های نصب‌شده ویندوز مانند Vazirmatn، Vazir، IRANSans، Segoe UI و Tahoma را با CSS local() امتحان می‌کند و سپس به فونت بسته‌بندی‌شده برمی‌گردد."
+  },
+  "statusBackgroundUnavailable": {
+    "message": "پس‌زمینهٔ افزونه در دسترس نیست."
+  },
+  "statusBackgroundInitializationFailed": {
+    "message": "راه‌اندازی افزونه ناموفق بود."
+  },
+  "statusContextTimedOut": {
+    "message": "زمان بارگذاری تنظیمات به پایان رسید."
+  },
+  "statusInvalidContextResponse": {
+    "message": "پاسخ تنظیمات افزونه نامعتبر بود."
+  },
+  "statusSettingsUnavailable": {
+    "message": "تنظیمات در دسترس نیست."
+  },
+  "statusResponseContractViolation": {
+    "message": "پس‌زمینهٔ افزونه یک پاسخ نامعتبر تولید کرد. گزارش اشکال‌زدایی را دانلود کنید."
+  },
+  "statusRequestContractViolation": {
+    "message": "درخواست پنجرهٔ افزونه پیش از ارسال با قرارداد پیام‌رسانی سازگار نبود. گزارش دیباگ را دانلود کنید."
+  }
+}

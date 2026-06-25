@@ -1,0 +1,11 @@
+{
+  "fixtureId": "05-code-blocks-and-copy-icons",
+  "verification": "verified_by_synthetic_fixture",
+  "source": "RTLX repository deterministic fixture",
+  "assertions": [
+    "no html/body dir mutation",
+    "text sequence preserved",
+    "hard exclusions preserved"
+  ],
+  "manualEvidenceRequired": false
+}

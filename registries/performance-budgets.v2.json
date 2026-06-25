@@ -1,0 +1,53 @@
+{
+  "benchmark": {
+    "coldRuns": true,
+    "network": "offline_for_core_tests",
+    "runs": 30,
+    "viewport": "1440x900"
+  },
+  "budgets": {
+    "inducedClsP95Max": 0.01,
+    "initialVisibleProcessingP95Ms": 100,
+    "longTasksOver50Ms": 0,
+    "maxAddedNodesPer1000EligibleTextNodes": 150,
+    "memoryGrowthAfter20SpaCyclesMbMax": 5,
+    "mutationCallbackP95Ms": 4,
+    "workSliceMaxMs": 8
+  },
+  "changelog": [
+    "1.0.0 acceptance targets from SSOT v12",
+    "1.1.0 Browser Harmony Hardening runtime limits for RTLX 15.1.0",
+    "1.2.0 Browser Survival Hardening soak and crash-evidence targets for RTLX 15.2.0",
+    "2.0.0 adds condition-based stable recovery timing for RTLX 15.9.0"
+  ],
+  "forwardCompatibility": "Budget changes require a new registry version and benchmark report.",
+  "registryId": "performance-budgets",
+  "registryVersion": 2,
+  "runtimeLimits": {
+    "degradationQuietPeriodMs": 30000,
+    "degradationStableRecoveryMs": 1000,
+    "diagnosticBatchFlushMs": 2000,
+    "diagnosticBatchItemsMax": 50,
+    "diagnosticPayloadBytesMax": 65536,
+    "diagnosticRateBatchesMax": 10,
+    "diagnosticRateWindowMs": 10000,
+    "inputAnalysisWindowCodeUnitsMax": 512,
+    "intersectionPruneBudget": 64,
+    "intersectionTargetsMax": 300,
+    "lifecycleResumeDiscoveryLimit": 100,
+    "normalNodesPerSlice": 50,
+    "normalSliceMs": 8,
+    "ownedMutationSignatureTtlMs": 2000,
+    "ownedMutationSignaturesMax": 512,
+    "performanceRawSamplesPerPhaseMax": 256,
+    "pressureMutationBurstThreshold": 250,
+    "pressureNodesPerSlice": 20,
+    "pressureQueueThreshold": 200,
+    "pressureSliceMs": 4,
+    "sharedDelayBucketWidthMs": 100,
+    "sharedDelayBucketsMax": 8,
+    "sharedDelayedCandidatesMax": 250
+  },
+  "schemaVersion": "1.0.0",
+  "verificationState": "proposed_acceptance_target"
+}

@@ -1,0 +1,9 @@
+{
+  "fixtureVersion": "1.0.0",
+  "assertions": [
+    "list repair uses logical properties only",
+    "list markers remain visible",
+    "nested indentation remains deterministic",
+    "list text is not reconstructed"
+  ]
+}

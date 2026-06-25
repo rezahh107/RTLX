@@ -1,0 +1,9 @@
+{
+  "schemaVersion": "1.0.0",
+  "registryVersion": 1,
+  "keys": [],
+  "verificationState": "insufficient_evidence",
+  "missingEvidence": "Authoritative production profile endpoint and ECDSA P-256 public key lifecycle are not specified by RTLX-SSOT 12.0.0.",
+  "changelog": ["1.0.0 empty fail-closed key registry"],
+  "forwardCompatibility": "Only signed, versioned bundled key registry updates are accepted."
+}

@@ -1,0 +1,57 @@
+{
+  "registryId": "browser-capabilities",
+  "registryVersion": 1,
+  "schemaVersion": "1.0.0",
+  "baseline": {
+    "chromium": "121",
+    "edge": "121",
+    "firefox": "140"
+  },
+  "capabilities": {
+    "storageAccessLevel": {
+      "mode": "feature-detect",
+      "fallback": "background-message-only"
+    },
+    "registeredContentScriptUpdate": {
+      "mode": "feature-detect",
+      "fallback": "rollback-safe-replace"
+    },
+    "matchOriginAsFallback": {
+      "mode": "optimistic-with-fallback",
+      "fallback": "omit-property"
+    },
+    "documentIdentity": {
+      "mode": "sender-document-id-or-content-instance",
+      "fallback": "content-instance-generation"
+    },
+    "tabDiscardState": {
+      "mode": "feature-detect",
+      "fallback": "unreachable-tab-intent"
+    },
+    "storageBytesInUse": {
+      "mode": "feature-detect",
+      "fallback": "canonical-size-estimate"
+    },
+    "runtimeContextCensus": {
+      "mode": "feature-detect",
+      "fallback": "document-and-tab-registries"
+    },
+    "updateAvailableQuiescence": {
+      "mode": "feature-detect",
+      "fallback": "startup-recovery-only"
+    },
+    "firefoxAndroidPackaging": {
+      "mode": "separate-manifest",
+      "fallback": "desktop-package-not-advertised-on-android"
+    },
+    "syncConflictReadback": {
+      "mode": "canonical-readback",
+      "fallback": "browser-effective-value"
+    }
+  },
+  "forbidden": ["user-agent-sniffing", "remote-capability-registry"],
+  "changelog": [
+    "1.0.0 Browser Survival capability registry",
+    "1.1.0 Operational Proof and Update Safety capabilities"
+  ]
+}

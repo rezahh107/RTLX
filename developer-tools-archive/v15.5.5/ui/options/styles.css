@@ -1,0 +1,264 @@
+@font-face {
+  font-family: 'RTLX UI Persian';
+  src:
+    local('Vazirmatn'),
+    local('Vazir'),
+    local('IRANSans'),
+    url('../fonts/vazirmatn-arabic-400-normal.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'RTLX UI Persian';
+  src:
+    local('Vazirmatn'),
+    local('Vazir'),
+    local('IRANSans'),
+    url('../fonts/vazirmatn-arabic-600-normal.woff2') format('woff2');
+  font-weight: 600 800;
+  font-style: normal;
+  font-display: swap;
+}
+:root {
+  font-family: 'RTLX UI Persian', Tahoma, system-ui, sans-serif;
+  color-scheme: light dark;
+  --surface: Canvas;
+  --surface-soft: color-mix(in srgb, Canvas 92%, CanvasText 8%);
+  --surface-card: color-mix(in srgb, Canvas 97%, CanvasText 3%);
+  --text: CanvasText;
+  --muted: color-mix(in srgb, CanvasText 68%, transparent);
+  --border: color-mix(in srgb, CanvasText 16%, transparent);
+  --accent: #6d5dfc;
+  --danger: #b42318;
+}
+* {
+  box-sizing: border-box;
+}
+html,
+body {
+  margin: 0;
+  background: var(--surface-soft);
+  color: var(--text);
+}
+body {
+  direction: rtl;
+  text-align: start;
+}
+main {
+  max-width: 1040px;
+  margin-inline: auto;
+  padding: 24px;
+  display: grid;
+  gap: 18px;
+}
+.hero,
+.card {
+  background: var(--surface-card);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  box-shadow: 0 10px 30px color-mix(in srgb, CanvasText 7%, transparent);
+}
+.hero {
+  padding: 24px;
+}
+.hero h1 {
+  margin: 0 0 6px;
+  font-size: clamp(1.35rem, 3vw, 2rem);
+}
+.hero p,
+.card p,
+.steps,
+.notice {
+  line-height: 1.9;
+}
+.eyebrow {
+  margin: 0 0 4px;
+  color: var(--muted);
+  font-size: 0.86rem;
+}
+nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background: color-mix(in srgb, var(--surface-soft) 92%, transparent);
+  backdrop-filter: blur(12px);
+  padding-block: 10px;
+}
+nav a {
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 7px 12px;
+  background: var(--surface-card);
+  text-decoration: none;
+}
+a {
+  color: LinkText;
+  text-underline-offset: 3px;
+}
+.card {
+  padding: 22px;
+  scroll-margin-top: 72px;
+}
+.card h2,
+.card h3 {
+  margin-block: 0 10px;
+}
+.row {
+  display: grid;
+  grid-template-columns: minmax(15rem, 1fr) minmax(12rem, 20rem);
+  align-items: center;
+  gap: 16px;
+  margin-block: 12px;
+}
+button,
+select,
+.file-button {
+  font: inherit;
+  padding: 10px 14px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: ButtonFace;
+  color: ButtonText;
+}
+button {
+  cursor: pointer;
+}
+button:hover:not(:disabled),
+.file-button:hover {
+  filter: brightness(1.03);
+}
+button:focus-visible,
+select:focus-visible,
+input:focus-visible,
+a:focus-visible,
+.file-button:focus-within {
+  outline: 3px solid Highlight;
+  outline-offset: 3px;
+}
+button:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+.notice {
+  border-inline-start: 4px solid #b57900;
+  padding: 10px 12px;
+  border-radius: 12px;
+  background: color-mix(in srgb, #b57900 12%, transparent);
+}
+.steps {
+  margin-block: 0 12px;
+  padding-inline-start: 1.5rem;
+}
+.steps li {
+  margin-block: 6px;
+}
+code,
+kbd,
+#grants,
+.result {
+  direction: ltr;
+  text-align: left;
+}
+kbd,
+code {
+  border: 1px solid var(--border);
+  border-radius: 7px;
+  padding: 2px 7px;
+  background: color-mix(in srgb, Canvas 92%, CanvasText 8%);
+}
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+  margin-block: 14px;
+}
+.file-button {
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+}
+.file-button input {
+  position: absolute;
+  inline-size: 1px;
+  block-size: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+}
+.table-wrap {
+  overflow-x: auto;
+}
+table {
+  inline-size: 100%;
+  border-collapse: collapse;
+  min-width: 620px;
+}
+th,
+td {
+  text-align: start;
+  padding: 10px;
+  border-block-end: 1px solid var(--border);
+}
+th {
+  color: var(--muted);
+  font-weight: 700;
+}
+#grants {
+  padding-inline-start: 1.25rem;
+}
+#grants li {
+  margin-block: 8px;
+}
+.health-grid {
+  display: grid;
+  gap: 0.8rem;
+  grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+}
+.health-grid div {
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 0.9rem;
+  background: color-mix(in srgb, Canvas 96%, CanvasText 4%);
+}
+.health-grid dt {
+  color: var(--muted);
+  font-weight: 700;
+  margin-bottom: 0.35rem;
+}
+.health-grid dd {
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+.result {
+  min-height: 3rem;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 12px;
+  background: color-mix(in srgb, Canvas 92%, CanvasText 8%);
+}
+#status {
+  min-height: 1.4em;
+  color: var(--muted);
+  line-height: 1.8;
+}
+@media (max-width: 720px) {
+  main {
+    padding: 14px;
+  }
+  .row {
+    grid-template-columns: 1fr;
+  }
+  nav {
+    position: static;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+  }
+}

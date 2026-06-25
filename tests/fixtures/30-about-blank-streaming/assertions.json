@@ -1,0 +1,9 @@
+{
+  "fixtureVersion": "1.0.0",
+  "assertions": [
+    "about:blank frame is processed only when browser origin fallback and permissions allow",
+    "streamed mutations are queued rather than rescanning the full document",
+    "duplicate wrappers are not created",
+    "frame cleanup is independent"
+  ]
+}

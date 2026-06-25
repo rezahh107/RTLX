@@ -1,0 +1,41 @@
+{
+  "schemaVersion": "1.0.0",
+  "registryId": "persian-signals",
+  "registryVersion": 1,
+  "distinctCodePoints": [1662, 1670, 1688, 1711, 1705, 1740],
+  "lexicalSignals": [
+    "از",
+    "است",
+    "با",
+    "به",
+    "برای",
+    "در",
+    "را",
+    "شما",
+    "فارسی",
+    "که",
+    "می",
+    "و",
+    "یک",
+    "این",
+    "شود"
+  ],
+  "provenance": {
+    "source": "RTLX-SSOT-v12.0.0-FA section 15 plus small auditable project lexicon",
+    "license": "CC0-1.0",
+    "verification": "synthetic multilingual fixtures"
+  },
+  "thresholds": {
+    "minimumArabicScriptLetters": 8,
+    "minimumDistinctLetters": 1,
+    "minimumLexicalHitsAlternative": 2,
+    "minimumConfidence": 0.8,
+    "distinctRatioScale": 0.03
+  },
+  "changelog": [
+    "1.0.0 initial classifier registry",
+    "1.0.1 add auditable Urdu-distinct negative signals"
+  ],
+  "forwardCompatibility": "New registry versions require new classifier fixtures; v1 behavior remains frozen.",
+  "nonPersianDistinctCodePoints": [1657, 1672, 1681, 1722, 1729, 1746]
+}

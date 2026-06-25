@@ -1,0 +1,208 @@
+{
+  "displayName": "Gemini",
+  "features": {
+    "bidi": true,
+    "direction": true,
+    "shadowOpen": true,
+    "typography": true
+  },
+  "match": {
+    "hosts": ["gemini.google.com"],
+    "pathPrefixes": ["/"]
+  },
+  "metadata": {
+    "product": "Gemini",
+    "source": "official",
+    "verification": "synthetic-fixture"
+  },
+  "profileId": "official:gemini",
+  "profileKind": "bundled",
+  "profileVersion": 2,
+  "rules": [
+    {
+      "alignmentMode": "preserve",
+      "category": "code",
+      "directionMode": "force-ltr",
+      "enabled": true,
+      "initialDelayMs": 0,
+      "ruleId": "rule-ccfde4b9",
+      "selector": "code",
+      "typographyMode": "preserve"
+    },
+    {
+      "alignmentMode": "preserve",
+      "category": "code",
+      "directionMode": "force-ltr",
+      "enabled": true,
+      "initialDelayMs": 0,
+      "ruleId": "rule-2a3aa7e5",
+      "selector": "pre",
+      "typographyMode": "preserve"
+    },
+    {
+      "alignmentMode": "start",
+      "category": "content",
+      "directionMode": "auto-safe",
+      "enabled": true,
+      "initialDelayMs": 0,
+      "ruleId": "rule-35f1faf8",
+      "selector": "[role=\"main\"]",
+      "typographyMode": "persian-only"
+    },
+    {
+      "alignmentMode": "start",
+      "category": "content",
+      "directionMode": "auto-safe",
+      "enabled": true,
+      "initialDelayMs": 0,
+      "ruleId": "rule-7eb3f78f",
+      "selector": "main",
+      "typographyMode": "persian-only"
+    },
+    {
+      "alignmentMode": "start",
+      "category": "content",
+      "directionMode": "auto-safe",
+      "enabled": true,
+      "initialDelayMs": 0,
+      "ruleId": "rule-65d7a53d",
+      "selector": "message-content",
+      "typographyMode": "persian-only"
+    },
+    {
+      "alignmentMode": "start",
+      "category": "content",
+      "directionMode": "auto-safe",
+      "enabled": true,
+      "initialDelayMs": 0,
+      "ruleId": "rule-d130c7d8",
+      "selector": "user-query",
+      "typographyMode": "persian-only"
+    },
+    {
+      "alignmentMode": "preserve",
+      "category": "editor",
+      "directionMode": "preserve",
+      "enabled": true,
+      "initialDelayMs": 0,
+      "ruleId": "rule-6a813b4c",
+      "selector": "[contenteditable=\"true\"]",
+      "typographyMode": "preserve"
+    },
+    {
+      "alignmentMode": "preserve",
+      "category": "editor",
+      "directionMode": "preserve",
+      "enabled": true,
+      "initialDelayMs": 0,
+      "ruleId": "rule-57144a3f",
+      "selector": "[role=\"textbox\"]",
+      "typographyMode": "preserve"
+    },
+    {
+      "alignmentMode": "preserve",
+      "category": "math",
+      "directionMode": "preserve",
+      "enabled": true,
+      "initialDelayMs": 0,
+      "ruleId": "rule-b2e1a8d2",
+      "selector": ".MathJax",
+      "typographyMode": "preserve"
+    },
+    {
+      "alignmentMode": "preserve",
+      "category": "math",
+      "directionMode": "preserve",
+      "enabled": true,
+      "initialDelayMs": 0,
+      "ruleId": "rule-26e0eb5e",
+      "selector": ".katex",
+      "typographyMode": "preserve"
+    },
+    {
+      "alignmentMode": "preserve",
+      "category": "math",
+      "directionMode": "preserve",
+      "enabled": true,
+      "initialDelayMs": 0,
+      "ruleId": "rule-9bd5b027",
+      "selector": "math",
+      "typographyMode": "preserve"
+    },
+    {
+      "alignmentMode": "preserve",
+      "category": "mutationSensitive",
+      "directionMode": "preserve",
+      "enabled": true,
+      "initialDelayMs": 0,
+      "ruleId": "rule-f4a4b179",
+      "selector": "a",
+      "typographyMode": "preserve"
+    },
+    {
+      "alignmentMode": "preserve",
+      "category": "mutationSensitive",
+      "directionMode": "preserve",
+      "enabled": true,
+      "initialDelayMs": 0,
+      "ruleId": "rule-8a9751ea",
+      "selector": "button",
+      "typographyMode": "preserve"
+    },
+    {
+      "alignmentMode": "preserve",
+      "category": "mutationSensitive",
+      "directionMode": "preserve",
+      "enabled": true,
+      "initialDelayMs": 0,
+      "ruleId": "rule-1c37c758",
+      "selector": "label",
+      "typographyMode": "preserve"
+    },
+    {
+      "alignmentMode": "preserve",
+      "category": "mutationSensitive",
+      "directionMode": "preserve",
+      "enabled": true,
+      "initialDelayMs": 0,
+      "ruleId": "rule-e26eed6e",
+      "selector": "summary",
+      "typographyMode": "preserve"
+    },
+    {
+      "alignmentMode": "preserve",
+      "category": "terminal",
+      "directionMode": "force-ltr",
+      "enabled": true,
+      "initialDelayMs": 0,
+      "ruleId": "rule-20bf9dbf",
+      "selector": ".xterm",
+      "typographyMode": "preserve"
+    },
+    {
+      "alignmentMode": "preserve",
+      "category": "terminal",
+      "directionMode": "force-ltr",
+      "enabled": true,
+      "initialDelayMs": 0,
+      "ruleId": "rule-68da0672",
+      "selector": "[data-terminal]",
+      "typographyMode": "preserve"
+    }
+  ],
+  "schemaVersion": "3.0.0",
+  "scopePolicy": {
+    "mode": "conversation",
+    "pathDepth": 2
+  },
+  "selectors": {
+    "code": ["code", "pre"],
+    "content": ["[role=\"main\"]", "main", "message-content", "user-query"],
+    "editor": ["[contenteditable=\"true\"]", "[role=\"textbox\"]"],
+    "exclude": [],
+    "math": [".MathJax", ".katex", "math"],
+    "mutationSensitive": ["a", "button", "label", "summary"],
+    "terminal": [".xterm", "[data-terminal]"]
+  },
+  "thresholds": {}
+}

@@ -1,0 +1,8 @@
+{
+  "fixtureVersion": "1.0.0",
+  "assertions": [
+    "owned typography style is inserted into document head",
+    "style injection never appends an element directly to Document",
+    "rollback removes the owned style and candidate class"
+  ]
+}

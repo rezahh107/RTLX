@@ -1,0 +1,60 @@
+{
+  "schemaVersion": "1.0.0",
+  "registryId": "hard-exclusions",
+  "registryVersion": 1,
+  "elements": [
+    "audio",
+    "canvas",
+    "datalist",
+    "embed",
+    "iframe",
+    "input",
+    "math",
+    "meter",
+    "noscript",
+    "object",
+    "option",
+    "progress",
+    "script",
+    "select",
+    "style",
+    "svg",
+    "template",
+    "textarea",
+    "video"
+  ],
+  "codeZones": [
+    ".CodeMirror",
+    ".ProseMirror",
+    ".ace_editor",
+    ".monaco-editor",
+    ".ql-editor",
+    ".xterm",
+    "[contenteditable]",
+    "[data-editor]",
+    "[role=code]",
+    "[role=textbox]",
+    "code",
+    "kbd",
+    "pre",
+    "samp",
+    "var"
+  ],
+  "mutationSensitive": [
+    "[aria-atomic=true]",
+    "[aria-live]:not([aria-live=off])",
+    "[role=button]",
+    "[role=link]",
+    "a",
+    "button",
+    "label",
+    "summary"
+  ],
+  "changelog": ["1.0.0 initial SSOT v12 exclusions", "1.0.1 add versioned code-like thresholds"],
+  "forwardCompatibility": "Profiles may add exclusions but cannot remove entries from this registry.",
+  "codeZoneHeuristics": {
+    "minimumNonWhitespace": 12,
+    "punctuationDensity": 0.12,
+    "minimumSignals": 2
+  }
+}

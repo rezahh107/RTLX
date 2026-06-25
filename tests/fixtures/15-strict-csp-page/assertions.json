@@ -1,0 +1,11 @@
+{
+  "fixtureId": "15-strict-csp-page",
+  "verification": "verified_by_synthetic_fixture",
+  "source": "RTLX repository deterministic fixture",
+  "assertions": [
+    "no html/body dir mutation",
+    "text sequence preserved",
+    "hard exclusions preserved"
+  ],
+  "manualEvidenceRequired": false
+}

@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>RTLX</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main>
+      <header class="hero">
+        <p class="eyebrow" data-i18n="optionsEyebrow"></p>
+        <h1 data-i18n="optionsTitle"></h1>
+        <p><span data-i18n="versionLabel"></span> <code id="version"></code></p>
+      </header>
+      <nav aria-label="بخش‌های تنظیمات">
+        <a href="#help" data-i18n="help"></a>
+        <a href="#general" data-i18n="general"></a>
+        <a href="#typography-options" data-i18n="typography"></a>
+        <a href="#profiles" data-i18n="profiles"></a>
+        <a href="#permissions" data-i18n="permissions"></a>
+        <a href="#privacy" data-i18n="privacy"></a>
+        <a href="#accessibility" data-i18n="accessibility"></a>
+        <a href="#personal-install" data-i18n="personalInstall"></a>
+        <a href="#diagnostics" data-i18n="diagnostics"></a>
+        <a href="#licenses" data-i18n="licenses"></a>
+      </nav>
+      <section id="help" class="card help-card">
+        <h2 data-i18n="helpHeading"></h2>
+        <ol class="steps">
+          <li data-i18n="helpStepGrant"></li>
+          <li data-i18n="helpStepApply"></li>
+          <li data-i18n="helpStepMode"></li>
+          <li data-i18n="helpStepRollback"></li>
+        </ol>
+        <p class="notice" data-i18n="windowsFontsHelp"></p>
+      </section>
+      <section id="general" class="card">
+        <h2 data-i18n="general"></h2>
+        <label class="row"
+          ><span data-i18n="extensionEnabled"></span><input id="enabled" type="checkbox"
+        /></label>
+        <label class="row">
+          <span data-i18n="defaultSiteMode"></span>
+          <select id="default-site-mode">
+            <option value="disabled" data-i18n="modeDisabled"></option>
+            <option value="ask" data-i18n="modeAsk"></option>
+            <option value="auto-safe" data-i18n="modeAutoSafe"></option>
+            <option value="force-candidate-rtl" data-i18n="modeForce"></option>
+          </select>
+        </label>
+        <label class="row"
+          ><span data-i18n="remoteProfiles"></span
+          ><input id="remote-profiles" type="checkbox" disabled
+        /></label>
+        <p class="notice" data-i18n="remoteProfilesUnavailable"></p>
+        <label class="row"
+          ><span data-i18n="diagnosticsPersistence"></span
+          ><input id="diagnostics-persistence" type="checkbox"
+        /></label>
+        <p><span data-i18n="keyboardShortcut"></span>: <kbd id="shortcut-value"></kbd></p>
+        <p data-i18n="shortcutHelp"></p>
+        <div class="actions">
+          <button id="save" type="button" data-i18n="save"></button
+          ><button id="reset" type="button" data-i18n="reset"></button>
+        </div>
+      </section>
+      <section id="typography-options" class="card">
+        <h2 data-i18n="typography"></h2>
+        <p data-i18n="typographyHelp"></p>
+        <label class="row">
+          <span data-i18n="latinFontPolicy"></span>
+          <select id="latin-font">
+            <option value="inter" data-i18n="latinFontInter"></option>
+            <option value="amazon-ember-local" data-i18n="latinFontAmazonLocal"></option>
+            <option value="preserve" data-i18n="latinFontPreserve"></option>
+          </select>
+        </label>
+        <p class="notice" data-i18n="localFontNoPermission"></p>
+      </section>
+      <section id="profiles" class="card">
+        <h2 data-i18n="profileBuilder"></h2>
+        <p data-i18n="profileBuilderHelp"></p>
+        <div class="actions">
+          <button id="export-profiles" type="button" data-i18n="exportProfiles"></button>
+          <label class="file-button"
+            ><span data-i18n="importProfiles"></span
+            ><input id="import-profiles" type="file" accept="application/json,.json"
+          /></label>
+          <label class="file-button"
+            ><span data-i18n="importSignedProfile"></span
+            ><input id="import-signed-profile" type="file" accept="application/json,.json"
+          /></label>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th data-i18n="profileName"></th>
+                <th data-i18n="profileHost"></th>
+                <th data-i18n="profileVersion"></th>
+                <th data-i18n="actions"></th>
+              </tr>
+            </thead>
+            <tbody id="profile-list"></tbody>
+          </table>
+        </div>
+      </section>
+      <section id="permissions" class="card">
+        <h2 data-i18n="permissions"></h2>
+        <ul id="grants"></ul>
+        <button id="revoke-all" type="button" data-i18n="revokeAll"></button>
+      </section>
+      <section id="privacy" class="card">
+        <h2 data-i18n="privacy"></h2>
+        <p data-i18n="privacyText"></p>
+      </section>
+      <section id="accessibility" class="card">
+        <h2 data-i18n="accessibility"></h2>
+        <p data-i18n="accessibilityText"></p>
+      </section>
+      <section id="personal-install" class="card">
+        <h2 data-i18n="personalInstall"></h2>
+        <p data-i18n="personalInstallHelp"></p>
+        <dl class="health-grid">
+          <div>
+            <dt data-i18n="extensionId"></dt>
+            <dd><code id="extension-id" dir="ltr"></code></dd>
+          </div>
+          <div>
+            <dt data-i18n="healthStatus"></dt>
+            <dd id="health-status"></dd>
+          </div>
+          <div>
+            <dt data-i18n="packageIntegrity"></dt>
+            <dd id="health-integrity"></dd>
+          </div>
+          <div>
+            <dt data-i18n="storageUsage"></dt>
+            <dd id="health-storage" dir="ltr"></dd>
+          </div>
+          <div>
+            <dt data-i18n="pendingTransactions"></dt>
+            <dd id="health-transactions"></dd>
+          </div>
+          <div>
+            <dt data-i18n="profileCount"></dt>
+            <dd id="health-profiles"></dd>
+          </div>
+          <div>
+            <dt data-i18n="diagnosticCount"></dt>
+            <dd id="health-diagnostics"></dd>
+          </div>
+        </dl>
+        <div class="actions">
+          <button id="run-health" type="button" data-i18n="runHealthCheck"></button>
+          <button id="export-backup" type="button" data-i18n="exportCompleteBackup"></button>
+          <button id="export-support" type="button" data-i18n="exportSupportBundle"></button>
+          <button id="clear-diagnostics" type="button" data-i18n="clearDiagnostics"></button>
+          <button id="attempt-recovery" type="button" data-i18n="attemptRecovery"></button>
+        </div>
+        <h3 data-i18n="restoreBackup"></h3>
+        <p class="notice" data-i18n="restoreBackupWarning"></p>
+        <label class="file-button"
+          ><span data-i18n="chooseBackup"></span
+          ><input id="import-backup" type="file" accept="application/json,.json"
+        /></label>
+        <div class="actions">
+          <button id="validate-backup" type="button" data-i18n="validateBackup" disabled></button
+          ><button id="apply-backup" type="button" data-i18n="applyBackup" disabled></button>
+        </div>
+        <pre id="backup-preview" class="result" aria-live="polite"></pre>
+      </section>
+      <section id="diagnostics" class="card">
+        <h2 data-i18n="diagnostics"></h2>
+        <p data-i18n="diagnosticsText"></p>
+        <button id="export" type="button" data-i18n="exportDiagnostics"></button>
+      </section>
+      <section id="licenses" class="card">
+        <h2 data-i18n="licenses"></h2>
+        <p data-i18n="licensesText"></p>
+        <ul>
+          <li>Vazirmatn — SIL Open Font License 1.1</li>
+          <li>Inter — SIL Open Font License 1.1</li>
+          <li>
+            Amazon Ember Display — فقط تشخیص local-font؛ هیچ فایل فونتی بسته‌بندی یا دانلود نمی‌شود،
+            چون مجوز بازتوزیع/embedding احراز نشده است.
+          </li>
+        </ul>
+      </section>
+      <p id="status" role="status" aria-live="polite"></p>
+    </main>
+    <script src="index.js"></script>
+  </body>
+</html>
