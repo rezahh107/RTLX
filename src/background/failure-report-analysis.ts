@@ -9,6 +9,11 @@ import type {
   RuntimeSnapshot,
 } from '../shared/types';
 
+const OPTIONAL_AUTOMATIC_SELECTION_REASON_CODES = new Set([
+  'RTLX-FEC-SELECTION-ABSENT',
+  'RTLX-FEC-SELECTION-LOCATION-MISMATCH-CLEARED',
+]);
+
 export function derivedReportDiagnostics(
   profileStatus: string | null,
   selectionReasonCode: string,
@@ -78,7 +83,11 @@ export function analysisSummary(
   const profileStatus = profileEvidence.data?.health?.status ?? null;
   if (profileStatus && profileStatus !== 'healthy' && profileStatus !== 'not-applicable')
     reasons.push(`profile_${profileStatus.replaceAll('-', '_')}`);
-  if (selectedElement.data === null) reasons.push('selected_element_unavailable');
+  if (
+    selectedElement.data === null &&
+    !OPTIONAL_AUTOMATIC_SELECTION_REASON_CODES.has(selectedElement.reasonCode)
+  )
+    reasons.push('selected_element_unavailable');
   const status =
     runtimeSnapshot.data === null
       ? 'insufficient_evidence'
