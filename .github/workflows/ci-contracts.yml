@@ -1,0 +1,48 @@
+name: CI Contracts
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-contracts-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  contracts:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      TZ: UTC
+      LC_ALL: C
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with:
+          node-version: '20.x'
+      - name: Install deterministic dev dependencies
+        run: |
+          rm -rf node_modules
+          npm_config_cache="$RUNNER_TEMP/npm-cache" npm ci --include=dev --ignore-scripts --no-audit --fund=false
+          test -x node_modules/.bin/vitest
+      - name: Version, schemas, profiles, message and manifest contracts
+        run: |
+          npm run validate:release-version
+          npm run validate:schemas
+          npm run validate:profiles
+          npm run validate:message-serialization
+          npm run manifest:validate
+      - name: RTLX regression contracts
+        run: |
+          npx vitest run \
+            tests/unit/bundled-profile-routing-v15912.test.ts \
+            tests/unit/no-font-release-invariants-v15912.test.ts \
+            tests/unit/manifest-permissions-v15912.test.ts \
+            tests/unit/report-regressions-v15912.test.ts \
+            tests/unit/chatgpt-profile-v15911.test.ts \
+            tests/unit/failure-report-analysis-v1572.test.ts \
+            tests/unit/capture-readiness-v159.test.ts \
+            tests/security/profile-verifier.test.ts
