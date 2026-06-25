@@ -20,6 +20,18 @@ interface CertificationIndex {
   records: readonly CertificationRecord[];
 }
 
+export interface ProfileLoadIssue {
+  readonly file: string;
+  readonly stage: 'fetch' | 'normalize' | 'validate';
+  readonly reason: string;
+}
+
+let lastBundledProfileLoadIssues: readonly ProfileLoadIssue[] = Object.freeze([]);
+
+export function profileLoadIssues(): readonly ProfileLoadIssue[] {
+  return lastBundledProfileLoadIssues;
+}
+
 export async function findActiveProfile(
   hostname: string,
   pathname: string
@@ -34,21 +46,13 @@ export async function findBundledProfile(
   hostname: string,
   pathname: string
 ): Promise<SiteProfile | null> {
-  for (const profile of await listBundledProfiles())
-    if (matches(profile, hostname, pathname)) return profile;
-  return null;
+  const result = await loadBundledProfiles({ hostname, pathname, stopAtFirstMatch: true });
+  return result.profiles[0] ?? null;
 }
 
 export async function listBundledProfiles(): Promise<readonly SiteProfile[]> {
-  const index = await fetchJson<BundledProfileIndex>('profiles/bundled/index.json');
-  if (index.schemaVersion !== '3.0.0') throw new Error('Bundled profile index version invalid');
-  const profiles: SiteProfile[] = [];
-  for (const file of [...index.profiles].sort()) {
-    const profile = normalizeProfile(await fetchJson<unknown>(`profiles/bundled/${file}`));
-    validateProfile(profile);
-    profiles.push(profile);
-  }
-  return Object.freeze(profiles.sort((a, b) => a.profileId.localeCompare(b.profileId, 'en')));
+  const result = await loadBundledProfiles({ stopAtFirstMatch: false });
+  return Object.freeze(result.profiles.sort((a, b) => a.profileId.localeCompare(b.profileId, 'en')));
 }
 
 export async function communityCatalog(): Promise<readonly CommunityCatalogEntry[]> {
@@ -102,6 +106,54 @@ export async function communityCatalog(): Promise<readonly CommunityCatalogEntry
         a.profileId.localeCompare(b.profileId, 'en')
     )
   );
+}
+
+async function loadBundledProfiles(options: {
+  readonly hostname?: string;
+  readonly pathname?: string;
+  readonly stopAtFirstMatch: boolean;
+}): Promise<Readonly<{ profiles: SiteProfile[]; issues: readonly ProfileLoadIssue[] }>> {
+  const index = await fetchJson<BundledProfileIndex>('profiles/bundled/index.json');
+  if (index.schemaVersion !== '3.0.0') throw new Error('Bundled profile index version invalid');
+  const profiles: SiteProfile[] = [];
+  const issues: ProfileLoadIssue[] = [];
+  for (const file of [...index.profiles].sort()) {
+    let raw: unknown;
+    try {
+      raw = await fetchJson<unknown>(`profiles/bundled/${file}`);
+    } catch (error) {
+      issues.push(loadIssue(file, 'fetch', error));
+      continue;
+    }
+    let profile: SiteProfile;
+    try {
+      profile = normalizeProfile(raw);
+    } catch (error) {
+      issues.push(loadIssue(file, 'normalize', error));
+      continue;
+    }
+    try {
+      validateProfile(profile);
+    } catch (error) {
+      issues.push(loadIssue(file, 'validate', error));
+      continue;
+    }
+    if (
+      options.hostname !== undefined &&
+      options.pathname !== undefined &&
+      !matches(profile, options.hostname, options.pathname)
+    )
+      continue;
+    profiles.push(profile);
+    if (options.stopAtFirstMatch) break;
+  }
+  lastBundledProfileLoadIssues = Object.freeze(issues);
+  return Object.freeze({ profiles, issues: lastBundledProfileLoadIssues });
+}
+
+function loadIssue(file: string, stage: ProfileLoadIssue['stage'], error: unknown): ProfileLoadIssue {
+  const reason = error instanceof Error ? error.message.slice(0, 240) : 'unknown profile load error';
+  return Object.freeze({ file, stage, reason });
 }
 
 async function certificationByProfileId(): Promise<Map<string, CertificationRecord>> {
