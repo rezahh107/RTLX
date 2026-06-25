@@ -1,0 +1,43 @@
+name: CI Fast
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-fast-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  static:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      TZ: UTC
+      LC_ALL: C
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with:
+          node-version: '20.x'
+      - name: Install deterministic dev dependencies
+        run: |
+          node --version
+          npm --version
+          rm -rf node_modules
+          npm_config_cache="$RUNNER_TEMP/npm-cache" npm ci --include=dev --ignore-scripts --no-audit --fund=false
+          test -x node_modules/.bin/prettier
+          test -x node_modules/.bin/tsc
+          test -x node_modules/.bin/eslint
+          test -x node_modules/.bin/vitest
+      - name: Format check
+        run: npm run format-check
+      - name: TypeScript check
+        run: npm run typecheck
+      - name: ESLint
+        run: npm run lint
+      - name: ESLint warning audit
+        run: npm run lint:warnings
