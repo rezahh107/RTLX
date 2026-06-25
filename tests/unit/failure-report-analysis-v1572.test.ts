@@ -35,30 +35,51 @@ function section<T>(
   };
 }
 
+function healthyProfile(): FailureEvidenceSection<FailureProfileEvidence> {
+  return section({
+    profileId: 'official:deepseek',
+    profileVersion: 2,
+    profileSource: 'official',
+    health: {
+      schemaVersion: '1.1.0',
+      profileId: 'official:deepseek',
+      profileVersion: 2,
+      profileMode: 'protective-only',
+      status: 'healthy',
+      checkedAt: '2026-06-18T00:00:00.000Z',
+      maxMatchesPerRule: 250,
+      rules: [],
+    },
+    selectedElementDecision: null,
+  } satisfies FailureProfileEvidence);
+}
+
 describe('v15.9.1 failure report analysis', () => {
   it('separates capture completion from partial analytical evidence', () => {
     const runtime = section({} as RuntimeSnapshot);
-    const profile = section({
-      profileId: 'official:deepseek',
-      profileVersion: 2,
-      profileSource: 'official',
-      health: {
-        schemaVersion: '1.1.0',
-        profileId: 'official:deepseek',
-        profileVersion: 2,
-        profileMode: 'protective-only',
-        status: 'healthy',
-        checkedAt: '2026-06-18T00:00:00.000Z',
-        maxMatchesPerRule: 250,
-        rules: [],
-      },
-      selectedElementDecision: null,
-    } satisfies FailureProfileEvidence);
     expect(
-      analysisSummary(runtime, profile, section<FailureElementEvidenceForReport>(null))
+      analysisSummary(runtime, healthyProfile(), section<FailureElementEvidenceForReport>(null))
     ).toEqual({
       status: 'partial',
       reasonCodes: ['selected_element_unavailable'],
+    });
+  });
+
+  it('does not make automatic reports partial only because no selected element exists', () => {
+    const runtime = section({} as RuntimeSnapshot);
+    expect(
+      analysisSummary(
+        runtime,
+        healthyProfile(),
+        section<FailureElementEvidenceForReport>(
+          null,
+          'no_data',
+          'RTLX-FEC-SELECTION-LOCATION-MISMATCH-CLEARED'
+        )
+      )
+    ).toEqual({
+      status: 'complete',
+      reasonCodes: [],
     });
   });
 
