@@ -17,7 +17,7 @@
   },
   "profileId": "official:claude",
   "profileKind": "bundled",
-  "profileVersion": 2,
+  "profileVersion": 3,
   "rules": [
     {
       "alignmentMode": "preserve",
@@ -26,7 +26,7 @@
       "enabled": true,
       "initialDelayMs": 0,
       "ruleId": "rule-ccfde4b9",
-      "selector": "code",
+      "selector": "pre code",
       "typographyMode": "preserve"
     },
     {
@@ -196,7 +196,7 @@
     "pathDepth": 2
   },
   "selectors": {
-    "code": ["code", "pre"],
+    "code": ["pre", "pre code"],
     "content": ["[data-testid=\"user-message\"]", "[role=\"main\"]", "article", "main"],
     "editor": ["[contenteditable=\"true\"]", "[role=\"textbox\"]"],
     "exclude": [],
