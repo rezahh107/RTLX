@@ -37,7 +37,7 @@ jobs:
           npm run manifest:validate
       - name: RTLX regression contracts
         run: |
-          npx vitest run \
+          ./node_modules/.bin/vitest run \
             tests/unit/bundled-profile-routing-v15912.test.ts \
             tests/unit/no-font-release-invariants-v15912.test.ts \
             tests/unit/manifest-permissions-v15912.test.ts \
