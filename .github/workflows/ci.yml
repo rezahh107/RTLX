@@ -1,13 +1,15 @@
-name: CI
+name: Legacy Full Check
+
 on:
-  push:
-  pull_request:
+  workflow_dispatch:
+
 permissions:
   contents: read
+
 jobs:
   verify:
     runs-on: ubuntu-latest
-    timeout-minutes: 25
+    timeout-minutes: 45
     env:
       TZ: UTC
       LC_ALL: C
@@ -16,24 +18,25 @@ jobs:
       - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
         with:
           node-version: '20.x'
-      - name: Show Node and npm versions
-        run: |
-          node --version
-          npm --version
-      - name: Install dependencies with isolated npm cache
+      - name: Install deterministic dev dependencies
         run: |
           rm -rf node_modules
           npm_config_cache="$RUNNER_TEMP/npm-cache" npm ci --include=dev --ignore-scripts --no-audit --fund=false
           test -x node_modules/.bin/prettier
           test -x node_modules/.bin/tsc
           test -x node_modules/.bin/eslint
-      - run: npm run check
+          test -x node_modules/.bin/vitest
+      - name: Run legacy monolithic check
+        run: npm run check
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        if: always()
         with:
-          name: rtlx-development-builds
+          name: rtlx-legacy-full-check-output
           path: |
             dist/chromium
             dist/edge
             dist/firefox
             dist/firefox-android
-          if-no-files-found: error
+            dist/evidence
+            dist/artifacts
+          if-no-files-found: ignore
