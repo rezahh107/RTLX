@@ -3,3 +3,7 @@ coverage
 node_modules
 assets/fonts/*.woff2
 package-lock.json
+reports
+implementation-report.json
+install
+release-packages
