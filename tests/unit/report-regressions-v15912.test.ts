@@ -30,7 +30,9 @@ function section<T>(
   };
 }
 
-function runtime(status: RuntimeSnapshot['captureReadiness']['status']): FailureEvidenceSection<RuntimeSnapshot> {
+function runtime(
+  status: RuntimeSnapshot['captureReadiness']['status']
+): FailureEvidenceSection<RuntimeSnapshot> {
   return section({
     captureReadiness: {
       status,
