@@ -110,11 +110,16 @@ export async function communityCatalog(): Promise<readonly CommunityCatalogEntry
   );
 }
 
+type BundledProfileLoadResult = Readonly<{
+  profiles: SiteProfile[];
+  issues: readonly ProfileLoadIssue[];
+}>;
+
 async function loadBundledProfiles(options: {
   readonly hostname?: string;
   readonly pathname?: string;
   readonly stopAtFirstMatch: boolean;
-}): Promise<Readonly<{ profiles: SiteProfile[]; issues: readonly ProfileLoadIssue[] }>> {
+}): Promise<BundledProfileLoadResult> {
   const index = await fetchJson<BundledProfileIndex>('profiles/bundled/index.json');
   if (index.schemaVersion !== '3.0.0') throw new Error('Bundled profile index version invalid');
   const profiles: SiteProfile[] = [];
@@ -158,7 +163,8 @@ function loadIssue(
   stage: ProfileLoadIssue['stage'],
   error: unknown
 ): ProfileLoadIssue {
-  const reason = error instanceof Error ? error.message.slice(0, 240) : 'unknown profile load error';
+  const reason =
+    error instanceof Error ? error.message.slice(0, 240) : 'unknown profile load error';
   return Object.freeze({ file, stage, reason });
 }
 
