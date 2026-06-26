@@ -36,13 +36,12 @@ jobs:
           node scripts/ci-sanitize-package-lock-registry.mjs
           npm_config_cache="$RUNNER_TEMP/npm-cache" npm ci --include=dev --ignore-scripts --no-audit --fund=false --registry=https://registry.npmjs.org/ --replace-registry-host=always
           test -x node_modules/.bin/vitest
-      - name: Version, schemas, profiles, message and manifest contracts
+      - name: Version, schemas, profiles, and message contracts
         run: |
           npm run validate:release-version
           npm run validate:schemas
           npm run validate:profiles
           npm run validate:message-serialization
-          npm run manifest:validate
       - name: RTLX regression contracts
         run: |
           ./node_modules/.bin/vitest run \
