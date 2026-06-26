@@ -25,7 +25,7 @@
       "directionMode": "force-ltr",
       "enabled": true,
       "initialDelayMs": 0,
-      "ruleId": "rule-ccfde4b9",
+      "ruleId": "rule-66ab6eae",
       "selector": "pre code",
       "typographyMode": "preserve"
     },
@@ -203,7 +203,12 @@
   },
   "selectors": {
     "code": ["pre", "pre code"],
-    "content": ["[data-message-author-role]", "[role=\"main\"]", "article[data-testid^=\"conversation-turn\"]", "main"],
+    "content": [
+      "[data-message-author-role]",
+      "[role=\"main\"]",
+      "article[data-testid^=\"conversation-turn\"]",
+      "main"
+    ],
     "editor": ["[contenteditable=\"true\"]", "[role=\"textbox\"]"],
     "exclude": [],
     "math": [".MathJax", ".katex", "math"],
