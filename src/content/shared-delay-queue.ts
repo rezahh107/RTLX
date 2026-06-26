@@ -1,4 +1,5 @@
 import { LIMITS } from '../shared/constants';
+import type { DelayQueueSnapshot } from '../shared/types';
 
 interface DelayedCandidate {
   element: Element;
@@ -11,12 +12,6 @@ interface DelayBucket {
   dueAt: number;
   timer: number;
   candidates: Map<Element, DelayedCandidate>;
-}
-
-export interface DelayQueueSnapshot extends Record<string, number> {
-  buckets: number;
-  candidates: number;
-  rejected: number;
 }
 
 export class SharedDelayQueue {

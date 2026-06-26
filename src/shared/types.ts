@@ -48,6 +48,7 @@ export type {
   BackpressureSnapshot,
   CaptureReadiness,
   CaptureStabilizationSnapshot,
+  DelayQueueSnapshot,
   ElementDirectionDecisionInspection,
   ElementInspection,
   ElementMutationStatusInspection,
