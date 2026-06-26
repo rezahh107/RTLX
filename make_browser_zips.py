@@ -8,9 +8,11 @@ which is the project source of truth for ZIP creation and SHA256 manifest genera
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 import logging
 import os
+import shlex
 import shutil
 import subprocess
 import sys
@@ -39,7 +41,7 @@ class BuildConfig:
     root: Path
     npm: str = "npm"
     skip_install: bool = False
-    env_overrides: dict[str, str] = field(
+    env_forced: dict[str, str] = field(
         default_factory=lambda: {
             "TZ": "UTC",
             "LC_ALL": "C",
@@ -57,7 +59,10 @@ def parse_args(argv: Sequence[str] | None = None) -> BuildConfig:
     parser.add_argument(
         "--skip-install",
         action="store_true",
-        help="Do not run `npm ci` even when node_modules is absent.",
+        help=(
+            "Do not run `npm ci`. By default this script always reinstalls "
+            "locked dependencies."
+        ),
     )
     parser.add_argument(
         "--npm",
@@ -79,16 +84,23 @@ def require_executable(name: str) -> None:
         raise BuildError(f"Required executable not found on PATH: {name!r}")
 
 
-def run(command: list[str], cwd: Path, env_overrides: dict[str, str]) -> None:
-    """Run *command* in *cwd*, applying env_overrides with setdefault semantics."""
-    env = os.environ.copy()
-    for key, value in env_overrides.items():
-        env.setdefault(key, value)
+def render_command(command: Sequence[str]) -> str:
+    """Return a shell-readable command string for diagnostics."""
+    return shlex.join(command)
 
-    log.info("$ %s", " ".join(command))
+
+def run(command: list[str], cwd: Path, env_forced: dict[str, str]) -> None:
+    """Run *command* in *cwd*, enforcing deterministic release environment values."""
+    env = os.environ.copy()
+    env.update(env_forced)
+
+    rendered = render_command(command)
+    log.info("$ %s (cwd: %s)", rendered, cwd)
     result = subprocess.run(command, cwd=cwd, env=env, check=False)
     if result.returncode != 0:
-        raise BuildError(f"Command exited with code {result.returncode}: {' '.join(command)}")
+        raise BuildError(
+            f"Command exited with code {result.returncode}: {rendered} (cwd: {cwd})"
+        )
 
 
 def read_package_json(root: Path) -> dict[str, object]:
@@ -106,10 +118,25 @@ def read_package_json(root: Path) -> dict[str, object]:
     return data
 
 
+def read_release_metadata(root: Path) -> str:
+    """Validate release-critical package metadata and return the package version."""
+    package_json = read_package_json(root)
+
+    version = package_json.get("version")
+    if not isinstance(version, str) or not version.strip():
+        raise BuildError("package.json must define a non-empty string `version`.")
+
+    scripts = package_json.get("scripts")
+    if not isinstance(scripts, dict) or not isinstance(scripts.get("build:release"), str):
+        raise BuildError("package.json must define a `scripts.build:release` command.")
+
+    return version
+
+
 def maybe_sanitize_package_lock(cfg: BuildConfig) -> None:
     sanitizer = cfg.root / SANITIZER_SCRIPT
     if sanitizer.is_file():
-        run(["node", str(sanitizer.relative_to(cfg.root))], cfg.root, cfg.env_overrides)
+        run(["node", str(sanitizer.relative_to(cfg.root))], cfg.root, cfg.env_forced)
 
 
 def npm_install(cfg: BuildConfig) -> None:
@@ -125,16 +152,73 @@ def npm_install(cfg: BuildConfig) -> None:
             "--replace-registry-host=always",
         ],
         cfg.root,
-        cfg.env_overrides,
+        cfg.env_forced,
     )
 
 
 def npm_build(cfg: BuildConfig) -> None:
-    run([cfg.npm, "run", "build:release"], cfg.root, cfg.env_overrides)
+    run([cfg.npm, "run", "build:release"], cfg.root, cfg.env_forced)
+
+
+def sha256_file(path: Path) -> str:
+    digest = hashlib.sha256()
+    with path.open("rb") as fh:
+        for chunk in iter(lambda: fh.read(1024 * 1024), b""):
+            digest.update(chunk)
+    return digest.hexdigest()
+
+
+def read_manifest(manifest_path: Path) -> dict[str, object]:
+    try:
+        with manifest_path.open(encoding="utf-8") as fh:
+            manifest = json.load(fh)
+    except json.JSONDecodeError as exc:
+        raise BuildError(f"Invalid JSON in artifact manifest: {exc}") from exc
+
+    if not isinstance(manifest, dict):
+        raise BuildError("Artifact manifest must contain a JSON object at the top level.")
+    return manifest
+
+
+def manifest_file_records(manifest: dict[str, object]) -> dict[str, dict[str, object]]:
+    if manifest.get("hashAlgorithm") != "sha256":
+        raise BuildError("Artifact manifest must use hashAlgorithm `sha256`.")
+
+    files = manifest.get("files")
+    if not isinstance(files, list):
+        raise BuildError("Artifact manifest must contain a `files` array.")
+
+    records: dict[str, dict[str, object]] = {}
+    for index, record in enumerate(files):
+        if not isinstance(record, dict):
+            raise BuildError(f"Artifact manifest file entry #{index} must be an object.")
+
+        relative_path = record.get("path")
+        if not isinstance(relative_path, str) or not relative_path:
+            raise BuildError(f"Artifact manifest file entry #{index} has an invalid path.")
+        normalized_path = relative_path.replace("\\", "/").removeprefix("./")
+        if (
+            not normalized_path
+            or normalized_path.startswith("/")
+            or ".." in normalized_path.split("/")
+        ):
+            raise BuildError(f"Artifact manifest contains unsafe path: {relative_path!r}")
+        if normalized_path in records:
+            raise BuildError(f"Artifact manifest contains duplicate path: {normalized_path}")
+
+        size = record.get("size")
+        checksum = record.get("sha256")
+        if not isinstance(size, int) or size < 0:
+            raise BuildError(f"Artifact manifest entry has invalid size: {normalized_path}")
+        if not isinstance(checksum, str) or len(checksum) != 64:
+            raise BuildError(f"Artifact manifest entry has invalid sha256: {normalized_path}")
+
+        records[normalized_path] = record
+    return records
 
 
 def verify_artifacts(root: Path, version: str) -> tuple[list[Path], Path]:
-    """Return (zip_paths, manifest_path) or raise BuildError if anything is missing."""
+    """Return (zip_paths, manifest_path) after validating ZIPs and manifest checksums."""
     artifacts_dir = root / "dist" / "artifacts"
 
     zip_paths = [artifacts_dir / f"rtlx-{target}-{version}.zip" for target in TARGETS]
@@ -147,20 +231,61 @@ def verify_artifacts(root: Path, version: str) -> tuple[list[Path], Path]:
     if not manifest_path.is_file():
         raise BuildError(f"Missing artifact manifest: {manifest_path.relative_to(root)}")
 
+    manifest = read_manifest(manifest_path)
+    if manifest.get("release") != version:
+        raise BuildError(
+            f"Artifact manifest release mismatch: expected {version!r}, "
+            f"got {manifest.get('release')!r}"
+        )
+
+    records = manifest_file_records(manifest)
+    for zip_path in zip_paths:
+        relative_name = zip_path.name
+        record = records.get(relative_name)
+        if record is None:
+            raise BuildError(f"Artifact manifest is missing ZIP entry: {relative_name}")
+
+        actual_size = zip_path.stat().st_size
+        if actual_size != record["size"]:
+            raise BuildError(
+                f"Artifact size mismatch for {relative_name}: "
+                f"expected {record['size']}, got {actual_size}"
+            )
+
+        actual_sha256 = sha256_file(zip_path)
+        if actual_sha256 != record["sha256"]:
+            raise BuildError(
+                f"Artifact SHA-256 mismatch for {relative_name}: "
+                f"expected {record['sha256']}, got {actual_sha256}"
+            )
+
+    expected_names = {path.name for path in zip_paths}
+    manifest_names = set(records)
+    if manifest_names != expected_names:
+        missing = sorted(expected_names - manifest_names)
+        extra = sorted(manifest_names - expected_names)
+        details = []
+        if missing:
+            details.append(f"missing: {', '.join(missing)}")
+        if extra:
+            details.append(f"unexpected: {', '.join(extra)}")
+        raise BuildError(
+            "Artifact manifest entries do not match expected ZIPs "
+            f"({'; '.join(details)})."
+        )
+
     return zip_paths, manifest_path
 
 
 def build(cfg: BuildConfig) -> None:
-    package_json = read_package_json(cfg.root)
-    version = str(package_json.get("version", "unknown"))
+    version = read_release_metadata(cfg.root)
     log.info("Building RTLX v%s", version)
 
     require_executable(cfg.npm)
     require_executable("node")
 
-    node_modules = cfg.root / "node_modules"
-    if not cfg.skip_install and not node_modules.exists():
-        log.info("node_modules absent — running npm ci ...")
+    if not cfg.skip_install:
+        log.info("Running npm ci for locked release dependencies ...")
         maybe_sanitize_package_lock(cfg)
         npm_install(cfg)
     elif cfg.skip_install:
