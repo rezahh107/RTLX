@@ -78,15 +78,36 @@ def parse_args(argv: Sequence[str] | None = None) -> BuildConfig:
     )
 
 
+def resolve_executable(name: str) -> str:
+    """Return an executable path that subprocess can launch on the current OS."""
+    candidates = [name]
+    if os.name == "nt" and Path(name).suffix == "":
+        candidates.extend([f"{name}.cmd", f"{name}.exe", f"{name}.bat"])
+
+    for candidate in candidates:
+        resolved = shutil.which(candidate)
+        if resolved is not None:
+            return resolved
+
+    raise BuildError(f"Required executable not found on PATH: {name!r}")
+
+
 def require_executable(name: str) -> None:
     """Raise BuildError if *name* is not found on PATH."""
-    if shutil.which(name) is None:
-        raise BuildError(f"Required executable not found on PATH: {name!r}")
+    resolve_executable(name)
 
 
 def render_command(command: Sequence[str]) -> str:
     """Return a shell-readable command string for diagnostics."""
     return shlex.join(command)
+
+
+def command_for_subprocess(command: Sequence[str]) -> list[str]:
+    """Resolve the executable token while preserving display-friendly commands."""
+    if not command:
+        raise BuildError("Cannot run an empty command.")
+    executable = resolve_executable(command[0])
+    return [executable, *command[1:]]
 
 
 def run(command: list[str], cwd: Path, env_forced: dict[str, str]) -> None:
@@ -96,7 +117,7 @@ def run(command: list[str], cwd: Path, env_forced: dict[str, str]) -> None:
 
     rendered = render_command(command)
     log.info("$ %s (cwd: %s)", rendered, cwd)
-    result = subprocess.run(command, cwd=cwd, env=env, check=False)
+    result = subprocess.run(command_for_subprocess(command), cwd=cwd, env=env, check=False)
     if result.returncode != 0:
         raise BuildError(
             f"Command exited with code {result.returncode}: {rendered} (cwd: {cwd})"
