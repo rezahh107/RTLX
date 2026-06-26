@@ -186,6 +186,12 @@ export interface RuntimeFontDiagnosticsSnapshot {
   exactLocalFontUsed: 'unknown';
 }
 
+export interface DelayQueueSnapshot {
+  buckets: number;
+  candidates: number;
+  rejected: number;
+}
+
 export interface RuntimeSnapshot {
   schemaVersion: '1.10.0';
   processorVersion: string;
@@ -205,7 +211,7 @@ export interface RuntimeSnapshot {
   performance: RuntimePerformanceSnapshot;
   streaming: StreamingSnapshot;
   backpressure: BackpressureSnapshot;
-  delayedWork: Record<string, number>;
+  delayedWork: DelayQueueSnapshot;
   visibility: Record<string, number>;
   diagnosticBatch: Record<string, number | boolean>;
   pendingCandidates: number;
