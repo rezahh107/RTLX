@@ -60,6 +60,16 @@ export interface BackpressureSnapshot {
   longTaskSignal: boolean;
 }
 
+export type RuntimeDegradationLevel = 0 | 1 | 2 | 3 | 4;
+
+export interface RuntimeDegradationSnapshot {
+  level: RuntimeDegradationLevel;
+  transitions: number;
+  recoveryTransitions: number;
+  lastTransitionReason: string | null;
+  dwellTimeMsByLevel: Readonly<Record<'0' | '1' | '2' | '3' | '4', number>>;
+}
+
 export interface CaptureReadiness {
   status: 'ready' | 'partial' | 'blocked';
   reasonCodes: readonly string[];
@@ -184,8 +194,8 @@ export interface RuntimeSnapshot {
   runtimeState: string;
   lifecycleState: 'active' | 'passive' | 'hidden' | 'frozen' | 'resumed' | 'destroyed';
   lifecycleGeneration: number;
-  degradationLevel: 0 | 1 | 2 | 3 | 4;
-  degradation: Record<string, unknown>;
+  degradationLevel: RuntimeDegradationLevel;
+  degradation: RuntimeDegradationSnapshot;
   provenance: { buildInputHash: string; profileHash: string | null };
   captureReadiness: CaptureReadiness;
   captureStabilization: CaptureStabilizationSnapshot;
