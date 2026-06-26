@@ -15,7 +15,9 @@ interface ManifestV3Shape {
 }
 
 function manifest(): ManifestV3Shape {
-  return JSON.parse(readFileSync(join(process.cwd(), 'manifest.base.json'), 'utf8')) as ManifestV3Shape;
+  return JSON.parse(
+    readFileSync(join(process.cwd(), 'manifest.base.json'), 'utf8')
+  ) as ManifestV3Shape;
 }
 
 describe('v15.9.12 manifest permissions and CSP contracts', () => {
