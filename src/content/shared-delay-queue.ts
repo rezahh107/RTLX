@@ -13,7 +13,7 @@ interface DelayBucket {
   candidates: Map<Element, DelayedCandidate>;
 }
 
-export interface DelayQueueSnapshot {
+export interface DelayQueueSnapshot extends Record<string, number> {
   buckets: number;
   candidates: number;
   rejected: number;
