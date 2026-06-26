@@ -175,7 +175,12 @@ export interface SiteProfile {
   selectors: ProfileSelectorsV2;
   rules: ProfileRule[];
   scopePolicy: ProfileScopePolicy;
-  features: { direction: boolean; bidi: boolean; typography: boolean; shadowOpen: boolean };
+  features: {
+    direction: boolean;
+    bidi: boolean;
+    typography: boolean;
+    shadowOpen: boolean;
+  };
   thresholds: Readonly<Record<string, number>>;
   metadata: {
     source: 'official' | 'user-picker' | 'imported' | 'community';
@@ -197,7 +202,12 @@ export interface LegacySiteProfileV2 {
   displayName: string;
   match: { hosts: string[]; pathPrefixes: string[] };
   selectors: ProfileSelectorsV2;
-  features: { direction: boolean; bidi: boolean; typography: boolean; shadowOpen: boolean };
+  features: {
+    direction: boolean;
+    bidi: boolean;
+    typography: boolean;
+    shadowOpen: boolean;
+  };
   thresholds: Readonly<Record<string, number>>;
   metadata: {
     source: 'official' | 'user-picker' | 'imported';
@@ -211,8 +221,18 @@ export interface LegacySiteProfileV1 {
   profileId: string;
   profileVersion: number;
   match: { hosts: string[]; pathPrefixes: string[] };
-  selectors: { content: string[]; exclude: string[]; code: string[]; mutationSensitive: string[] };
-  features: { direction: boolean; bidi: boolean; typography: boolean; shadowOpen: boolean };
+  selectors: {
+    content: string[];
+    exclude: string[];
+    code: string[];
+    mutationSensitive: string[];
+  };
+  features: {
+    direction: boolean;
+    bidi: boolean;
+    typography: boolean;
+    shadowOpen: boolean;
+  };
   thresholds: Readonly<Record<string, number>>;
 }
 
@@ -278,7 +298,11 @@ export interface CommunityCatalogEntry {
   availableOffline: true;
   fixtureStatus: 'verified' | 'synthetic' | 'failed';
   liveStatus: 'not-run' | 'passed' | 'failed';
-  browserStatus: { chrome: 'not-run' | 'passed' | 'failed'; edge: 'not-run' | 'passed' | 'failed'; firefox: 'not-run' | 'passed' | 'failed' };
+  browserStatus: {
+    chrome: 'not-run' | 'passed' | 'failed';
+    edge: 'not-run' | 'passed' | 'failed';
+    firefox: 'not-run' | 'passed' | 'failed';
+  };
   lastCheckedAt: string | null;
 }
 
