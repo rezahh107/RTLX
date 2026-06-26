@@ -19,6 +19,8 @@ jobs:
     env:
       TZ: UTC
       LC_ALL: C
+      NPM_CONFIG_REGISTRY: https://registry.npmjs.org/
+      NPM_CONFIG_REPLACE_REGISTRY_HOST: always
     steps:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
       - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
@@ -26,8 +28,12 @@ jobs:
           node-version: '20.x'
       - name: Install deterministic dev dependencies
         run: |
+          node --version
+          npm --version
+          npm config get registry
+          npm config get replace-registry-host
           rm -rf node_modules
-          npm_config_cache="$RUNNER_TEMP/npm-cache" npm ci --include=dev --ignore-scripts --no-audit --fund=false
+          npm_config_cache="$RUNNER_TEMP/npm-cache" npm ci --include=dev --ignore-scripts --no-audit --fund=false --registry=https://registry.npmjs.org/ --replace-registry-host=always
           test -x node_modules/.bin/esbuild
       - name: Build browser extension targets
         run: npm run build
