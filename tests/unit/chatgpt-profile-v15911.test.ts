@@ -10,7 +10,9 @@ beforeEach(() => installDom());
 describe('v15.9.11 ChatGPT profile narrowing', () => {
   it('narrows the first ChatGPT code rule away from every inline code element', () => {
     const profile = JSON.parse(readFileSync('profiles/bundled/chatgpt.json', 'utf8')) as SiteProfile;
-    const codeRule = profile.rules.find((rule) => rule.ruleId === 'rule-ccfde4b9');
+    const codeRule = profile.rules.find(
+      (rule) => rule.category === 'code' && rule.selector === 'pre code'
+    );
     expect(profile.profileVersion).toBe(4);
     expect(codeRule).toMatchObject({ category: 'code', selector: 'pre code' });
     expect(profile.selectors.code).toEqual(['pre', 'pre code']);
@@ -30,8 +32,11 @@ describe('v15.9.11 ChatGPT profile narrowing', () => {
     document.body.append(main);
 
     const report = evaluateProfileHealth(document, profile);
+    const preCodeRule = report.rules.find(
+      (rule) => rule.category === 'code' && rule.selector === 'pre code'
+    );
     expect(report.status).toBe('healthy');
-    expect(report.rules.find((rule) => rule.ruleId === 'rule-ccfde4b9')).toMatchObject({
+    expect(preCodeRule).toMatchObject({
       matchCount: 0,
       status: 'no-match',
     });
