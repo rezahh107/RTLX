@@ -52,7 +52,9 @@ export async function findBundledProfile(
 
 export async function listBundledProfiles(): Promise<readonly SiteProfile[]> {
   const result = await loadBundledProfiles({ stopAtFirstMatch: false });
-  return Object.freeze(result.profiles.sort((a, b) => a.profileId.localeCompare(b.profileId, 'en')));
+  return Object.freeze(
+    result.profiles.sort((a, b) => a.profileId.localeCompare(b.profileId, 'en'))
+  );
 }
 
 export async function communityCatalog(): Promise<readonly CommunityCatalogEntry[]> {
@@ -151,7 +153,11 @@ async function loadBundledProfiles(options: {
   return Object.freeze({ profiles, issues: lastBundledProfileLoadIssues });
 }
 
-function loadIssue(file: string, stage: ProfileLoadIssue['stage'], error: unknown): ProfileLoadIssue {
+function loadIssue(
+  file: string,
+  stage: ProfileLoadIssue['stage'],
+  error: unknown
+): ProfileLoadIssue {
   const reason = error instanceof Error ? error.message.slice(0, 240) : 'unknown profile load error';
   return Object.freeze({ file, stage, reason });
 }
