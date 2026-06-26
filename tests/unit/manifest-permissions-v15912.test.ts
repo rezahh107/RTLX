@@ -8,7 +8,10 @@ interface ManifestV3Shape {
   permissions?: readonly string[];
   optional_host_permissions?: readonly string[];
   content_security_policy?: { extension_pages?: string };
-  web_accessible_resources?: readonly { resources?: readonly string[]; matches?: readonly string[] }[];
+  web_accessible_resources?: readonly {
+    resources?: readonly string[];
+    matches?: readonly string[];
+  }[];
 }
 
 function manifest(): ManifestV3Shape {
