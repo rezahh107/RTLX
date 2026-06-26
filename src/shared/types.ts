@@ -174,7 +174,12 @@ export interface SiteProfile {
   selectors: ProfileSelectorsV2;
   rules: ProfileRule[];
   scopePolicy: ProfileScopePolicy;
-  features: { direction: boolean; bidi: boolean; typography: boolean; shadowOpen: boolean };
+  features: {
+    direction: boolean;
+    bidi: boolean;
+    typography: boolean;
+    shadowOpen: boolean;
+  };
   thresholds: Readonly<Record<string, number>>;
   metadata: {
     source: 'official' | 'user-picker' | 'imported' | 'community';
@@ -196,7 +201,12 @@ export interface LegacySiteProfileV2 {
   displayName: string;
   match: { hosts: string[]; pathPrefixes: string[] };
   selectors: ProfileSelectorsV2;
-  features: { direction: boolean; bidi: boolean; typography: boolean; shadowOpen: boolean };
+  features: {
+    direction: boolean;
+    bidi: boolean;
+    typography: boolean;
+    shadowOpen: boolean;
+  };
   thresholds: Readonly<Record<string, number>>;
   metadata: {
     source: 'official' | 'user-picker' | 'imported';
@@ -210,8 +220,18 @@ export interface LegacySiteProfileV1 {
   profileId: string;
   profileVersion: number;
   match: { hosts: string[]; pathPrefixes: string[] };
-  selectors: { content: string[]; exclude: string[]; code: string[]; mutationSensitive: string[] };
-  features: { direction: boolean; bidi: boolean; typography: boolean; shadowOpen: boolean };
+  selectors: {
+    content: string[];
+    exclude: string[];
+    code: string[];
+    mutationSensitive: string[];
+  };
+  features: {
+    direction: boolean;
+    bidi: boolean;
+    typography: boolean;
+    shadowOpen: boolean;
+  };
   thresholds: Readonly<Record<string, number>>;
 }
 
@@ -653,7 +673,10 @@ export interface FailureEvidenceReport {
   profileEvidence: FailureEvidenceSection<FailureProfileEvidence>;
   selectedElement: FailureEvidenceSection<FailureElementEvidenceForReport>;
   diagnostics: readonly Diagnostic[];
-  analysis: { status: 'complete' | 'partial' | 'insufficient_evidence'; reasonCodes: readonly string[] };
+  analysis: {
+    status: 'complete' | 'partial' | 'insufficient_evidence';
+    reasonCodes: readonly string[];
+  };
   userObservation: { expected: string; actual: string };
   conclusion: { status: FailureEvidenceStatus; reasonCode: string };
 }
@@ -662,4 +685,7 @@ export type FailureEvidenceExportBlockedReason = 'RTLX-CAPTURE-VISIBLE-TAB-REQUI
 
 export type FailureEvidenceExportResult =
   | Readonly<{ content: string; report: FailureEvidenceReport }>
-  | Readonly<{ status: 'blocked'; reasonCode: FailureEvidenceExportBlockedReason }>;
+  | Readonly<{
+      status: 'blocked';
+      reasonCode: FailureEvidenceExportBlockedReason;
+    }>;
