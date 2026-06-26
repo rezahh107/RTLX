@@ -9,6 +9,7 @@ import {
   targetDocumentInstanceForTab,
   validateContentDocument,
 } from '../../src/background/document-registry';
+import { PRODUCT_VERSION } from '../../src/shared/constants';
 import type { RequestMessage } from '../../src/shared/messages';
 
 const documentInstanceId = '123e4567-e89b-42d3-a456-426614174000';
@@ -16,20 +17,38 @@ const requestId = '123e4567-e89b-42d3-a456-426614174001';
 
 beforeEach(() => resetDocumentRegistryForTests());
 
-function request(runtimeEpoch: string | null, type: 'REQUEST_CONTEXT' | 'REPORT_DIAGNOSTICS') {
+function request(runtimeEpoch: string | null, type: 'REQUEST_CONTEXT'): RequestMessage;
+function request(runtimeEpoch: string | null, type: 'REPORT_DIAGNOSTICS'): RequestMessage;
+function request(
+  runtimeEpoch: string | null,
+  type: 'REQUEST_CONTEXT' | 'REPORT_DIAGNOSTICS'
+): RequestMessage {
+  if (type === 'REQUEST_CONTEXT') {
+    return {
+      type,
+      requestId,
+      payload: { hostname: 'example.com', pathname: '/' },
+      meta: {
+        protocolVersion: '1.0.0',
+        extensionVersion: PRODUCT_VERSION,
+        documentInstanceId,
+        documentGeneration: 1,
+        runtimeEpoch,
+      },
+    };
+  }
   return {
     type,
     requestId,
-    payload:
-      type === 'REQUEST_CONTEXT' ? { hostname: 'example.com', pathname: '/' } : { diagnostics: [] },
+    payload: { diagnostics: [] },
     meta: {
       protocolVersion: '1.0.0',
-      extensionVersion: '15.9.11',
+      extensionVersion: PRODUCT_VERSION,
       documentInstanceId,
       documentGeneration: 1,
       runtimeEpoch,
     },
-  } as RequestMessage;
+  };
 }
 
 function sender(lifecycle = 'active', browserDocumentId = 'browser-doc-1') {
