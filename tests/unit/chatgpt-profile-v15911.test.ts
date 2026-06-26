@@ -7,9 +7,13 @@ import { installDom } from '../dom-test-setup';
 
 beforeEach(() => installDom());
 
+function chatgptProfile(): SiteProfile {
+  return JSON.parse(readFileSync('profiles/bundled/chatgpt.json', 'utf8')) as SiteProfile;
+}
+
 describe('v15.9.11 ChatGPT profile narrowing', () => {
   it('narrows the first ChatGPT code rule away from every inline code element', () => {
-    const profile = JSON.parse(readFileSync('profiles/bundled/chatgpt.json', 'utf8')) as SiteProfile;
+    const profile = chatgptProfile();
     const codeRule = profile.rules.find(
       (rule) => rule.category === 'code' && rule.selector === 'pre code'
     );
@@ -19,7 +23,10 @@ describe('v15.9.11 ChatGPT profile narrowing', () => {
   });
 
   it('does not mark ChatGPT unhealthy on pages with many inline code chips', () => {
-    const profile = JSON.parse(readFileSync('profiles/bundled/chatgpt.json', 'utf8')) as SiteProfile;
+    const profile = chatgptProfile();
+    const codeRule = profile.rules.find(
+      (rule) => rule.category === 'code' && rule.selector === 'pre code'
+    );
     const main = document.createElement('main');
     main.setAttribute('data-message-author-role', 'assistant');
     for (let index = 0; index < 350; index += 1) {
@@ -32,9 +39,7 @@ describe('v15.9.11 ChatGPT profile narrowing', () => {
     document.body.append(main);
 
     const report = evaluateProfileHealth(document, profile);
-    const preCodeRule = report.rules.find(
-      (rule) => rule.category === 'code' && rule.selector === 'pre code'
-    );
+    const preCodeRule = report.rules.find((rule) => rule.ruleId === codeRule?.ruleId);
     expect(report.status).toBe('healthy');
     expect(preCodeRule).toMatchObject({
       matchCount: 0,
