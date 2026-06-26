@@ -7,12 +7,8 @@
     "typography": true
   },
   "match": {
-    "hosts": [
-      "chatgpt.com"
-    ],
-    "pathPrefixes": [
-      "/"
-    ]
+    "hosts": ["chatgpt.com"],
+    "pathPrefixes": ["/"]
   },
   "metadata": {
     "product": "ChatGPT",
@@ -206,36 +202,13 @@
     "pathDepth": 2
   },
   "selectors": {
-    "code": [
-      "pre",
-      "pre code"
-    ],
-    "content": [
-      "[data-message-author-role]",
-      "[role=\"main\"]",
-      "article[data-testid^=\"conversation-turn\"]",
-      "main"
-    ],
-    "editor": [
-      "[contenteditable=\"true\"]",
-      "[role=\"textbox\"]"
-    ],
+    "code": ["pre", "pre code"],
+    "content": ["[data-message-author-role]", "[role=\"main\"]", "article[data-testid^=\"conversation-turn\"]", "main"],
+    "editor": ["[contenteditable=\"true\"]", "[role=\"textbox\"]"],
     "exclude": [],
-    "math": [
-      ".MathJax",
-      ".katex",
-      "math"
-    ],
-    "mutationSensitive": [
-      "a",
-      "button",
-      "label",
-      "summary"
-    ],
-    "terminal": [
-      ".xterm",
-      "[data-terminal]"
-    ]
+    "math": [".MathJax", ".katex", "math"],
+    "mutationSensitive": ["a", "button", "label", "summary"],
+    "terminal": [".xterm", "[data-terminal]"]
   },
   "thresholds": {}
 }
