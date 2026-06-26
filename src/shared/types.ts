@@ -68,6 +68,8 @@ export type {
   PerformancePhaseSummary,
   ProfileHistoryEntry,
   RecordedFixtureSummary,
+  RuntimeDegradationLevel,
+  RuntimeDegradationSnapshot,
   RuntimeFontDiagnosticsSnapshot,
   RuntimeLayoutSafetySnapshot,
   RuntimePageDebugElement,
