@@ -2,6 +2,7 @@
   "schemaVersion": "1.0.0",
   "manifestVersion": 1,
   "generated": true,
+  "fontBinariesIncluded": false,
   "files": [
     {
       "file": "inter-latin-400-normal.woff2",
@@ -11,7 +12,7 @@
       "format": "woff2",
       "sha256": "8909904ab6c872eb994093482a88a28eca2cd95912d7b6fecd72103b0dc07edc",
       "bytes": 23664,
-      "unicodeRange": "U+0,U+20-7E,U+A0-AC,U+AE-FF,U+131,U+152-153,U+2BB-2BC,U+2C6,U+2DA,U+2DC,U+300-301,U+303-304,U+308-309,U+323,U+2002,U+2009,U+200B,U+2013-2014,U+2018-201A,U+201C-201E,U+2022,U+2026,U+2032-2033,U+2039-203A,U+2044,U+20AC,U+2122,U+2191,U+2193,U+2212,U+FEFF,U+FFFF",
+      "unicodeRange": "U+0,U+20-7E,U+A0-AC,U+AE-FF,U+131,U+152-153,U+2BB-2BC,U+2C6,U+2DA,U+2DC,U+300-301,U+303-304,U+308-309,U+323,U+2002,U+2009,U+200B,U+2013-2014,U+2018-201A,U+201C-201E,U+2022,U+2026,U+2032-2033,U+2039-U+203A,U+2044,U+20AC,U+2122,U+2191,U+2193,U+2212,U+FEFF,U+FFFF",
       "license": "SIL-OFL-1.1",
       "sourcePackage": "@fontsource/inter",
       "sourcePackageVersion": "5.2.8"
@@ -24,7 +25,7 @@
       "format": "woff2",
       "sha256": "f9a06e79cd3a2a20951c0f0e28f66dd0e6d3fda73911d640a2125c8fcb78f21a",
       "bytes": 24452,
-      "unicodeRange": "U+0,U+20-7E,U+A0-AC,U+AE-FF,U+131,U+152-153,U+2BB-2BC,U+2C6,U+2DA,U+2DC,U+300-301,U+303-304,U+308-309,U+323,U+2002,U+2009,U+200B,U+2013-2014,U+2018-201A,U+201C-201E,U+2022,U+2026,U+2032-2033,U+2039-203A,U+2044,U+20AC,U+2122,U+2191,U+2193,U+2212,U+FEFF,U+FFFF",
+      "unicodeRange": "U+0,U+20-7E,U+A0-AC,U+AE-FF,U+131,U+152-153,U+2BB-2BC,U+2C6,U+2DA,U+2DC,U+300-301,U+303-304,U+308-309,U+323,U+2002,U+2009,U+200B,U+2013-2014,U+2018-201A,U+201C-201E,U+2022,U+2026,U+2032-2033,U+2039-U+203A,U+2044,U+20AC,U+2122,U+2191,U+2193,U+2212,U+FEFF,U+FFFF",
       "license": "SIL-OFL-1.1",
       "sourcePackage": "@fontsource/inter",
       "sourcePackageVersion": "5.2.8"
@@ -56,7 +57,7 @@
       "sourcePackageVersion": "5.2.8"
     }
   ],
-  "status": "generated_from_pinned_packages",
+  "status": "generated_from_pinned_packages_without_bundled_font_binaries",
   "changelog": ["1.0.0 deterministic manifest contract"],
   "forwardCompatibility": "Hash or font-version changes require manifest regeneration and fixture review."
 }
