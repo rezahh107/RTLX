@@ -6,6 +6,7 @@ import {
   recoverPendingUpdate,
   resetUpdateCoordinatorForTests,
 } from '../../src/background/update-coordinator';
+import { PRODUCT_VERSION } from '../../src/shared/constants';
 
 const local: Record<string, unknown> = {};
 
@@ -52,12 +53,12 @@ describe('OU-001 update-safe quiescence', () => {
   });
 
   it('clears a marker only after the target version starts', async () => {
-    await beginUpdateQuiescence('15.9.11', {
+    await beginUpdateQuiescence(PRODUCT_VERSION, {
       rollbackActiveDocuments: async () => undefined,
       recoverTransactions: async () => undefined,
       reload: () => undefined,
     });
-    const result = await recoverPendingUpdate('15.9.11');
+    const result = await recoverPendingUpdate(PRODUCT_VERSION);
     expect(result.recovered).toBe(true);
     expect(await readUpdateState()).toBeNull();
     expect(isUpdateQuiescing()).toBe(false);
