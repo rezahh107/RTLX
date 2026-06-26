@@ -50,6 +50,7 @@ export interface StreamingSnapshot {
 }
 
 export type BackpressureLevel = 'normal' | 'pressure' | 'hidden';
+
 export interface BackpressureSnapshot {
   level: BackpressureLevel;
   sliceMs: number;
@@ -433,7 +434,10 @@ export interface FailureEvidenceReport {
   profileEvidence: FailureEvidenceSection<FailureProfileEvidence>;
   selectedElement: FailureEvidenceSection<FailureElementEvidenceForReport>;
   diagnostics: readonly Diagnostic[];
-  analysis: { status: 'complete' | 'partial' | 'insufficient_evidence'; reasonCodes: readonly string[] };
+  analysis: {
+    status: 'complete' | 'partial' | 'insufficient_evidence';
+    reasonCodes: readonly string[];
+  };
   userObservation: { expected: string; actual: string };
   conclusion: { status: FailureEvidenceStatus; reasonCode: string };
 }
@@ -442,4 +446,7 @@ export type FailureEvidenceExportBlockedReason = 'RTLX-CAPTURE-VISIBLE-TAB-REQUI
 
 export type FailureEvidenceExportResult =
   | Readonly<{ content: string; report: FailureEvidenceReport }>
-  | Readonly<{ status: 'blocked'; reasonCode: FailureEvidenceExportBlockedReason }>;
+  | Readonly<{
+      status: 'blocked';
+      reasonCode: FailureEvidenceExportBlockedReason;
+    }>;
