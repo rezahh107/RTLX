@@ -1,5 +1,5 @@
 import { DIRECTION_OWNER_ATTRIBUTE } from '../shared/constants';
-import { classifyCodeContext } from './code-context';
+import { classifyCodeContext, type CodeContextOptions } from './code-context';
 import { firstStrongDirection } from './language-classifier';
 import { classifyPreElement } from './code-zone-classifier';
 import { createPlan, type MutationPlan, type MutationOperation } from './mutation-plan';
@@ -8,7 +8,8 @@ export function planCodeZones(
   candidate: Element,
   startSequence: number,
   profileSelectors: readonly string[] = [],
-  directionOwnerToken?: string
+  directionOwnerToken?: string,
+  options: CodeContextOptions = {}
 ): MutationPlan {
   const operations: MutationOperation[] = [];
   let sequence = startSequence;
@@ -25,9 +26,11 @@ export function planCodeZones(
   }
   for (const element of [...new Set(elements)]) {
     if (element.hasAttribute('dir')) continue;
-    const context = classifyCodeContext(element, profileSelectors);
+    const context = classifyCodeContext(element, profileSelectors, options);
     let value: 'ltr' | 'auto' = 'ltr';
-    if (element instanceof HTMLPreElement && !classifyPreElement(element).codeLike) {
+    if (context === 'block-natural-rtl') {
+      value = 'auto';
+    } else if (element instanceof HTMLPreElement && !classifyPreElement(element).codeLike) {
       const direction = firstStrongDirection(element.textContent ?? '');
       if (direction === 'unknown') continue;
       value = 'auto';

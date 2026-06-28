@@ -153,13 +153,17 @@ export function typographyDecision(
   if (isHardExcluded(element)) return 'hard-excluded';
   const group = matchedProfileGroup(element, profile);
   if (group === 'code') {
-    const context = classifyCodeContext(element, codeLikeSelectors(profile));
+    const context = classifyCodeContext(element, codeLikeSelectors(profile), {
+      allowNaturalLanguagePre: profile?.features.naturalLanguagePre === true,
+    });
     if (context === 'block-code' || context === 'inline-technical') return 'code-zone';
   }
   if (group === 'math') return 'math-zone';
   if (group === 'editor') return 'editor-zone';
   if (group === 'terminal') return 'terminal-zone';
-  const codeContext = classifyCodeContext(element, codeLikeSelectors(profile));
+  const codeContext = classifyCodeContext(element, codeLikeSelectors(profile), {
+    allowNaturalLanguagePre: profile?.features.naturalLanguagePre === true,
+  });
   if (codeContext === 'block-code' || codeContext === 'inline-technical') return 'code-zone';
   if (isIconProtected(element)) return 'icon-protected';
   if (language !== 'persian' && language !== 'mixed') return 'not-persian';
