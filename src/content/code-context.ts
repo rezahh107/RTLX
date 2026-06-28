@@ -70,7 +70,7 @@ export function classifyCodeContext(
 }
 
 export function classifyNaturalLanguagePre(element: Element): NaturalLanguagePreEvidence {
-  const text = (element.textContent ?? '').normalize('NFKC').slice(0, 8192);
+  const text = (element.textContent ?? '').slice(0, 8192).normalize('NFKC');
   const lines = text
     .split(/\r?\n/u)
     .map((line) => line.trim())
