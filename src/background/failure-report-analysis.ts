@@ -103,7 +103,7 @@ export function expectedObservation(
 ): string {
   if (!settings)
     return 'Expected: Persian and mixed Persian/English content should use RTL/right alignment; English content should use LTR/left alignment.';
-  const hasBundledFonts = buildFlavor !== 'source-no-font-binaries';
+  const hasBundledFonts = buildFlavor === 'font-binaries';
   const persianFont =
     settings.persianFont === 'local-first'
       ? hasBundledFonts

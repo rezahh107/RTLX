@@ -63,7 +63,11 @@ for (const file of [
     addMismatch(file, 'artifactManifest.release', releaseVersion, artifactRelease);
 }
 
-for (const file of (await readdir(join(root, '.github/workflows'))).sort()) {
+const workflowEntries = await readdir(join(root, '.github/workflows'), { withFileTypes: true });
+for (const file of workflowEntries
+  .filter((entry) => entry.isFile() && /\.ya?ml$/u.test(entry.name))
+  .map((entry) => entry.name)
+  .sort()) {
   const text = await readFile(join(root, '.github/workflows', file), 'utf8');
   const stale = [
     ...new Set(
