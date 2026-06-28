@@ -350,7 +350,9 @@ export class FrameRuntime {
       protectedSelectors
     );
     const classification = classifyLanguage(sample, nearestLang(target));
-    const codeContext = classifyCodeContext(target, codeLikeSelectors(this.profile));
+    const codeContext = classifyCodeContext(target, codeLikeSelectors(this.profile), {
+      allowNaturalLanguagePre: this.profile?.features.naturalLanguagePre === true,
+    });
     const localDir = normalizeDir(decisionElement.getAttribute('dir'));
     const baseDecision = decideDirectionDetailed({
       localDir,
@@ -1301,12 +1303,20 @@ export class FrameRuntime {
     }
 
     const codeSelectors = codeLikeSelectors(this.profile);
-    const codeContext = classifyCodeContext(candidate, codeSelectors);
-    const sample = sampleCandidateText(
+    const codeContext = classifyCodeContext(candidate, codeSelectors, {
+      allowNaturalLanguagePre: this.profile?.features.naturalLanguagePre === true,
+    });
+    const sampledText = sampleCandidateText(
       candidate,
       LIMITS.maxSampleCodepointsPerCandidate,
       protectedSelectors
     );
+    const sample =
+      sampledText.length > 0 || codeContext !== 'block-natural-rtl'
+        ? sampledText
+        : (candidate.textContent ?? '')
+            .normalize('NFKC')
+            .slice(0, LIMITS.maxSampleCodepointsPerCandidate);
     if (sample.length === 0) {
       this.incrementNotModified(codeContext === 'block-code' ? 'block-code' : 'empty-text');
       return 0;
@@ -1417,7 +1427,15 @@ export class FrameRuntime {
       }
     }
 
-    const codePlan = planCodeZones(candidate, this.sequence, codeSelectors, this.runtimeOwnerToken);
+    const codePlan = planCodeZones(
+      candidate,
+      this.sequence,
+      codeSelectors,
+      this.runtimeOwnerToken,
+      {
+        allowNaturalLanguagePre: this.profile?.features.naturalLanguagePre === true,
+      }
+    );
     this.sequence += codePlan.operations.length;
     const codeResult = applyMutationPlan(
       codePlan,

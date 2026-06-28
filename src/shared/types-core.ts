@@ -180,6 +180,7 @@ export interface SiteProfile {
     bidi: boolean;
     typography: boolean;
     shadowOpen: boolean;
+    naturalLanguagePre?: boolean;
   };
   thresholds: Readonly<Record<string, number>>;
   metadata: {

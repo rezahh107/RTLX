@@ -80,7 +80,8 @@
         "direction": { "type": "boolean" },
         "bidi": { "type": "boolean" },
         "typography": { "type": "boolean" },
-        "shadowOpen": { "type": "boolean" }
+        "shadowOpen": { "type": "boolean" },
+        "naturalLanguagePre": { "type": "boolean" }
       }
     },
     "thresholds": { "type": "object", "additionalProperties": { "type": "number" } },

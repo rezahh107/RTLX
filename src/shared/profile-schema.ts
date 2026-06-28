@@ -354,11 +354,11 @@ function isSelectors(value: unknown): value is ProfileSelectorsV2 {
   );
 }
 function isFeatures(value: unknown): value is SiteProfile['features'] {
-  return (
-    isRecord(value) &&
-    hasExactKeys(value, ['bidi', 'direction', 'shadowOpen', 'typography']) &&
-    Object.values(value).every((entry) => typeof entry === 'boolean')
-  );
+  // naturalLanguagePre is intentionally optional so existing reviewed profiles
+  // keep their exact default code-zone behavior unless they opt in.
+  // The detailed shape check lives below the historical warning baseline area
+  // to avoid broadening profile acceptance beyond this single boolean flag.
+  return isRecord(value) && hasFeatureFlags(value);
 }
 function isThresholds(value: unknown): value is Readonly<Record<string, number>> {
   return (
@@ -470,6 +470,21 @@ function isHostname(value: string): boolean {
     value
   );
 }
+function hasFeatureFlags(value: Record<string, unknown>): boolean {
+  return (
+    hasRequiredAndOptionalKeys(
+      value,
+      ['bidi', 'direction', 'shadowOpen', 'typography'],
+      ['naturalLanguagePre']
+    ) &&
+    typeof value.bidi === 'boolean' &&
+    typeof value.direction === 'boolean' &&
+    typeof value.shadowOpen === 'boolean' &&
+    typeof value.typography === 'boolean' &&
+    (value.naturalLanguagePre === undefined || typeof value.naturalLanguagePre === 'boolean')
+  );
+}
+
 function isAiProduct(product: string | null): boolean {
   return (
     product !== null &&

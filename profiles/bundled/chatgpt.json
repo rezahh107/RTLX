@@ -3,6 +3,7 @@
   "features": {
     "bidi": true,
     "direction": true,
+    "naturalLanguagePre": true,
     "shadowOpen": true,
     "typography": true
   },
