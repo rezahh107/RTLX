@@ -95,7 +95,7 @@ export interface RuntimePageDebugElement {
 
 export interface RuntimePageDebugSnapshot {
   schemaVersion: '1.2.0';
-  buildFlavor: 'font-binaries' | 'no-font-binaries';
+  buildFlavor: 'font-binaries' | 'source-no-font-binaries';
   htmlDir: 'rtl' | 'ltr' | 'auto' | null;
   bodyDir: 'rtl' | 'ltr' | 'auto' | null;
   documentLang: string | null;
@@ -179,7 +179,7 @@ export interface RuntimeLayoutSafetySnapshot {
 export interface RuntimeFontDiagnosticsSnapshot {
   fontSetStatus: 'loading' | 'loaded' | 'unsupported';
   fontSetReady: boolean;
-  buildFlavor: 'font-binaries' | 'no-font-binaries';
+  buildFlavor: 'font-binaries' | 'source-no-font-binaries';
   declaredFaces: number;
   loadedFaces: number;
   errorFaces: number;
@@ -242,7 +242,7 @@ export interface RuntimeSnapshot {
 export interface RecordedFixtureSummary {
   schemaVersion: '1.0.0';
   productVersion: string;
-  buildFlavor: 'font-binaries' | 'no-font-binaries';
+  buildFlavor: 'font-binaries' | 'source-no-font-binaries';
   textIncluded: false;
   profileId: string | null;
   profileVersion: number | null;

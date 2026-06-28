@@ -80,4 +80,108 @@ describe('Profile Health Engine v15', () => {
       status: 'no-match',
     });
   });
+  it('does not make excessive protective selectors fatal when semantic rules are healthy', () => {
+    const items = Array.from({ length: 251 }, () => '<code class="token">x</code>').join('');
+    const document = installDom(`<html><body><main>سلام</main>${items}</body></html>`);
+    const base = profileWith('main');
+    const report = evaluateProfileHealth(
+      document,
+      {
+        ...base,
+        rules: [
+          base.rules[0]!,
+          {
+            ...base.rules[0]!,
+            ruleId: 'code:.token',
+            category: 'code' as const,
+            selector: '.token',
+            directionMode: 'force-ltr' as const,
+            alignmentMode: 'preserve' as const,
+            typographyMode: 'preserve' as const,
+          },
+        ],
+      },
+      () => new Date(0)
+    );
+    expect(report.status).toBe('healthy');
+    expect(report.rules[1]).toMatchObject({
+      impact: 'protective',
+      status: 'excessive-match',
+      matchCount: 251,
+    });
+  });
+
+  it('does not make protective-only excessive selectors profile-fatal', () => {
+    const items = Array.from({ length: 251 }, () => '<code class="token">x</code>').join('');
+    const document = installDom(`<html><body>${items}</body></html>`);
+    const base = profileWith('main');
+    const profile = {
+      ...base,
+      rules: [
+        {
+          ...base.rules[0]!,
+          ruleId: 'code:.token',
+          category: 'code' as const,
+          selector: '.token',
+          directionMode: 'force-ltr' as const,
+          alignmentMode: 'preserve' as const,
+          typographyMode: 'preserve' as const,
+        },
+      ],
+    };
+    const report = evaluateProfileHealth(document, profile, () => new Date(0));
+    expect(report.profileMode).toBe('protective-only');
+    expect(report.status).toBe('healthy');
+    expect(report.rules[0]).toMatchObject({
+      impact: 'protective',
+      status: 'excessive-match',
+      matchCount: 251,
+    });
+  });
+
+  it('keeps invalid selectors fatal even for protective rules', () => {
+    const document = installDom('<html><body><main>سلام</main></body></html>');
+    const base = profileWith('main');
+    const report = evaluateProfileHealth(
+      document,
+      {
+        ...base,
+        rules: [
+          {
+            ...base.rules[0]!,
+            ruleId: 'code:invalid',
+            category: 'code' as const,
+            selector: '[',
+            directionMode: 'force-ltr' as const,
+            alignmentMode: 'preserve' as const,
+            typographyMode: 'preserve' as const,
+          },
+        ],
+      },
+      () => new Date(0)
+    );
+    expect(report.status).toBe('invalid-selector');
+    expect(report.rules[0]).toMatchObject({ impact: 'protective', status: 'invalid-selector' });
+  });
+
+  it('keeps semantic degraded semantics unchanged for required content rules', () => {
+    const document = installDom('<html><body><main>سلام</main></body></html>');
+    const base = profileWith('main');
+    const report = evaluateProfileHealth(
+      document,
+      {
+        ...base,
+        rules: [
+          base.rules[0]!,
+          {
+            ...base.rules[0]!,
+            ruleId: 'content:.missing-required',
+            selector: '.missing-required',
+          },
+        ],
+      },
+      () => new Date(0)
+    );
+    expect(report.status).toBe('degraded');
+  });
 });

@@ -119,7 +119,7 @@ describe('PIH-005 critical package consistency', () => {
           return new Response(
             JSON.stringify({
               schemaVersion: '1.0.0',
-              productVersion: '15.9.11',
+              productVersion: '15.9.12',
               target: 'chromium',
               files: { 'background.js': { sha256: hash, bytes: content.byteLength } },
             })

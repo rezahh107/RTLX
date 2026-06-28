@@ -1,6 +1,6 @@
 # RTLX v15.9.11 no-font local install
 
-This package is the no-font-binaries local-install handoff for RTLX v15.9.11.
+This package is the source-no-font-binaries historical local-install handoff for RTLX v15.9.11.
 
 ## Chrome and Edge
 

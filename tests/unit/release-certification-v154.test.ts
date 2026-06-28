@@ -33,7 +33,10 @@ describe('RTLX 15.4 release certification contracts', () => {
     const baseline = JSON.parse(
       await readFile(join(root, 'registries/eslint-warning-baseline.v1.json'), 'utf8')
     ) as { release: string; entries: unknown[] };
-    expect(baseline.release).toBe('15.9.11');
+    const pkg = JSON.parse(await readFile(join(root, 'package.json'), 'utf8')) as {
+      version: string;
+    };
+    expect(baseline.release).toBe(pkg.version);
     expect(baseline.entries.length).toBeGreaterThan(0);
   });
 });

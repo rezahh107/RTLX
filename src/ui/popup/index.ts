@@ -278,7 +278,7 @@ function safeObjectKeys(value: unknown): readonly string[] {
 }
 
 function browserIdentity(): Readonly<{ family: string; majorVersion: string | null }> {
-  const userAgent = navigator.userAgent;
+  const userAgent = globalThis.navigator?.userAgent ?? '';
   const firefox = userAgent.match(/Firefox\/(\d+)/u);
   if (firefox) return Object.freeze({ family: 'firefox', majorVersion: firefox[1] ?? null });
   const edge = userAgent.match(/Edg\/(\d+)/u);

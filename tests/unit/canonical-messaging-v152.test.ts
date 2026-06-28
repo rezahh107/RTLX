@@ -1,4 +1,5 @@
 import { beforeEach, describe, expect, it } from 'vitest';
+import { PRODUCT_VERSION } from '../../src/shared/constants';
 import { canonicalByteLength, toCanonicalJson } from '../../src/shared/canonical-json';
 import {
   configureMessageRuntimeEpoch,
@@ -24,7 +25,7 @@ describe('RH-008/RH-010 canonical message DTOs', () => {
     expect(isRequestMessage(value)).toBe(true);
     expect(value.meta).toMatchObject({
       protocolVersion: '1.0.0',
-      extensionVersion: '15.9.11',
+      extensionVersion: PRODUCT_VERSION,
       runtimeEpoch: null,
     });
     expect(canonicalByteLength(value)).toBeGreaterThan(0);

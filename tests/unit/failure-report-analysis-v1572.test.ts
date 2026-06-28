@@ -94,20 +94,6 @@ describe('v15.9.1 failure report analysis', () => {
   });
 
   it('describes the effective local-first font policy instead of the retired alias', () => {
-    const text = expectedObservation({
-      bidiIsolation: true,
-      directionCorrection: true,
-      latinFont: 'amazon-ember-local',
-      persianFont: 'local-first',
-      siteMode: 'auto-safe',
-      typography: true,
-    });
-    expect(text).toContain('local Persian fonts with bundled Vazirmatn fallback');
-    expect(text).toContain('local Amazon Ember with bundled Inter fallback');
-    expect(text).not.toContain('RTLX Mixed Text');
-  });
-
-  it('does not claim bundled font fallback for no-font-binaries builds', () => {
     const text = expectedObservation(
       {
         bidiIsolation: true,
@@ -117,10 +103,42 @@ describe('v15.9.1 failure report analysis', () => {
         siteMode: 'auto-safe',
         typography: true,
       },
-      'no-font-binaries'
+      'font-binaries'
     );
-    expect(text).toContain('no-font-binaries build does not package Vazirmatn');
-    expect(text).toContain('no-font-binaries build does not package Inter');
+    expect(text).toContain('local Persian fonts with bundled Vazirmatn fallback');
+    expect(text).toContain('local Amazon Ember with bundled Inter fallback');
+    expect(text).not.toContain('RTLX Mixed Text');
+  });
+
+  it('does not infer bundled fonts when build flavor is unavailable', () => {
+    const text = expectedObservation({
+      bidiIsolation: true,
+      directionCorrection: true,
+      latinFont: 'amazon-ember-local',
+      persianFont: 'local-first',
+      siteMode: 'auto-safe',
+      typography: true,
+    });
+    expect(text).toContain('source repository does not track vendored Vazirmatn binaries');
+    expect(text).toContain('source repository does not track vendored Inter binaries');
+    expect(text).not.toContain('bundled Vazirmatn fallback');
+    expect(text).not.toContain('bundled Inter fallback');
+  });
+
+  it('does not claim bundled font fallback for source-no-font-binaries builds', () => {
+    const text = expectedObservation(
+      {
+        bidiIsolation: true,
+        directionCorrection: true,
+        latinFont: 'amazon-ember-local',
+        persianFont: 'local-first',
+        siteMode: 'auto-safe',
+        typography: true,
+      },
+      'source-no-font-binaries'
+    );
+    expect(text).toContain('source repository does not track vendored Vazirmatn binaries');
+    expect(text).toContain('source repository does not track vendored Inter binaries');
     expect(text).not.toContain('bundled Vazirmatn fallback');
     expect(text).not.toContain('bundled Inter fallback');
   });

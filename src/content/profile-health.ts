@@ -93,7 +93,7 @@ export function evaluateProfileHealth(
   );
   const status: ProfileHealthStatus = active.some((rule) => rule.status === 'invalid-selector')
     ? 'invalid-selector'
-    : active.some((rule) => rule.status === 'excessive-match')
+    : active.some((rule) => rule.impact === 'semantic' && rule.status === 'excessive-match')
       ? 'excessive-match'
       : semanticAllNoMatch
         ? 'no-match'
