@@ -107,7 +107,7 @@ describe('v15.9.1 failure report analysis', () => {
     expect(text).not.toContain('RTLX Mixed Text');
   });
 
-  it('does not claim bundled font fallback for no-font-binaries builds', () => {
+  it('does not claim bundled font fallback for source-no-font-binaries builds', () => {
     const text = expectedObservation(
       {
         bidiIsolation: true,
@@ -117,10 +117,10 @@ describe('v15.9.1 failure report analysis', () => {
         siteMode: 'auto-safe',
         typography: true,
       },
-      'no-font-binaries'
+      'source-no-font-binaries'
     );
-    expect(text).toContain('no-font-binaries build does not package Vazirmatn');
-    expect(text).toContain('no-font-binaries build does not package Inter');
+    expect(text).toContain('source repository does not track vendored Vazirmatn binaries');
+    expect(text).toContain('source repository does not track vendored Inter binaries');
     expect(text).not.toContain('bundled Vazirmatn fallback');
     expect(text).not.toContain('bundled Inter fallback');
   });

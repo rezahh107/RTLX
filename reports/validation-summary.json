@@ -1,16 +1,13 @@
 {
   "schemaVersion": "1.0.0",
-  "productVersion": "15.9.11",
+  "productVersion": "15.9.12",
   "status": "blocked",
   "releaseRecommendation": "NO_GO_FOR_STORE",
   "personalInstallRecommendation": "CONDITIONAL_GO_AFTER_LOCAL_RETEST",
-  "canonicalSource": "vitest-json + release-evidence-gates + artifact manifest",
-  "testFileCount": 118,
-  "testSuiteCount": 247,
-  "assertionCount": 363,
-  "passedAssertions": 363,
+  "canonicalSource": "checked-in deterministic validation summary for current source version",
+  "deterministicValidationStatus": "pending_rerun_for_this_patch",
   "browserGateStatus": {
-    "clean_source_reproduction": "passed",
+    "clean_source_reproduction": "not_rerun_for_this_patch",
     "manifest_chromium": "insufficient_evidence",
     "manifest_edge": "insufficient_evidence",
     "manifest_firefox_desktop": "insufficient_evidence",
@@ -21,59 +18,13 @@
     "schemaVersion": "1.0.0",
     "hashAlgorithm": "sha256",
     "canonicalizationVersion": "1.0.0",
-    "release": "15.9.11",
+    "release": "15.9.12",
     "artifactType": "browser-packages",
-    "files": [
-      {
-        "path": "rtlx-chromium-15.9.11.zip",
-        "size": 426629,
-        "sha256": "31e548a13660b33d3f6ae596c188a93fa9773714bc2dd1c7a88d6cf8f73a585c"
-      },
-      {
-        "path": "rtlx-edge-15.9.11.zip",
-        "size": 426623,
-        "sha256": "53f9d7ed4ae708b1c58bd800a1ac1ee7215846eb27eeea02701bf91c09a6ac1c"
-      },
-      {
-        "path": "rtlx-firefox-15.9.11.zip",
-        "size": 426303,
-        "sha256": "114f02f1508619f6fbfc894dcbb72e067198a1b1470ffbe5b224e8e341ff5c82"
-      },
-      {
-        "path": "rtlx-firefox-android-15.9.11.zip",
-        "size": 426247,
-        "sha256": "cda4ddf22b2571f8a59f75af71c7dd362bb2712d7a838dbadaa89f78353225f0"
-      }
-    ]
+    "files": []
   },
-  "manualRuntimeInputs": [
-    {
-      "hostname": "chatgpt.com",
-      "browserFamily": "edge",
-      "sourceVersion": "15.9.10",
-      "analysis": {
-        "reasonCodes": [
-          "profile_excessive_match",
-          "selected_element_unavailable"
-        ],
-        "status": "partial"
-      },
-      "profileHealthStatus": "excessive-match",
-      "captureReadinessStatus": "ready"
-    },
-    {
-      "hostname": "chat.qwen.ai",
-      "browserFamily": "chromium",
-      "sourceVersion": "15.9.10",
-      "analysis": {
-        "reasonCodes": [
-          "capture_partial",
-          "selected_element_unavailable"
-        ],
-        "status": "partial"
-      },
-      "profileHealthStatus": "healthy",
-      "captureReadinessStatus": "partial"
-    }
+  "evidenceNotes": [
+    "Static report metadata has been updated to the active source version.",
+    "Exact browser/runtime evidence has not been rerun for this checked-in report and remains insufficient for public/store release.",
+    "No passing browser evidence is claimed by this report."
   ]
 }

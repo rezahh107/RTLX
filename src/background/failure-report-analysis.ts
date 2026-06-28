@@ -103,24 +103,24 @@ export function expectedObservation(
 ): string {
   if (!settings)
     return 'Expected: Persian and mixed Persian/English content should use RTL/right alignment; English content should use LTR/left alignment.';
-  const hasBundledFonts = buildFlavor !== 'no-font-binaries';
+  const hasBundledFonts = buildFlavor !== 'source-no-font-binaries';
   const persianFont =
     settings.persianFont === 'local-first'
       ? hasBundledFonts
         ? 'local Persian fonts with bundled Vazirmatn fallback'
-        : 'local Persian/system fonts; this no-font-binaries build does not package Vazirmatn'
+        : 'local Persian/system fonts; source repository does not track vendored Vazirmatn binaries, while generated artifacts may include fonts from pinned npm packages'
       : hasBundledFonts
         ? 'bundled Vazirmatn'
-        : 'available system Persian font fallback; this no-font-binaries build does not package Vazirmatn';
+        : 'available system Persian font fallback; source repository does not track vendored Vazirmatn binaries, while generated artifacts may include fonts from pinned npm packages';
   const latinFont =
     settings.latinFont === 'amazon-ember-local'
       ? hasBundledFonts
         ? 'local Amazon Ember with bundled Inter fallback'
-        : 'local Amazon Ember/system fonts; this no-font-binaries build does not package Inter'
+        : 'local Amazon Ember/system fonts; source repository does not track vendored Inter binaries, while generated artifacts may include fonts from pinned npm packages'
       : settings.latinFont === 'inter'
         ? hasBundledFonts
           ? 'bundled Inter'
-          : 'available system Latin font fallback; this no-font-binaries build does not package Inter'
+          : 'available system Latin font fallback; source repository does not track vendored Inter binaries, while generated artifacts may include fonts from pinned npm packages'
         : 'the original site font';
   return sanitizeFailureObservation(
     `Expected: Persian and mixed Persian/English content should use RTL/right alignment and ${persianFont}; English content should use LTR/left alignment and ${latinFont}.`

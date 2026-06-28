@@ -8,7 +8,11 @@ describe('BH-007 adaptive backpressure', () => {
     const controller = new AdaptiveBackpressure(() => 0);
     expect(controller.budget().level).toBe('normal');
     controller.recordQueueDepth(LIMITS.pressureQueueThreshold);
-    expect(controller.budget()).toMatchObject({ level: 'pressure', sliceMs: 4, nodesPerSlice: 20 });
+    expect(controller.budget()).toMatchObject({
+      level: 'pressure',
+      sliceMs: LIMITS.pressureSliceMs,
+      nodesPerSlice: LIMITS.pressureNodesPerSlice,
+    });
     controller.setHidden(true);
     expect(controller.budget()).toMatchObject({ level: 'hidden', sliceMs: 0, nodesPerSlice: 0 });
   });

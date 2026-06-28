@@ -35,7 +35,7 @@ Regression contracts currently cover:
 
 - bundled profile routing for ChatGPT, Claude, and Qwen
 - ChatGPT/Claude block-code-only code selectors
-- no-font-binaries policy
+- source-no-font-binaries policy
 - manifest permission and CSP allowlists
 - automatic report selected-element optional semantics
 - capture readiness pure logic
@@ -79,4 +79,4 @@ This workflow is intentionally separate from deterministic source CI because bro
 2. Required CI must fail fast when dependency installation is incomplete.
 3. New production defects must become deterministic contract tests before the fix is considered complete.
 4. Browser evidence can block public/store release, but should not block every normal source push.
-5. No font binaries may be committed into the no-font-binaries source tree.
+5. No font binaries may be committed into the source-no-font-binaries source tree.

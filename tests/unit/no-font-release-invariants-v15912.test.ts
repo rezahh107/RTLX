@@ -1,41 +1,21 @@
-import { readdirSync, readFileSync, statSync } from 'node:fs';
-import { join, relative } from 'node:path';
+import { execFileSync } from 'node:child_process';
 import { describe, expect, it } from 'vitest';
 import { expectedObservation } from '../../src/background/failure-report-analysis';
 import { BUILD_FLAVOR } from '../../src/shared/constants';
 
 const FONT_BINARY_PATTERN = /\.(?:woff2?|ttf|otf)$/iu;
-const SKIPPED_DIRECTORIES = new Set([
-  '.git',
-  '.github',
-  'coverage',
-  'dist',
-  'node_modules',
-  'release-packages',
-]);
-
 function trackedFontBinaries(root: string): readonly string[] {
-  const found: string[] = [];
-  const visit = (directory: string): void => {
-    for (const entry of readdirSync(directory)) {
-      if (SKIPPED_DIRECTORIES.has(entry)) continue;
-      const absolute = join(directory, entry);
-      const stats = statSync(absolute);
-      if (stats.isDirectory()) {
-        visit(absolute);
-        continue;
-      }
-      if (FONT_BINARY_PATTERN.test(entry))
-        found.push(relative(root, absolute).replaceAll('\\', '/'));
-    }
-  };
-  visit(root);
-  return Object.freeze(found.sort());
+  return Object.freeze(
+    execFileSync('git', ['ls-files'], { cwd: root, encoding: 'utf8' })
+      .split('\n')
+      .filter((entry) => FONT_BINARY_PATTERN.test(entry))
+      .sort()
+  );
 }
 
 describe('v15.9.12 no-font release invariants', () => {
-  it('keeps the runtime build flavor explicitly no-font-binaries', () => {
-    expect(BUILD_FLAVOR).toBe('no-font-binaries');
+  it('keeps the runtime build flavor explicitly source-no-font-binaries', () => {
+    expect(BUILD_FLAVOR).toBe('source-no-font-binaries');
   });
 
   it('does not track distributable font binaries in source-controlled project directories', () => {
@@ -52,17 +32,21 @@ describe('v15.9.12 no-font release invariants', () => {
         siteMode: 'auto-safe',
         typography: true,
       },
-      'no-font-binaries'
+      'source-no-font-binaries'
     );
-    expect(observation).toContain('no-font-binaries build does not package Vazirmatn');
-    expect(observation).toContain('no-font-binaries build does not package Inter');
+    expect(observation).toContain('source repository does not track vendored Vazirmatn binaries');
+    expect(observation).toContain('source repository does not track vendored Inter binaries');
     expect(observation).not.toContain('bundled Vazirmatn fallback');
     expect(observation).not.toContain('bundled Inter fallback');
   });
 
   it('keeps the checked-in font asset directory manifest-only when present', () => {
-    const manifestPath = join(process.cwd(), 'assets/fonts/manifest.json');
-    const manifest = JSON.parse(readFileSync(manifestPath, 'utf8')) as {
+    const manifest = JSON.parse(
+      execFileSync('git', ['show', 'HEAD:assets/fonts/manifest.json'], {
+        cwd: process.cwd(),
+        encoding: 'utf8',
+      })
+    ) as {
       fontBinariesIncluded?: boolean;
     };
     expect(manifest.fontBinariesIncluded).toBe(false);

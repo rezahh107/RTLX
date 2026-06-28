@@ -1,63 +1,26 @@
 {
   "schemaVersion": "1.0.0",
-  "productVersion": "15.9.11",
-  "status": "IMPLEMENTED_VALIDATED_RELEASE_BLOCKED_RUNTIME_EVIDENCE",
-  "scope": "Runtime Evidence Execution & Privacy-Safe Harness",
-  "canonicalSourceOfTruth": "dist/evidence/canonical-validation-summary.json",
-  "modifiedRuntimeFiles": [
-    {
-      "path": "scripts/evidence-redaction-core.mjs",
-      "reason": "Adds privacy-safe evidence redaction for URLs, tokens, cookies, account endpoints, emails, and private paths."
-    },
-    {
-      "path": "scripts/exact-artifact-e2e.mjs",
-      "reason": "Redacts stdout/stderr and parsed harness reports before evidence serialization."
-    },
-    {
-      "path": "scripts/browser-manifest-e2e.mjs",
-      "reason": "Emits privacy-redacted machine-readable browser evidence and preserves insufficient-evidence status on policy blockers."
-    },
-    {
-      "path": "scripts/clean-source-reproduction.mjs",
-      "reason": "Adds clean source-to-artifact reproduction gate with hash comparison."
-    },
-    {
-      "path": "src/shared/response-contract.ts",
-      "reason": "Adds executable content command response validation and canonical error conversion."
-    },
-    {
-      "path": "src/content/index.ts",
-      "reason": "Routes all content responses through the shared executable validator."
-    },
-    {
-      "path": "src/background/tab-lifecycle-registry.ts",
-      "reason": "Validates content responses at the background consumer boundary using the shared validator."
-    }
-  ],
+  "productVersion": "15.9.12",
+  "status": "IMPLEMENTED_RELEASE_BLOCKED_RUNTIME_EVIDENCE",
+  "scope": "Release Governance, Evidence Contract, and Profile Health Hardening",
+  "canonicalSourceOfTruth": "package.json",
   "verification": {
-    "format": "passed",
-    "typecheck": "passed",
-    "eslintErrors": 0,
-    "testFilesPassed": 116,
-    "testsPassed": 358,
-    "releaseBuildTargets": 4,
-    "releaseIntegrity": "passed",
-    "cleanSourceReproduction": "passed",
-    "exactArtifactChromium": "insufficient_evidence: Unpacked extensions are disabled by browser administrator policy",
-    "exactArtifactEdge": "insufficient_evidence: edge executable unavailable",
-    "exactArtifactFirefox": "insufficient_evidence: Firefox executable unavailable",
-    "firefoxAndroid": "insufficient_evidence: Firefox Android device or emulator evidence was not supplied",
-    "releaseEvidenceStatus": "blocked",
-    "attestationGenerationStatus": "passed"
+    "deterministicValidationStatus": "pending_rerun_for_this_patch",
+    "exactArtifactChromium": "insufficient_evidence",
+    "exactArtifactEdge": "insufficient_evidence",
+    "exactArtifactFirefox": "insufficient_evidence",
+    "firefoxAndroid": "insufficient_evidence",
+    "releaseEvidenceStatus": "blocked"
+  },
+  "releaseRecommendation": {
+    "publicStore": "NO_GO_UNTIL_CURRENT_EXACT_BROWSER_EVIDENCE_PASSES",
+    "personalLocalInstall": "CONDITIONAL_GO_AFTER_LOCAL_RETEST"
   },
   "unchangedBoundaries": [
     "permissions",
     "host permissions",
-    "storage schema",
-    "direction rules",
-    "typography rules",
-    "site profiles",
-    "streaming rules",
-    "UI cosmetics"
+    "CSP",
+    "global html/body direction",
+    "code-zone preservation"
   ]
 }

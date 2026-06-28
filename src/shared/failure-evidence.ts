@@ -1,5 +1,5 @@
 import { canonicalByteLength } from './canonical-json';
-import { LIMITS } from './constants';
+import { LIMITS, PRODUCT_VERSION } from './constants';
 import type {
   FailureElementEvidence,
   FailureElementEvidenceForReport,
@@ -473,7 +473,7 @@ export function isRecordedFixtureSummary(value: unknown): value is RecordedFixtu
   if (!isRecord(value) || !isRecord(value.counts)) return false;
   return (
     value.schemaVersion === '1.0.0' &&
-    value.productVersion === '15.9.11' &&
+    value.productVersion === PRODUCT_VERSION &&
     value.textIncluded === false &&
     (value.profileId === null || typeof value.profileId === 'string') &&
     (value.profileVersion === null || isNonNegativeInteger(value.profileVersion)) &&

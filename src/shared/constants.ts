@@ -1,7 +1,7 @@
 import { PERFORMANCE_LIMITS_REGISTRY } from './registry-data';
 
 export const PRODUCT_VERSION = '15.9.12' as const;
-export const BUILD_FLAVOR = 'no-font-binaries' as const;
+export const BUILD_FLAVOR = 'source-no-font-binaries' as const;
 export const SETTINGS_SCHEMA_VERSION = '2.1.0' as const;
 export const DIAGNOSTIC_SCHEMA_VERSION = '1.0.0' as const;
 export const PROFILE_SCHEMA_VERSION = '3.0.0' as const;
